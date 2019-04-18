@@ -1,3 +1,0 @@
-|meeting_minute|date|loction|attendances|agenda|conclusion|action|up_coming_issues|
-|--------------|----|-------|-----------|------|----------|------|----------------|
-|01|April 12, 2019, 3pm-5pm|Room 4.02, Chifley Library| Xiang Li, Xiaorong Ma,Taichi|1.know about the group members 2.set up the timetable|1.agree on the timetable|1.one structure is greatly needed. 2.need to divide the assignment into several parts. 3.need to keep contact with others.|next meeting time: April 17, 2019|
