@@ -10,3 +10,4 @@
 ### Inspiration
 
 _The game is inspired by a Website called "[The Wisdom and/or Madness of Crowds](https://ncase.me/crowds/)"_
+
