@@ -6,8 +6,7 @@
 + Taichi Aso, u6577201 - 
 
 ## Game Overview 
-
+![](Assets/thumb.png)
 ### Inspiration
-
 _The game is inspired by a Website called "[The Wisdom and/or Madness of Crowds](https://ncase.me/crowds/)"_
 
