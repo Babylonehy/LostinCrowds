@@ -18,18 +18,6 @@ public class Update {
     private RequestParams params =null;
     int level =-1;
 
-    public int getLevel () {
-        return level;
-    }
-
-    public String getSuccess () {
-        return success;
-    }
-
-    public String getMessage () {
-        return message;
-    }
-
     String success = null;
     String message = null;
 
@@ -44,12 +32,13 @@ public class Update {
 
         HttpClinet.get(UPDATE,params,jonhttpresponsehandler);
 
+
     }
     private JsonHttpResponseHandler jonhttpresponsehandler = new JsonHttpResponseHandler(){
         @Override
         public void onSuccess( int statusCode, Header[] headers, JSONObject responses) {
             // If the response is JSONObject instead of expected JSONArray
-            Log.v("Josn","Start----");
+            Log.v("Josn","Update----");
             try {
                 success = responses.getString("success");
                 message=responses.getString("message");
@@ -64,4 +53,18 @@ public class Update {
         }
 
     };
+
+
+    public int getLevel () {
+        return level;
+    }
+
+    public String getSuccess () {
+        return success;
+    }
+
+    public String getMessage () {
+        return message;
+    }
+
 }
