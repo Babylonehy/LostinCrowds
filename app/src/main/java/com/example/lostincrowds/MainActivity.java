@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.lostincrowds.Network.Login;
+import com.example.lostincrowds.Network.Signin;
 import com.example.lostincrowds.Network.Update;
 
 import org.json.JSONException;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             login();
             update();
+            signin();
         } catch (JSONException | IOException e) {
             e.printStackTrace();
         }
@@ -31,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
     }
     private void update() throws JSONException, IOException {
         Update test=new Update("test1","123","5");
+        test.run();
+    }
+    private void signin() throws JSONException, IOException {
+        Signin test=new Signin("test3","123");
         test.run();
     }
 }

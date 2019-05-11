@@ -12,38 +12,22 @@ import java.util.HashMap;
 
 import cz.msebera.android.httpclient.Header;
 
-public class Update {
+public class Signin {
+
     private HashMap<String, String> paramMap = new HashMap<String, String>();
-    final public String UPDATE="update.php?";
+    final public String SIGNIN="signin.php?";
     private RequestParams params =null;
-    int level =-1;
-
-    public int getLevel () {
-        return level;
-    }
-
-    public String getSuccess () {
-        return success;
-    }
-
-    public String getMessage () {
-        return message;
-    }
-
     String success = null;
     String message = null;
 
-    public Update ( String username,String passwords, String level) {
+    public Signin ( String username,String passwords) {
         this.paramMap.put("name",username);
         this.paramMap.put("passwords",passwords);
-        this.paramMap.put("level",level);
         this.params= new RequestParams(paramMap);
     }
 
     public void run() throws JSONException {
-
-        HttpClinet.get(UPDATE,params,jonhttpresponsehandler);
-
+        HttpClinet.get(SIGNIN,params,jonhttpresponsehandler);
     }
     private JsonHttpResponseHandler jonhttpresponsehandler = new JsonHttpResponseHandler(){
         @Override
@@ -53,7 +37,7 @@ public class Update {
             try {
                 success = responses.getString("success");
                 message=responses.getString("message");
-                level=responses.getInt("level");
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
