@@ -15,14 +15,14 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Intent intent=getIntent();
         String LoginMessage=intent.getStringExtra("MessageFromLogin");
-        Toast.makeText(this,LoginMessage,Toast.LENGTH_LONG).show();
+        String Level=intent.getStringExtra("LevelFromLogin");
+        Toast.makeText(this,LoginMessage+" Level:"+Level,Toast.LENGTH_LONG).show();
     }
 
     private void login() throws JSONException, IOException {

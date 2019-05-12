@@ -78,10 +78,12 @@ public class LoginActivity extends AppCompatActivity {
                         if (tempuser.getSuccess().equals(ConstantValue.successGet)){
                             Log.v("Listener","getsuccess = 1");
                             Intent intent = new Intent();
-                            int level=tempuser.getLevel();
+                            String level=Integer.toString(tempuser.getLevel());
                             intent.setClass(LoginActivity.this, MainActivity.class);
                             String Message="MessageFromLogin";
+                            String LevelMessage="LevelFromLogin";
                             intent.putExtra(Message,tempuser.getMessage());
+                            intent.putExtra(LevelMessage,level);
                             startActivity(intent);
                             LoginActivity.this.finish();
                         }
