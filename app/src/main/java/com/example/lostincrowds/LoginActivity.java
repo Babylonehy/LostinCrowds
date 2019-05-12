@@ -7,8 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.lostincrowds.Network.ConstantValue;
 import com.example.lostincrowds.Network.Login;
 import com.example.lostincrowds.Network.Signin;
@@ -29,6 +31,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         view=new LoginTemplateView(this);
         setContentView(view);
+
+
         setting();
         //设置点击事件
         view.setLoginListener(new LoginTemplateView.LoginListener() {

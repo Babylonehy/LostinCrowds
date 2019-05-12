@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.lostincrowds.Network.Login;
 import com.example.lostincrowds.Network.Signin;
 import com.example.lostincrowds.Network.Update;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         String LoginMessage=intent.getStringExtra("MessageFromLogin");
         String Level=intent.getStringExtra("LevelFromLogin");
         Toast.makeText(this,LoginMessage+" Level:"+Level,Toast.LENGTH_LONG).show();
+        Glide.with(this).load(R.drawable.particles);
     }
 
     private void login() throws JSONException, IOException {
