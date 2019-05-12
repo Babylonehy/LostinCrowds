@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -30,7 +31,13 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         view=new LoginTemplateView(this);
+//        AutoImageView imageView=new AutoImageView(this);
         setContentView(view);
+//        ImageView imageView=new ImageView(this);
+//        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+//        imageView.setAdjustViewBounds(true);
+//        addContentView(imageView, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,  LinearLayout.LayoutParams.WRAP_CONTENT));
+//        Glide.with(this).load(R.drawable.particlesresize).into(imageView);
 
 
         setting();
@@ -103,21 +110,22 @@ public class LoginActivity extends AppCompatActivity {
 
     }
     private void registernew() throws IOException, JSONException {
+        if (view.getLoginName().equals(""))
         new_user=new Signin(view.getLoginName(),view.getLoginPassword());
         new_user.run();
-
     }
 
 
     private void setting(){
         view.setForgotButtonText("");
-        view.setLoginButtonBackground(R.drawable.button);
+        view.setLoginBackgroundResource(R.drawable.bkg);
         view.setLoginNameHint("UserName");
         view.setLoginPasswordHint("Passwords");
         view.setLoginButtonText("Login");
-        view.setLoginButtonTextColor(Color.parseColor("#26A69A"));
+        view.setLoginButtonTextColor(Color.DKGRAY);
+        view.setLoginButtonBackground(R.drawable.button);
         view.setLoginLogo(R.drawable.simle);
-        view.setBackgroundResource(R.drawable.loginbck);
+
     }
 
     private void userlogin() throws JSONException, IOException, InterruptedException {
