@@ -1,7 +1,9 @@
 package com.example.lostincrowds;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.lostincrowds.Network.Login;
 import com.example.lostincrowds.Network.Signin;
@@ -18,13 +20,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        try {
-            login();
-            update();
-            signin();
-        } catch (JSONException | IOException e) {
-            e.printStackTrace();
-        }
+        Intent intent=getIntent();
+        String LoginMessage=intent.getStringExtra("MessageFromLogin");
+        Toast.makeText(this,LoginMessage,Toast.LENGTH_LONG).show();
     }
 
     private void login() throws JSONException, IOException {
@@ -36,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         test.run();
     }
     private void signin() throws JSONException, IOException {
-        Signin test=new Signin("test3","123");
+        Signin test=new Signin("test5","123");
         test.run();
     }
 }

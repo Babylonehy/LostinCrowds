@@ -1,25 +1,14 @@
 package com.example.lostincrowds.Network;
 
-import android.util.Log;
-
-import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.util.HashMap;
+import java.io.IOException;
 
-import cz.msebera.android.httpclient.Header;
+public class Update extends User{
 
-public class Update {
-    private HashMap<String, String> paramMap = new HashMap<String, String>();
     final public String UPDATE="update.php?";
-    private RequestParams params =null;
-    int level =-1;
-
-    String success = null;
-    String message = null;
 
     public Update ( String username,String passwords, String level) {
         this.paramMap.put("name",username);
@@ -28,31 +17,13 @@ public class Update {
         this.params= new RequestParams(paramMap);
     }
 
-    public void run() throws JSONException {
+    public void run() throws IOException {
 
         HttpClinet.get(UPDATE,params,jonhttpresponsehandler);
 
 
     }
-    private JsonHttpResponseHandler jonhttpresponsehandler = new JsonHttpResponseHandler(){
-        @Override
-        public void onSuccess( int statusCode, Header[] headers, JSONObject responses) {
-            // If the response is JSONObject instead of expected JSONArray
-            Log.v("Josn","Update----");
-            try {
-                success = responses.getString("success");
-                message=responses.getString("message");
-                level=responses.getInt("level");
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
 
-            // Do something with the response
-            Log.v("Josn",success);
-
-        }
-
-    };
 
 
     public int getLevel () {
