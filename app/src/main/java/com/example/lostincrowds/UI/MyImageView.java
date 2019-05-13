@@ -53,7 +53,4 @@ public class MyImageView extends ConstraintLayout {
 
     }
 
-    public ConstraintLayout getConstraintLayout () {
-        return constraintLayout;
-    }
 }
