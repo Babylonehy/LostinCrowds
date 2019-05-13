@@ -1,4 +1,4 @@
-package com.example.lostincrowds;
+package com.example.lostincrowds.UI;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
