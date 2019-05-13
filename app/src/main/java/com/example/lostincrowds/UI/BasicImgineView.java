@@ -25,7 +25,7 @@ public class BasicImgineView extends android.support.v7.widget.AppCompatImageVie
         ImageView imageView2=new AutoImageView(this.getContext());
         imageView2.setImageDrawable(drawable2);
 
-        a.setContentView(imageView1,new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,  LinearLayout.LayoutParams.WRAP_CONTENT));
+        a.addContentView(imageView1,new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,  LinearLayout.LayoutParams.WRAP_CONTENT));
         a.addContentView(imageView2,new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,  LinearLayout.LayoutParams.WRAP_CONTENT));
 
     }
