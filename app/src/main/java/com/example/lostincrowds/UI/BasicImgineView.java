@@ -26,8 +26,9 @@ public class BasicImgineView extends android.support.v7.widget.AppCompatImageVie
         setMaxHeight(50);
         setMaxWidth(50);
     }
+    private float x,y;
 
-    public void setBasicImageView ( @DrawableRes int back , @DrawableRes int front ) {
+    public void setBasicImageView ( @DrawableRes int back , @DrawableRes int front,float x,float y) {
         Resources r = getResources();
         Bitmap backImage = ((BitmapDrawable) r.getDrawable(
                 back)).getBitmap();
@@ -46,9 +47,13 @@ public class BasicImgineView extends android.support.v7.widget.AppCompatImageVie
          * @param r number of pixels to subtract from the right bound
          * @param b number of pixels to subtract from the bottom bound
          */
-        la.setLayerInset(0 , 0 , 0 , 0 , 0);
-        la.setLayerInset(1 , 20 , 20 , 20 , 20);
+//        la.setLayerInset(0 , 0 , 0 , 0 , 0);
+//        la.setLayerInset(1 , 20 , 20 , 20 , 20);
+
         imageView.setImageDrawable(la);
+
+        imageView.setY(y);
+        imageView.setX(x);
 
         this.imageView = imageView;
 
@@ -56,5 +61,15 @@ public class BasicImgineView extends android.support.v7.widget.AppCompatImageVie
 
     public ImageView getImageView () {
         return imageView;
+    }
+
+    @Override
+    public void setY(float y) {
+        this.y = y;
+    }
+
+    @Override
+    public void setX(float x) {
+        this.x = x;
     }
 }

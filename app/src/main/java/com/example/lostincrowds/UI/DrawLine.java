@@ -58,6 +58,7 @@ public class DrawLine extends View {
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+
                 startX = event.getX();
                 startY = event.getY();
 
@@ -81,29 +82,29 @@ public class DrawLine extends View {
     }
 
     public boolean onTouchEvent2(MotionEvent event2) {
-        Log.v("Drawline", "GET In ontouch event2.");
-        switch (event2.getAction()) {
-            case MotionEvent.ACTION_MOVE:
-                curX =  event2.getX();
-                curY = (int) (event2.getY());
-                for (int i = 0; i < list.size(); i++) {
-                    float[] data = list.get(i);
-                    float a =  ((data[1] - data[3]) / (data[0] - data[2]));
-                    float b =  ((data[0] * data[3] - data[1] * data[2]) / (data[0] - data[2]));
-                    int now = (int) (curX * a + b);
-                    Log.v("Drawline", curX + " " + curY+" "+now+" "+(Math.abs(now - curY) < 500?"T":"f"));
-                    if (((curX>data[0] && curX<data[2])||(curX<data[0] && curX>data[2]))&&((curY>data[1]
-                            && curY<data[3])||(curY<data[1] && curY>data[3]))){
-                        if (Math.abs(now - curY) < 200) {
-                            list.remove(i);
-                            break;
+            Log.v("Drawline", "GET In ontouch event2.");
+            switch (event2.getAction()) {
+                case MotionEvent.ACTION_MOVE:
+                    curX =  event2.getX();
+                    curY = (int) (event2.getY());
+                    for (int i = 0; i < list.size(); i++) {
+                        float[] data = list.get(i);
+                        float a =  ((data[1] - data[3]) / (data[0] - data[2]));
+                        float b =  ((data[0] * data[3] - data[1] * data[2]) / (data[0] - data[2]));
+                        int now = (int) (curX * a + b);
+                        Log.v("Drawline", curX + " " + curY+" "+now+" "+(Math.abs(now - curY) < 500?"T":"f"));
+                        if (((curX>data[0] && curX<data[2])||(curX<data[0] && curX>data[2]))&&((curY>data[1]
+                                && curY<data[3])||(curY<data[1] && curY>data[3]))){
+                            if (Math.abs(now - curY) < 200) {
+                                list.remove(i);
+                                break;
+                            }
                         }
+
                     }
+                    break;
 
-                }
-                break;
-
-        }
+            }
         return true;
     }
 }

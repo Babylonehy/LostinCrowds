@@ -13,6 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".UI.UI_test"
+            android:label="@string/title_activity_ui_test"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".BasicActivity"
             android:exported="true"
             android:label="@string/title_activity_basic"
