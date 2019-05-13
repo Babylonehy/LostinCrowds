@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.example.lostincrowds.R;
 
@@ -30,8 +31,9 @@ public class UI_test extends AppCompatActivity {
             }
         });
         BasicImgineView basicImgineView=new BasicImgineView(this);
-        basicImgineView.setBasicImageView(this,R.drawable.eyesclose,R.drawable.gray,100,100);
+        basicImgineView.setBasicImageView(R.drawable.gray,R.drawable.eyesclose);
         DrawLine drawLine=new DrawLine(this);
+        this.addContentView(basicImgineView.getImageView(),new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,  LinearLayout.LayoutParams.WRAP_CONTENT));
         ArrayList list =drawLine.list;
         System.out.println(list);
     }
