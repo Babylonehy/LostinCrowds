@@ -4,4 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"/>
+    tools:context=".LoginActivity">
+
+    <LinearLayout
+        android:id="@+id/linearlay_1"
+        android:layout_width="124dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="127dp"
+        android:layout_marginLeft="127dp"
+        android:layout_marginBottom="143dp"
+        android:background="#03A9F4"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"></LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

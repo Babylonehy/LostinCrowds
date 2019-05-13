@@ -1,6 +1,6 @@
 package com.example.lostincrowds.UI;
 
-import android.app.Activity;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -8,32 +8,58 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.support.annotation.DrawableRes;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
-import com.example.lostincrowds.R;
-
 public class BasicImageView extends android.support.v7.widget.AppCompatImageView {
-    private ImageView imageView;
-    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT ,
-            LinearLayout.LayoutParams.WRAP_CONTENT);
+    private int width = 150;
+    private int id = 0;
+    private int height = 150;
 
-    public BasicImageView ( Context context ) {
+    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(width ,
+            height);
+
+    private float xpos;
+    private float ypos;
+
+
+    @SuppressLint("ResourceType")
+    public BasicImageView ( Context context , @DrawableRes int back , @DrawableRes int front , float xpos , float ypos , int id ) {
         super(context);
-        setAdjustViewBounds(true);
+        this.xpos = xpos;
+        this.ypos = ypos;
         setLayoutParams(params);
-        setMaxHeight(50);
-        setMaxWidth(50);
+        this.id = id;
+        setBasicImageView(back , front);
     }
 
-    public void setBasicImageView ( @DrawableRes int back , @DrawableRes int front ) {
+    public BasicImageView ( Context context , int back , int front , float xpos , float ypos ) {
+        super(context);
+        this.xpos = xpos;
+        this.ypos = ypos;
+        setLayoutParams(params);
+        setBasicImageView(back , front);
+    }
+
+    public BasicImageView ( Context context , int back , int front ) {
+        super(context);
+        setLayoutParams(params);
+        setBasicImageView(back , front);
+    }
+
+    public BasicImageView ( Context context , AttributeSet attrs ) {
+        super(context , attrs);
+        setLayoutParams(params);
+    }
+
+
+    public BasicImageView setBasicImageView ( @DrawableRes int back , @DrawableRes int front ) {
         Resources r = getResources();
         Bitmap backImage = ((BitmapDrawable) r.getDrawable(
                 back)).getBitmap();
         Bitmap frontImage = ((BitmapDrawable) r.getDrawable(
                 front)).getBitmap();
-        ImageView imageView = new ImageView(this.getContext());
+
 
         Drawable[] layers = new Drawable[2];
         layers[0] = new BitmapDrawable(backImage);
@@ -48,13 +74,45 @@ public class BasicImageView extends android.support.v7.widget.AppCompatImageView
          */
         la.setLayerInset(0 , 0 , 0 , 0 , 0);
         la.setLayerInset(1 , 20 , 20 , 20 , 20);
-        imageView.setImageDrawable(la);
+        setImageDrawable(la);
+        setX(xpos);
+        setY(ypos);
+        setId(id);
 
-        this.imageView = imageView;
+        return this;
 
     }
 
-    public ImageView getImageView () {
-        return imageView;
+
+    private void setWidth ( int width ) {
+        this.width = width;
+    }
+
+    private void setHeight ( int height ) {
+        this.height = height;
+    }
+
+    private void setXpos ( float xpos ) {
+        this.xpos = xpos;
+    }
+
+    private void setYpos ( float ypos ) {
+        this.ypos = ypos;
+    }
+
+    public float getXpos () {
+        return xpos;
+    }
+
+    public float getYpos () {
+        return ypos;
+    }
+
+    public float getXcentre () {
+        return (float) (xpos + width / 2.0);
+    }
+
+    public float getYcentre () {
+        return (float) (ypos + height / 2.0);
     }
 }

@@ -1,7 +1,9 @@
 package com.example.lostincrowds;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
@@ -9,14 +11,22 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.transition.Slide;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
+import android.view.Window;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.lostincrowds.Network.ConstantValue;
 import com.example.lostincrowds.Network.Login;
 import com.example.lostincrowds.Network.Signin;
 import com.example.lostincrowds.Network.User;
+import com.example.lostincrowds.UI.AutoImageView;
+import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 import com.youth.template.LoginTemplateView;
+
+import net.frakbot.jumpingbeans.JumpingBeans;
 
 import org.json.JSONException;
 
@@ -27,20 +37,42 @@ public class LoginActivity extends AppCompatActivity {
     static Signin new_user;
     LoginTemplateView view;
 
+    Display display;
+
+    @TargetApi(Build.VERSION_CODES.O)
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate ( Bundle savedInstanceState ) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
         view = new LoginTemplateView(this);
-//        AutoImageView imageView=new AutoImageView(this);
+        AutoImageView imageView = new AutoImageView(this);
         setContentView(view);
+
+        display = getWindowManager().getDefaultDisplay();
 //        ImageView imageView=new ImageView(this);
 //        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 //        imageView.setAdjustViewBounds(true);
 //        addContentView(imageView, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,  LinearLayout.LayoutParams.WRAP_CONTENT));
-//        Glide.with(this).load(R.drawable.particlesresize).into(imageView);
+        Glide.with(this).load(R.drawable.particlesresize).into(imageView);
 
+        //添加文本,this代表当前项目
+        TextView textView1 = new TextView(this);
+        textView1.setText("Lost In Crowds");
+        Typeface typeface = getResources().getFont(R.font.patrickhandregular);
+        textView1.setTypeface(typeface);
+        textView1.setTextColor(Color.DKGRAY);
+        textView1.setTextSize(24);
+        textView1.setX((float) (display.getWidth() / 2.8));
+        textView1.setY((float) (display.getHeight() / 2.9));
+
+        JumpingBeans jumpingBeans1 = JumpingBeans.with(textView1)
+                .makeTextJump(0 , textView1.getText().length())
+                .setIsWave(true)
+                .setLoopDuration(5000)
+                .build();
+        view.addView(textView1);
 
         setting();
         //设置点击事件
@@ -51,6 +83,11 @@ public class LoginActivity extends AppCompatActivity {
                 try {
                     userlogin();
                     Listener(user);
+                    NiftyDialogBuilder dialogBuilder = NiftyDialogBuilder.getInstance(LoginActivity.this);
+                    dialogBuilder
+                            .withMessage("Verify username and password......")
+                            .withDialogColor("#FF03A9F4")
+                            .show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -69,6 +106,11 @@ public class LoginActivity extends AppCompatActivity {
                 try {
                     registernew();
                     Listener(new_user);
+                    NiftyDialogBuilder dialogBuilder = NiftyDialogBuilder.getInstance(LoginActivity.this);
+                    dialogBuilder
+                            .withMessage("Under registration......")
+                            .withDialogColor("#FF03A9F4")
+                            .show();
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (JSONException e) {

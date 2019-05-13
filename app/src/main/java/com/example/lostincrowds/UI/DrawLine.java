@@ -35,7 +35,7 @@ public class DrawLine extends View {
         paint = new Paint();
         paint.setColor(Color.parseColor("#00B7EE"));
         paint.setAntiAlias(true);
-        paint.setStrokeWidth(33);
+        paint.setStrokeWidth(10);
     }
 
 
