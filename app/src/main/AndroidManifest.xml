@@ -13,10 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".BasicActivity"
-            android:label="@string/title_activity_basic"
+            android:name=".UI.UI_test"
+            android:label="@string/title_activity_ui_test"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".BasicActivity"
+            android:exported="true"
+            android:label="@string/title_activity_basic"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LoginActivity"
             android:exported="true" />
