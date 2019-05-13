@@ -2,16 +2,16 @@ package com.example.lostincrowds;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Looper;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Looper;
+import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
+import android.transition.Slide;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.example.lostincrowds.Network.ConstantValue;
 import com.example.lostincrowds.Network.Login;
 import com.example.lostincrowds.Network.Signin;
@@ -23,14 +23,16 @@ import org.json.JSONException;
 import java.io.IOException;
 
 public class LoginActivity extends AppCompatActivity {
-    LoginTemplateView view;
     static Login user;
     static Signin new_user;
+    LoginTemplateView view;
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate ( Bundle savedInstanceState ) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        view=new LoginTemplateView(this);
+        view = new LoginTemplateView(this);
 //        AutoImageView imageView=new AutoImageView(this);
         setContentView(view);
 //        ImageView imageView=new ImageView(this);
@@ -44,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         //设置点击事件
         view.setLoginListener(new LoginTemplateView.LoginListener() {
             @Override
-            public void login( View v) {
+            public void login ( View v ) {
 
                 try {
                     userlogin();
@@ -54,6 +56,8 @@ public class LoginActivity extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -69,32 +73,43 @@ public class LoginActivity extends AppCompatActivity {
                     e.printStackTrace();
                 } catch (JSONException e) {
                     e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
 
         });
-
+        setupWindowAnimations();
 
     }
 
-    private void Listener( final User tempuser ){
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void setupWindowAnimations () {
+        Slide slide = new Slide();
+        slide.setDuration(2000);
+        getWindow().setExitTransition(slide);
+    }
 
-        new Thread(new Runnable(){
+
+    private void Listener ( final User tempuser ) {
+
+        new Thread(new Runnable() {
             @Override
             public void run () {
                 while (true) {
                     System.out.println("listener--");
-                    if (!tempuser.getSuccess().equals(ConstantValue.successInitial)){
-                        Log.v("Listener",tempuser.getSuccess().equals("1") ? "T" : "F");
-                        if (tempuser.getSuccess().equals(ConstantValue.successGet)){
-                            Log.v("Listener","getsuccess = 1");
+                    if (!tempuser.getSuccess().equals(ConstantValue.successInitial)) {
+                        Log.v("Listener" , tempuser.getSuccess().equals("1") ? "T" : "F");
+                        if (tempuser.getSuccess().equals(ConstantValue.successGet)) {
+                            Log.v("Listener" , "getsuccess = 1");
                             Intent intent = new Intent();
-                            String level=Integer.toString(tempuser.getLevel());
-                            intent.setClass(LoginActivity.this, MainActivity.class);
-                            String Message="MessageFromLogin";
-                            String LevelMessage="LevelFromLogin";
-                            intent.putExtra(Message,tempuser.getMessage());
-                            intent.putExtra(LevelMessage,level);
+                            String level = Integer.toString(tempuser.getLevel());
+                            //TODO Jump to the corresponding page (Simple switch case)
+                            intent.setClass(LoginActivity.this , MainActivity.class);
+                            String Message = "MessageFromLogin";
+                            String LevelMessage = "LevelFromLogin";
+                            intent.putExtra(Message , tempuser.getMessage());
+                            intent.putExtra(LevelMessage , level);
                             startActivity(intent);
                             LoginActivity.this.finish();
                         }
@@ -102,21 +117,22 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 }
                 Looper.prepare();
-                Toast.makeText(LoginActivity.this,tempuser.getMessage(),Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this , tempuser.getMessage() , Toast.LENGTH_LONG).show();
                 Looper.loop();
             }
         }).start();
 
 
     }
-    private void registernew() throws IOException, JSONException {
+
+    private void registernew () throws Exception {
         if (view.getLoginName().equals(""))
-        new_user=new Signin(view.getLoginName(),view.getLoginPassword());
+            new_user = new Signin(view.getLoginName() , view.getLoginPassword());
         new_user.run();
     }
 
 
-    private void setting(){
+    private void setting () {
         view.setForgotButtonText("");
         view.setLoginBackgroundResource(R.drawable.bkg);
         view.setLoginNameHint("UserName");
@@ -128,10 +144,10 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void userlogin() throws JSONException, IOException, InterruptedException {
-        user=new Login(view.getLoginName(),view.getLoginPassword());
+    private void userlogin () throws Exception {
+        user = new Login(view.getLoginName() , view.getLoginPassword());
         user.run();
-        Log.v("Login",user.getSuccess());
+        Log.v("Login" , user.getSuccess());
 
     }
 

@@ -12,8 +12,8 @@ public class HttpClinet {
     private static AsyncHttpClient client = new AsyncHttpClient();
 
     public static void get ( String action , RequestParams params , AsyncHttpResponseHandler responseHandler ) throws IOException {
-        System.out.println(BASE_URL+action+params);
-        client.get(BASE_URL+action, params, responseHandler);
+        System.out.println(BASE_URL + action + params);
+        client.get(BASE_URL + action , params , responseHandler);
 
     }
 
