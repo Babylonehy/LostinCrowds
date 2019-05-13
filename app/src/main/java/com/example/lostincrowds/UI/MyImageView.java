@@ -1,17 +1,14 @@
 package com.example.lostincrowds.UI;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.annotation.DrawableRes;
 import android.support.constraint.ConstraintLayout;
-import android.support.constraint.ConstraintSet;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.daimajia.numberprogressbar.NumberProgressBar;
-import com.example.lostincrowds.Network.Login;
 import com.example.lostincrowds.R;
 
 public class MyImageView extends ConstraintLayout {
@@ -22,10 +19,9 @@ public class MyImageView extends ConstraintLayout {
     private float ypos;
 
 
-    private ConstraintLayout constraintLayout = null;
-
     public MyImageView ( Context context , @DrawableRes int back , @DrawableRes int front , float xpos , float ypos , float percentage ) {
         super(context);
+        YoYo.with(Techniques.Bounce).duration(5000).repeat(-1).playOn(this);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.myimageview , this);
         Log.v("MyImageView" , "Constructe");
@@ -50,7 +46,11 @@ public class MyImageView extends ConstraintLayout {
         number_progress_bar.setMax(100);
         setX(xpos);
         setY(ypos);
-
     }
 
+
+    public void setMyAnimation ( Techniques animation , int duration ) {
+
+        YoYo.with(animation).duration(duration).repeat(-1).playOn(this);
+    }
 }

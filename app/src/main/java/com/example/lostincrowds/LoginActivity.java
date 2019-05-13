@@ -32,6 +32,7 @@ import org.json.JSONException;
 
 import java.io.IOException;
 
+
 public class LoginActivity extends AppCompatActivity {
     static Login user;
     static Signin new_user;
@@ -86,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
                     NiftyDialogBuilder dialogBuilder = NiftyDialogBuilder.getInstance(LoginActivity.this);
                     dialogBuilder
                             .withMessage("Verify username and password......")
-                            .withDialogColor("#FF03A9F4")
+                            .withDialogColor("#87CEFA")
                             .show();
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -109,8 +110,9 @@ public class LoginActivity extends AppCompatActivity {
                     NiftyDialogBuilder dialogBuilder = NiftyDialogBuilder.getInstance(LoginActivity.this);
                     dialogBuilder
                             .withMessage("Under registration......")
-                            .withDialogColor("#FF03A9F4")
+                            .withDialogColor("#87CEFA")
                             .show();
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (JSONException e) {

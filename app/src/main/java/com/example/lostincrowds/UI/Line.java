@@ -1,7 +1,5 @@
 package com.example.lostincrowds.UI;
 
-import java.util.List;
-
 public class Line {
     public double startX;
     public double startY;
@@ -18,40 +16,40 @@ public class Line {
         this.cut = cut;
     }
 
-    public void setCut ( boolean cut ) {
-        this.cut = cut;
-    }
-
     public boolean isCut () {
         return cut;
+    }
+
+    public void setCut ( boolean cut ) {
+        this.cut = cut;
     }
 
     public double getEndX () {
         return endX;
     }
 
-    public double getEndY () {
-        return endY;
-    }
-
-    public double getStartX () {
-        return startX;
-    }
-
-    public double getStartY () {
-        return startY;
-    }
-
     public void setEndX ( double endX ) {
         this.endX = endX;
+    }
+
+    public double getEndY () {
+        return endY;
     }
 
     public void setEndY ( double endY ) {
         this.endY = endY;
     }
 
+    public double getStartX () {
+        return startX;
+    }
+
     public void setStartX ( double startX ) {
         this.startX = startX;
+    }
+
+    public double getStartY () {
+        return startY;
     }
 
     public void setStartY ( double startY ) {

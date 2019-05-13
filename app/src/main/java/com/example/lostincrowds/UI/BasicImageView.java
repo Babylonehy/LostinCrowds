@@ -14,10 +14,9 @@ class BasicImageView extends android.support.v7.widget.AppCompatImageView {
 
     LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT ,
             LinearLayout.LayoutParams.WRAP_CONTENT);
+    Drawable[] layers = new Drawable[2];
     private float xpos, ypos;
-    private int back;
 
-    private int front;
 
     public BasicImageView ( Context context , float xpos , float ypos ) {
         super(context);
@@ -40,8 +39,6 @@ class BasicImageView extends android.support.v7.widget.AppCompatImageView {
                 back)).getBitmap();
         Bitmap frontImage = ((BitmapDrawable) r.getDrawable(
                 front)).getBitmap();
-
-        Drawable[] layers = new Drawable[2];
         layers[0] = new BitmapDrawable(backImage);
         layers[1] = new BitmapDrawable(frontImage);
         LayerDrawable la = new LayerDrawable(layers);
@@ -57,8 +54,27 @@ class BasicImageView extends android.support.v7.widget.AppCompatImageView {
         setImageDrawable(la);
         setY(ypos);
         setX(xpos);
+//        updateImageView();
     }
 
+//    public void updateImageView(){
+//        while (true){
+//            new Thread(new Runnable() {
+//                @Override
+//                public void run () {
+//                    Bitmap update = ((BitmapDrawable) getResources().getDrawable(
+//                            R.drawable.eyesclose)).getBitmap();
+//                    layers[1]=new BitmapDrawable(update);
+//
+//                    try {
+//                        Thread.sleep(1000);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            });
+//        }
+//    }
 
 
 }
