@@ -6,9 +6,12 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.transition.Fade;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.lostincrowds.UI.AutoImageView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,7 +24,9 @@ public class MainActivity extends AppCompatActivity {
         String LoginMessage = intent.getStringExtra("MessageFromLogin");
         String Level = intent.getStringExtra("LevelFromLogin");
         Toast.makeText(this , LoginMessage + " Level:" + Level , Toast.LENGTH_LONG).show();
-        Glide.with(this).load(R.drawable.particles);
+        ImageView bkg = new AutoImageView(this);
+        Glide.with(this).load(R.drawable.particles).into((ImageView) findViewById(R.id.imageView));
+
         setupWindowAnimations();
 
     }

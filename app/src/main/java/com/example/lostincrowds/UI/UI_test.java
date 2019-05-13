@@ -44,10 +44,4 @@ public class UI_test extends AppCompatActivity {
         addContentView(pen , params);
     }
 
-    @Override
-    public boolean onTouchEvent ( MotionEvent event ) {
-        AdditiveAnimator.animate(pen).x(event.getX()).y(event.getY()).setDuration(1000).start();
-        return true;
-    }
-
 }

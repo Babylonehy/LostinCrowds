@@ -3,11 +3,16 @@ package com.example.lostincrowds.UI;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.AppCompatImageView;
+import android.util.AttributeSet;
 
 public class AutoImageView extends AppCompatImageView {
 
     public AutoImageView ( Context context ) {
         super(context);
+    }
+
+    public AutoImageView ( Context context , AttributeSet attrs ) {
+        super(context , attrs);
     }
 
     @Override

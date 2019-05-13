@@ -1,9 +1,12 @@
 package com.example.lostincrowds;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
@@ -14,10 +17,12 @@ import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.lostincrowds.Music.Music;
 import com.example.lostincrowds.Network.ConstantValue;
 import com.example.lostincrowds.Network.Login;
 import com.example.lostincrowds.Network.Signin;
@@ -32,14 +37,16 @@ import org.json.JSONException;
 
 import java.io.IOException;
 
+import gr.net.maroulis.library.EasySplashScreen;
+
 
 public class LoginActivity extends AppCompatActivity {
     static Login user;
     static Signin new_user;
     LoginTemplateView view;
-
+    Music music;
     Display display;
-
+    SoundPool mSoundPool;
     @TargetApi(Build.VERSION_CODES.O)
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -47,9 +54,20 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN , WindowManager.LayoutParams.FLAG_FULLSCREEN);
         view = new LoginTemplateView(this);
         AutoImageView imageView = new AutoImageView(this);
         setContentView(view);
+        Log.v("Music" , "onCreate: streamID = ");
+        mSoundPool = new SoundPool(1 , AudioManager.STREAM_MUSIC , 0);
+        int streamID = mSoundPool.load(this , R.raw.party , 1);
+        Log.v("Music" , "onCreate: streamID = " + streamID + "" + mSoundPool);
+        mSoundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
+            @Override
+            public void onLoadComplete ( SoundPool soundPool , int sampleId , int status ) {
+                soundPool.play(sampleId , 50 , 50 , 1 , 0 , 1);
+            }
+        });
 
         display = getWindowManager().getDefaultDisplay();
 //        ImageView imageView=new ImageView(this);
@@ -66,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
         textView1.setTextColor(Color.DKGRAY);
         textView1.setTextSize(24);
         textView1.setX((float) (display.getWidth() / 2.8));
-        textView1.setY((float) (display.getHeight() / 2.9));
+        textView1.setY((float) (display.getHeight() / 2.5));
 
         JumpingBeans jumpingBeans1 = JumpingBeans.with(textView1)
                 .makeTextJump(0 , textView1.getText().length())
@@ -125,6 +143,7 @@ public class LoginActivity extends AppCompatActivity {
         });
         setupWindowAnimations();
 
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -176,11 +195,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
+    @SuppressLint("ResourceType")
     private void setting () {
         view.setForgotButtonText("");
         view.setLoginBackgroundResource(R.drawable.bkg);
         view.setLoginNameHint("UserName");
+        view.setLoginNameBackground(R.color.btn_press_color);
         view.setLoginPasswordHint("Passwords");
+        view.setLoginPasswordBackground(R.color.btn_press_color);
         view.setLoginButtonText("Login");
         view.setLoginButtonTextColor(Color.DKGRAY);
         view.setLoginButtonBackground(R.drawable.button);
@@ -193,6 +215,13 @@ public class LoginActivity extends AppCompatActivity {
         user.run();
         Log.v("Login" , user.getSuccess());
 
+    }
+
+    @Override
+    protected void onDestroy () {
+        super.onDestroy();
+        mSoundPool.release();
+        mSoundPool = null;
     }
 
 }
