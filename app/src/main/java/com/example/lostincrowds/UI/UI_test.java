@@ -9,6 +9,9 @@ import android.view.View;
 
 import com.example.lostincrowds.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UI_test extends AppCompatActivity {
 
     @Override
@@ -28,7 +31,9 @@ public class UI_test extends AppCompatActivity {
         });
         BasicImgineView basicImgineView=new BasicImgineView(this);
         basicImgineView.setBasicImageView(this,R.drawable.eyesclose,R.drawable.gray,100,100);
-
+        DrawLine drawLine=new DrawLine(this);
+        ArrayList list =drawLine.list;
+        System.out.println(list);
     }
 
 }
