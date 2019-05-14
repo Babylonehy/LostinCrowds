@@ -130,7 +130,6 @@ public class LoginActivity extends AppCompatActivity {
                             .withMessage("Under registration......")
                             .withDialogColor("#87CEFA")
                             .show();
-
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (JSONException e) {
@@ -142,7 +141,6 @@ public class LoginActivity extends AppCompatActivity {
 
         });
         setupWindowAnimations();
-
 
     }
 
@@ -189,7 +187,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void registernew () throws Exception {
-        if (view.getLoginName().equals(""))
+        if (!view.getLoginName().equals(""))
             new_user = new Signin(view.getLoginName() , view.getLoginPassword());
         new_user.run();
     }
