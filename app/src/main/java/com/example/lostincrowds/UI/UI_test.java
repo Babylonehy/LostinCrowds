@@ -5,19 +5,25 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
 
 import com.example.lostincrowds.R;
 
+import java.util.ArrayList;
+
+import at.wirecube.additiveanimations.additive_animator.AdditiveAnimator;
+
 import static com.example.lostincrowds.Network.ConstantValue.HEIGHT;
 import static com.example.lostincrowds.Network.ConstantValue.WIDTH;
 
 public class UI_test extends AppCompatActivity {
     Pencil pen = null;
-
+    public ArrayList<float[]> listforposition = new ArrayList<>();
+    public ArrayList<MyImageView> ListForImageView = new ArrayList<>();
+    private DrawLine drawLine;
     @Override
     protected void onCreate ( Bundle savedInstanceState ) {
         super.onCreate(savedInstanceState);
@@ -33,19 +39,23 @@ public class UI_test extends AppCompatActivity {
                         .setAction("Action" , null).show();
             }
         });
-        BasicImageView basicImageView = new BasicImageView(this , 100 , 600);
-        basicImageView.setBasicImageView(R.drawable.gray , R.drawable.eyesclose);
-        addContentView(basicImageView , basicImageView.getLayoutParams());
 
-        MyImageView testview = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , 100 , 600 , 50 , "S1");
-        MyImageView testview2 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , 300 , 600 , 100 , "S2");
+        drawLine = findViewById(R.id.DrawLine);
+        MyImageView imageView = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , 50 , 50 , 100 , "s1");
+        ListForImageView.add(imageView);
+
+        MyImageView imageView2 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , 500 , 500 , 50 , "s2");
+        ListForImageView.add(imageView2);
+
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(HEIGHT ,
                 WIDTH);
-        addContentView(testview , params);
-        testview.setPercentage(40);
-        addContentView(testview2 , new LinearLayout.LayoutParams(HEIGHT , WIDTH));
-        testview2.setPercentage(60);
-        Log.v("Myview" , testview.equals(testview2) ? "T" : "F");
+
+        drawLine.setImageView(ListForImageView);
+
+
+        addContentView(imageView , params);
+        addContentView(imageView2 , params);
+        addContentView(pen , params);
     }
 
 }
