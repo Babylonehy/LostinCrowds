@@ -46,6 +46,7 @@ public class DrawLine extends View {
 
     private boolean isDiff = false;
     //刀光减少
+    private  ArrayList positionlist;
     Runnable diff = new Runnable() {
         @Override
         public void run() {
@@ -145,11 +146,20 @@ public class DrawLine extends View {
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                if ((event.getX()>50 &&event.getY()>50&&event.getX()<250&&event.getY()<250)||
-                        (event.getX()>550 &&event.getY()>550&&event.getX()<750&&event.getY()<750)){
-                    startX = event.getX();
-                    startY = event.getY();
+                for (int i = 0; i <positionlist.size() ; i++) {
+                    float [] data3= (float[]) positionlist.get(i);
+                    if (event.getX()>data3[0]&&event.getX()<(data3[0]+150)&&event.getY()>data3[1]
+                    &&event.getY()<(data3[1]+100)){
+                        startX = event.getX();
+                        startY = event.getY();
+                    }
+
                 }
+//                if ((event.getX()>100 &&event.getY()>100&&event.getX()<250&&event.getY()<250)||
+//                        (event.getX()>700 &&event.getY()>700&&event.getX()<850&&event.getY()<850)){
+//
+//                }
+
                 isDiff = true;
                 removeCallbacks(diff);
                 removeCallbacks(clearP);
@@ -171,12 +181,21 @@ public class DrawLine extends View {
             case MotionEvent.ACTION_UP:
                 endX = event.getX();
                 endY = event.getY();
-                if ((event.getX()>50 &&event.getY()>50&&event.getX()<250&&event.getY()<250)||
-                        (event.getX()>550 &&event.getY()>550&&event.getX()<750&&event.getY()<750)){
+                for (int i = 0; i <positionlist.size() ; i++) {
+                    float [] data= (float[]) positionlist.get(i);
+                    if (event.getX()>data[0]&&event.getX()<(data[0]+150)&&event.getY()>data[1]
+                            &&event.getY()<(data[1]+100)){
+                        float [] data2={startX,startY,endX,endY};
+                        list.add(data2);
+                    }
 
-                    float [] data={startX,startY,endX,endY};
-                    list.add(data);
                 }
+
+//                if ((event.getX()>100 &&event.getY()>100&&event.getX()<250&&event.getY()<250)||
+//                        (event.getX()>700 &&event.getY()>700&&event.getX()<850&&event.getY()<850)){
+//
+//
+//                }
 
                 break;
         }
@@ -257,5 +276,8 @@ public class DrawLine extends View {
         path.close();
 
         return path;
+    }
+    public void setpositionlist(ArrayList arrayList){
+        this.positionlist=arrayList;
     }
 }

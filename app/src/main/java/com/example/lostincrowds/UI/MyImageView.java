@@ -24,7 +24,7 @@ public class MyImageView extends ConstraintLayout {
     private float percentage;
     public MyImageView ( Context context , @DrawableRes int back , @DrawableRes int front , float xpos , float ypos , float percentage ) {
         super(context);
-        YoYo.with(Techniques.Bounce).duration(5000).repeat(-1).playOn(this);
+//        YoYo.with(Techniques.Bounce).duration(5000).repeat(-1).playOn(this);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.myimageview , this);
         Log.v("MyImageView" , "Constructe");

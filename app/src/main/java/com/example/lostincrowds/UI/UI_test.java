@@ -12,6 +12,8 @@ import android.widget.LinearLayout;
 
 import com.example.lostincrowds.R;
 
+import java.util.ArrayList;
+
 import at.wirecube.additiveanimations.additive_animator.AdditiveAnimator;
 
 import static com.example.lostincrowds.Network.ConstantValue.HEIGHT;
@@ -19,7 +21,8 @@ import static com.example.lostincrowds.Network.ConstantValue.WIDTH;
 
 public class UI_test extends AppCompatActivity {
     Pencil pen = null;
-
+    public ArrayList<float[]> listforposition=new ArrayList<>();
+    private DrawLine drawLine;
     @Override
     protected void onCreate ( Bundle savedInstanceState ) {
         super.onCreate(savedInstanceState);
@@ -35,18 +38,27 @@ public class UI_test extends AppCompatActivity {
                         .setAction("Action" , null).show();
             }
         });
-        BasicImageView basicImageView = new BasicImageView(this , 0 , 50);
-        basicImageView.setBasicImageView(R.drawable.gray , R.drawable.eyesclose);
-        addContentView(basicImageView , basicImageView.getLayoutParams());
 
-        MyImageView testview = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , 0 , 100 , 100);
+        drawLine=findViewById(R.id.DrawLine);
+
+        BasicImageView testview = new BasicImageView( this,100, 100);
+        testview.setBasicImageView(R.drawable.gray,R.drawable.eyesclose);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(HEIGHT ,
                 WIDTH);
-
+        float []  postion={100,100};
+        listforposition.add(postion);
+        BasicImageView testview2=new BasicImageView(this,700,700);
+        testview2.setBasicImageView(R.drawable.gray,R.drawable.eyesclose);
+        float []  postion2={700,700};
+        listforposition.add(postion2);
+        drawLine.setpositionlist(listforposition);
         addContentView(testview , params);
-
+        addContentView(testview2, params);
         addContentView(pen , params);
 
     }
 
+    public ArrayList getListforposition() {
+        return listforposition;
+    }
 }
