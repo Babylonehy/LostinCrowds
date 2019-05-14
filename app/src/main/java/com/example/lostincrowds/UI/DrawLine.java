@@ -21,6 +21,13 @@ import java.util.Deque;
 import java.util.Iterator;
 
 public class DrawLine extends View {
+
+    private float startX, startY;
+    private float pathStartX, pathStartY, pathEndX, pathEndY;
+    private float endX, endY;
+    ArrayList<float[]> list = new ArrayList<>();
+    Paint paint;
+    Paint Pathpaint = new Paint();
     public DrawLine ( Context context ) {
         this(context , null);
     }
@@ -75,7 +82,7 @@ public class DrawLine extends View {
     };
     private Rect outRect = new Rect();
     //初始化
-    Paint paint;
+
 
     private void init () {
         //初始画笔
@@ -84,6 +91,9 @@ public class DrawLine extends View {
         paint.setAntiAlias(true);
         paint.setStrokeWidth(20);
         setWillNotDraw(false);
+        Pathpaint.setColor(Color.parseColor("#00B7EE"));
+        Pathpaint.setAntiAlias(true);
+        Pathpaint.setStrokeWidth(10);
 
         mPaint = new Paint();
 
@@ -139,17 +149,17 @@ public class DrawLine extends View {
         mPaint.setStyle(Paint.Style.FILL);
         mPaint.setShader(mShader);
         canvas.drawPath(path , mPaint);
+        if (pathFlag)
+            canvas.drawLine(pathStartX , pathStartY , pathEndX , pathEndY , Pathpaint);
     }
 
-    private float startX, startY;
-
-    private float endX, endY;
-    ArrayList<float[]> list = new ArrayList<>();
+    private boolean pathFlag = false;
 
     @Override
     public boolean onTouchEvent ( MotionEvent event ) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                pathFlag = false;
                 for (int i = 0; i < setImageView.size(); i++) {
                     MyImageView myImageView = setImageView.get(i);
                     if (event.getX() > myImageView.getX() && event.getX() < (myImageView.getX() + 150)
@@ -158,7 +168,9 @@ public class DrawLine extends View {
                         startY = myImageView.getYpos();
                     }
                 }
-
+                //PATH
+                pathStartX = event.getX();
+                pathStartY = event.getY();
 
                 isDiff = true;
                 removeCallbacks(diff);
@@ -173,6 +185,9 @@ public class DrawLine extends View {
             case MotionEvent.ACTION_MOVE:
                 endX = event.getX();
                 endY = event.getY();
+                pathEndX = event.getX();
+                pathEndY = event.getY();
+                pathFlag = true;
                 onTouchEvent2(event);
                 onMove(event.getX() , event.getY());
                 postInvalidate();
@@ -181,6 +196,7 @@ public class DrawLine extends View {
             case MotionEvent.ACTION_UP:
                 endX = event.getX();
                 endY = event.getY();
+                pathFlag = false;
                 for (int i = 0; i < setImageView.size(); i++) {
                     MyImageView myImageView = setImageView.get(i);
                     if (event.getX() > myImageView.getX() && event.getX() < (myImageView.getX() + 150)

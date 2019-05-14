@@ -43,4 +43,6 @@ dependencies {
     implementation 'com.github.florent37:viewanimator:1.1.0'
 
     implementation 'com.github.lzyzsd:circleprogress:1.2.1'
+    implementation 'com.hanks:htextview-base:0.1.6'
+    implementation "com.hanks:htextview-line:0.1.6"        // optional
 }

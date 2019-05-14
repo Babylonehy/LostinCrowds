@@ -14,9 +14,9 @@ import java.util.HashMap;
 
 import cz.msebera.android.httpclient.Header;
 
-import static com.example.lostincrowds.Network.ConstantValue.MessageInitial;
-import static com.example.lostincrowds.Network.ConstantValue.levelInitial;
-import static com.example.lostincrowds.Network.ConstantValue.successInitial;
+import static com.example.lostincrowds.ConstantValue.MessageInitial;
+import static com.example.lostincrowds.ConstantValue.levelInitial;
+import static com.example.lostincrowds.ConstantValue.successInitial;
 
 public abstract class User {
     HashMap<String, String> paramMap = new HashMap<String, String>();
