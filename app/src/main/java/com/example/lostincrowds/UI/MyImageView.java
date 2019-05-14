@@ -11,6 +11,9 @@ import com.daimajia.androidanimations.library.YoYo;
 import com.daimajia.numberprogressbar.NumberProgressBar;
 import com.example.lostincrowds.R;
 
+import static com.example.lostincrowds.Network.ConstantValue.HEIGHT;
+import static com.example.lostincrowds.Network.ConstantValue.WIDTH;
+
 public class MyImageView extends ConstraintLayout {
 
     private BasicImageView image;
@@ -18,6 +21,7 @@ public class MyImageView extends ConstraintLayout {
     private float xpos;
     private float ypos;
 
+    private float percentage;
     public MyImageView ( Context context , @DrawableRes int back , @DrawableRes int front , float xpos , float ypos , float percentage ) {
         super(context);
         YoYo.with(Techniques.Bounce).duration(5000).repeat(-1).playOn(this);
@@ -27,6 +31,7 @@ public class MyImageView extends ConstraintLayout {
 
         this.xpos = xpos;
         this.ypos = ypos;
+        this.percentage = percentage;
 
         image = findViewById(R.id.basicImageView);
         image.setBasicImageView(back , front);
@@ -35,6 +40,7 @@ public class MyImageView extends ConstraintLayout {
         number_progress_bar.setMax(100);
         setX(xpos);
         setY(ypos);
+        Log.v("Myview" , getXpos() + " " + getYpos());
     }
 
 
@@ -44,13 +50,16 @@ public class MyImageView extends ConstraintLayout {
     }
 
     public float getXpos () {
-        return xpos;
+        return (float) (xpos + WIDTH / 2.0);
     }
 
     public float getYpos () {
-        return ypos;
+        return (float) (ypos + HEIGHT / 2.0);
     }
 
+    public float getPercentage () {
+        return percentage;
+    }
 //        image=new BasicImageView(context,back,front);
 //        number_progress_bar=new NumberProgressBar(context);
 //        number_progress_bar.setProgress((int) percentage);

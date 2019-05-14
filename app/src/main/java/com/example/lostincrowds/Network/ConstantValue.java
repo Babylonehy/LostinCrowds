@@ -6,4 +6,6 @@ public final class ConstantValue {
     final static int levelInitial = 1;
     final static String MessageInitial = "Initial";
     static final String BASE_URL = "http://52.163.84.2/api/lostincrowds/";
+    public static final int WIDTH = 150;
+    public static final int HEIGHT = 150;
 }

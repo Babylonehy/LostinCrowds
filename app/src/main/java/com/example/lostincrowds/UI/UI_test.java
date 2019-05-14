@@ -14,6 +14,9 @@ import com.example.lostincrowds.R;
 
 import at.wirecube.additiveanimations.additive_animator.AdditiveAnimator;
 
+import static com.example.lostincrowds.Network.ConstantValue.HEIGHT;
+import static com.example.lostincrowds.Network.ConstantValue.WIDTH;
+
 public class UI_test extends AppCompatActivity {
     Pencil pen = null;
 
@@ -35,13 +38,15 @@ public class UI_test extends AppCompatActivity {
         BasicImageView basicImageView = new BasicImageView(this , 0 , 50);
         basicImageView.setBasicImageView(R.drawable.gray , R.drawable.eyesclose);
         addContentView(basicImageView , basicImageView.getLayoutParams());
+
         MyImageView testview = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , 0 , 100 , 100);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(150 ,
-                150);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(HEIGHT ,
+                WIDTH);
 
         addContentView(testview , params);
 
         addContentView(pen , params);
+
     }
 
 }
