@@ -185,6 +185,8 @@ public class DrawLine extends View {
                         endY=myImageView.getYpos();
                         float [] data2={startX,startY,endX,endY};
                         list.add(data2);
+                        Line line=new Line(startX,startY,endX,endY,true);
+                        connective_line.add(line);
                     }
                 }
 
@@ -269,13 +271,15 @@ public class DrawLine extends View {
 
         return path;
     }
-    public void setpositionlist(ArrayList arrayList){
-        this.positionlist=arrayList;
-    }
+
     ArrayList<MyImageView> setImageView=new ArrayList<>();
 
     public void setImageView(ArrayList arrayList){
         this.setImageView=arrayList;
 
+    }
+    ArrayList<Line> connective_line=new ArrayList<>();
+    public ArrayList<Line> getconnective_line(){
+        return connective_line;
     }
 }
