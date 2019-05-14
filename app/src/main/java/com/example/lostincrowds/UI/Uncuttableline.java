@@ -11,6 +11,11 @@ import android.view.View;
 import java.util.ArrayList;
 
 public class Uncuttableline extends View {
+
+    public ArrayList<Line> uncuttableLine = new ArrayList<>();
+    private Paint paint;
+    private ArrayList<MyImageView> uncuttable_pair = new ArrayList<>();
+
     public Uncuttableline ( Context context ) {
         this(context , null);
     }
@@ -29,8 +34,6 @@ public class Uncuttableline extends View {
         init();
     }
 
-    Paint paint;
-
     private void init () {
         //初始画笔
         paint = new Paint();
@@ -39,8 +42,6 @@ public class Uncuttableline extends View {
         paint.setStrokeWidth(20);
 
     }
-
-    private ArrayList<MyImageView> uncuttable_pair = new ArrayList<>();
 
     public void setUncuttable_pair ( ArrayList<MyImageView> uncuttable_pair ) {
         this.uncuttable_pair = uncuttable_pair;
@@ -68,10 +69,12 @@ public class Uncuttableline extends View {
         }
     }
 
-    public ArrayList<Line> uncuttableLine = new ArrayList<>();
-
     public ArrayList<Line> getUncuttableLine () {
         return uncuttableLine;
+    }
+
+    public Paint getPaint () {
+        return paint;
     }
 
 }
