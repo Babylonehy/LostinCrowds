@@ -10,7 +10,9 @@ import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
 
+import com.daimajia.androidanimations.library.Techniques;
 import com.example.lostincrowds.R;
+import com.github.florent37.viewanimator.ViewAnimator;
 
 import at.wirecube.additiveanimations.additive_animator.AdditiveAnimator;
 
@@ -35,17 +37,14 @@ public class UI_test extends AppCompatActivity {
                         .setAction("Action" , null).show();
             }
         });
-        BasicImageView basicImageView = new BasicImageView(this , 0 , 50);
+        BasicImageView basicImageView = new BasicImageView(this , 100 , 600);
         basicImageView.setBasicImageView(R.drawable.gray , R.drawable.eyesclose);
         addContentView(basicImageView , basicImageView.getLayoutParams());
 
-        MyImageView testview = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , 0 , 100 , 100);
+        MyImageView testview = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , 100 , 600 , 50);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(HEIGHT ,
                 WIDTH);
-
         addContentView(testview , params);
-
-        addContentView(pen , params);
 
     }
 
