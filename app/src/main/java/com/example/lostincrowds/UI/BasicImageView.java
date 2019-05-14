@@ -26,6 +26,8 @@ class BasicImageView extends android.support.v7.widget.AppCompatImageView {
         setMaxWidth(150);
         this.xpos = xpos;
         this.ypos = ypos;
+        setY(ypos);
+        setX(xpos);
     }
 
 
@@ -56,6 +58,7 @@ class BasicImageView extends android.support.v7.widget.AppCompatImageView {
         setX(xpos);
 //        updateImageView();
     }
+
 
 //    public void updateImageView(){
 //        while (true){

@@ -146,19 +146,15 @@ public class DrawLine extends View {
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                for (int i = 0; i <positionlist.size() ; i++) {
-                    float [] data3= (float[]) positionlist.get(i);
-                    if (event.getX()>data3[0]&&event.getX()<(data3[0]+150)&&event.getY()>data3[1]
-                    &&event.getY()<(data3[1]+100)){
-                        startX = event.getX();
-                        startY = event.getY();
+                for (int i=0;i<setImageView.size(); i++){
+                    MyImageView myImageView=setImageView.get(i);
+                    if (event.getX()>myImageView.getX()&&event.getX()<(myImageView.getX()+150)
+                    &&event.getY()>myImageView.getY()&&myImageView.getY()<(myImageView.getY()+150)){
+                        startX=myImageView.getXpos();
+                        startY=myImageView.getYpos();
                     }
-
                 }
-//                if ((event.getX()>100 &&event.getY()>100&&event.getX()<250&&event.getY()<250)||
-//                        (event.getX()>700 &&event.getY()>700&&event.getX()<850&&event.getY()<850)){
-//
-//                }
+
 
                 isDiff = true;
                 removeCallbacks(diff);
@@ -181,21 +177,17 @@ public class DrawLine extends View {
             case MotionEvent.ACTION_UP:
                 endX = event.getX();
                 endY = event.getY();
-                for (int i = 0; i <positionlist.size() ; i++) {
-                    float [] data= (float[]) positionlist.get(i);
-                    if (event.getX()>data[0]&&event.getX()<(data[0]+150)&&event.getY()>data[1]
-                            &&event.getY()<(data[1]+100)){
+                for (int i=0;i<setImageView.size(); i++){
+                    MyImageView myImageView=setImageView.get(i);
+                    if (event.getX()>myImageView.getX()&&event.getX()<(myImageView.getX()+150)
+                            &&event.getY()>myImageView.getY()&&myImageView.getY()<(myImageView.getY()+150)){
+                        endX=myImageView.getXpos();
+                        endY=myImageView.getYpos();
                         float [] data2={startX,startY,endX,endY};
                         list.add(data2);
                     }
-
                 }
 
-//                if ((event.getX()>100 &&event.getY()>100&&event.getX()<250&&event.getY()<250)||
-//                        (event.getX()>700 &&event.getY()>700&&event.getX()<850&&event.getY()<850)){
-//
-//
-//                }
 
                 break;
         }
@@ -279,5 +271,11 @@ public class DrawLine extends View {
     }
     public void setpositionlist(ArrayList arrayList){
         this.positionlist=arrayList;
+    }
+    ArrayList<MyImageView> setImageView=new ArrayList<>();
+
+    public void setImageView(ArrayList arrayList){
+        this.setImageView=arrayList;
+
     }
 }

@@ -22,6 +22,7 @@ import static com.example.lostincrowds.Network.ConstantValue.WIDTH;
 public class UI_test extends AppCompatActivity {
     Pencil pen = null;
     public ArrayList<float[]> listforposition=new ArrayList<>();
+    public ArrayList<MyImageView> ListForImageView=new ArrayList<>();
     private DrawLine drawLine;
     @Override
     protected void onCreate ( Bundle savedInstanceState ) {
@@ -40,25 +41,21 @@ public class UI_test extends AppCompatActivity {
         });
 
         drawLine=findViewById(R.id.DrawLine);
+        MyImageView imageView=new MyImageView(this,R.drawable.gray,R.drawable.eyesclose,50,50,100);
+        ListForImageView.add(imageView);
 
-        BasicImageView testview = new BasicImageView( this,100, 100);
-        testview.setBasicImageView(R.drawable.gray,R.drawable.eyesclose);
+        MyImageView imageView2=new MyImageView(this,R.drawable.gray,R.drawable.eyesclose,500,500,50);
+        ListForImageView.add(imageView2);
+
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(HEIGHT ,
                 WIDTH);
-        float []  postion={100,100};
-        listforposition.add(postion);
-        BasicImageView testview2=new BasicImageView(this,700,700);
-        testview2.setBasicImageView(R.drawable.gray,R.drawable.eyesclose);
-        float []  postion2={700,700};
-        listforposition.add(postion2);
-        drawLine.setpositionlist(listforposition);
-        addContentView(testview , params);
-        addContentView(testview2, params);
+
+        drawLine.setImageView(ListForImageView);
+
+
+        addContentView(imageView,params);
+        addContentView(imageView2,params);
         addContentView(pen , params);
-
     }
 
-    public ArrayList getListforposition() {
-        return listforposition;
-    }
 }
