@@ -46,7 +46,7 @@ public class DrawLine extends View {
 
     private boolean isDiff = false;
     //刀光减少
-    private  ArrayList positionlist;
+    private ArrayList positionlist;
     Runnable diff = new Runnable() {
         @Override
         public void run() {
@@ -78,7 +78,7 @@ public class DrawLine extends View {
         paint = new Paint();
         paint.setColor(Color.parseColor("#00B7EE"));
         paint.setAntiAlias(true);
-        paint.setStrokeWidth(33);
+        paint.setStrokeWidth(20);
         setWillNotDraw(false);
 
         mPaint = new Paint();
@@ -146,12 +146,12 @@ public class DrawLine extends View {
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                for (int i=0;i<setImageView.size(); i++){
-                    MyImageView myImageView=setImageView.get(i);
-                    if (event.getX()>myImageView.getX()&&event.getX()<(myImageView.getX()+150)
-                    &&event.getY()>myImageView.getY()&&myImageView.getY()<(myImageView.getY()+150)){
-                        startX=myImageView.getXpos();
-                        startY=myImageView.getYpos();
+                for (int i = 0; i < setImageView.size(); i++) {
+                    MyImageView myImageView = setImageView.get(i);
+                    if (event.getX() > myImageView.getX() && event.getX() < (myImageView.getX() + 150)
+                            && event.getY() > myImageView.getY() && myImageView.getY() < (myImageView.getY() + 150)) {
+                        startX = myImageView.getXpos();
+                        startY = myImageView.getYpos();
                     }
                 }
 
@@ -177,15 +177,15 @@ public class DrawLine extends View {
             case MotionEvent.ACTION_UP:
                 endX = event.getX();
                 endY = event.getY();
-                for (int i=0;i<setImageView.size(); i++){
-                    MyImageView myImageView=setImageView.get(i);
-                    if (event.getX()>myImageView.getX()&&event.getX()<(myImageView.getX()+150)
-                            &&event.getY()>myImageView.getY()&&myImageView.getY()<(myImageView.getY()+150)){
-                        endX=myImageView.getXpos();
-                        endY=myImageView.getYpos();
-                        float [] data2={startX,startY,endX,endY};
+                for (int i = 0; i < setImageView.size(); i++) {
+                    MyImageView myImageView = setImageView.get(i);
+                    if (event.getX() > myImageView.getX() && event.getX() < (myImageView.getX() + 150)
+                            && event.getY() > myImageView.getY() && myImageView.getY() < (myImageView.getY() + 150)) {
+                        endX = myImageView.getXpos();
+                        endY = myImageView.getYpos();
+                        float[] data2 = {startX , startY , endX , endY};
                         list.add(data2);
-                        Line line=new Line(startX,startY,endX,endY,true);
+                        Line line = new Line(startX , startY , endX , endY , true);
                         connective_line.add(line);
                     }
                 }
@@ -272,14 +272,16 @@ public class DrawLine extends View {
         return path;
     }
 
-    ArrayList<MyImageView> setImageView=new ArrayList<>();
+    ArrayList<MyImageView> setImageView = new ArrayList<>();
 
-    public void setImageView(ArrayList arrayList){
-        this.setImageView=arrayList;
+    public void setImageView ( ArrayList arrayList ) {
+        this.setImageView = arrayList;
 
     }
-    ArrayList<Line> connective_line=new ArrayList<>();
-    public ArrayList<Line> getconnective_line(){
+
+    ArrayList<Line> connective_line = new ArrayList<>();
+
+    public ArrayList<Line> getconnective_line () {
         return connective_line;
     }
 }

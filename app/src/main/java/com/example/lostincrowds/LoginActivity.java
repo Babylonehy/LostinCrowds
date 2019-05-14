@@ -107,6 +107,7 @@ public class LoginActivity extends AppCompatActivity {
                             .withMessage("Verify username and password......")
                             .withDialogColor("#87CEFA")
                             .show();
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
