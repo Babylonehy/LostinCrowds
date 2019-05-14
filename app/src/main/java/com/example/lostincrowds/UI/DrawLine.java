@@ -21,51 +21,6 @@ import java.util.Deque;
 import java.util.Iterator;
 
 public class DrawLine extends View {
-
-    //初始化
-    Paint paint;
-    ArrayList<float[]> list = new ArrayList<>();
-    ArrayList<MyImageView> setImageView = new ArrayList<>();
-    ArrayList<Line> connective_line = new ArrayList<>();
-    private int maxLen = 15;    //最大轨迹长度
-    private float addWidth = 3f;    //刀光增量宽度
-
-    private Deque<PointF> pointFS = new ArrayDeque<>(maxLen);   //刀光上边框点集合
-    Runnable clearP = new Runnable() {
-        @Override
-        public void run () {
-            pointFS.clear();
-            postInvalidate();
-        }
-    };
-    private Deque<PointF> pointFSClose = new ArrayDeque<>(maxLen);  //刀光下边框点集合
-    private Paint mPaint;
-    private Shader mShader;//刀光填充颜色
-    private boolean isDiff = false;
-    Runnable diff = new Runnable() {
-        @Override
-        public void run () {
-            PointF pointF = pointFS.pollFirst();
-            int delayMillis = 50;
-            if (null != pointF) {
-                postInvalidate();
-                postDelayed(diff , delayMillis);
-                return;
-            }
-
-            if (isDiff) {
-                postDelayed(diff , delayMillis);
-            }
-        }
-    };
-    //刀光减少
-    private ArrayList positionlist;
-    private Rect outRect = new Rect();
-    private float startX, startY;
-    private float endX, endY;
-    private float curX;
-    private int curY;
-
     public DrawLine ( Context context ) {
         this(context , null);
     }
@@ -83,13 +38,51 @@ public class DrawLine extends View {
         super.onSizeChanged(w , h , oldw , oldh);
         init();
     }
+    private int maxLen = 15;    //最大轨迹长度
+    private float addWidth = 3f;    //刀光增量宽度
+
+    private Deque<PointF> pointFS = new ArrayDeque<>(maxLen);   //刀光上边框点集合
+    private Deque<PointF> pointFSClose = new ArrayDeque<>(maxLen);  //刀光下边框点集合
+
+    private Paint mPaint;
+    private Shader mShader;//刀光填充颜色
+
+    private boolean isDiff = false;
+    //刀光减少
+    private ArrayList positionlist;
+    Runnable diff = new Runnable() {
+        @Override
+        public void run () {
+            PointF pointF = pointFS.pollFirst();
+            int delayMillis = 50;
+            if (null != pointF) {
+                postInvalidate();
+                postDelayed(diff , delayMillis);
+                return;
+            }
+
+            if (isDiff) {
+                postDelayed(diff , delayMillis);
+            }
+        }
+    };
+    Runnable clearP = new Runnable() {
+        @Override
+        public void run () {
+            pointFS.clear();
+            postInvalidate();
+        }
+    };
+    private Rect outRect = new Rect();
+    //初始化
+    Paint paint;
 
     private void init () {
         //初始画笔
         paint = new Paint();
         paint.setColor(Color.parseColor("#00B7EE"));
         paint.setAntiAlias(true);
-        paint.setStrokeWidth(15);
+        paint.setStrokeWidth(20);
         setWillNotDraw(false);
 
         mPaint = new Paint();
@@ -117,14 +110,12 @@ public class DrawLine extends View {
         getGlobalVisibleRect(outRect);
         super.onLayout(changed , left , top , right , bottom);
     }
-
     @Override
     protected void onDetachedFromWindow () {
         removeCallbacks(diff);
         removeCallbacks(clearP);
         super.onDetachedFromWindow();
     }
-
     @Override
     protected void onDraw ( Canvas canvas ) {
         super.onDraw(canvas);
@@ -133,7 +124,6 @@ public class DrawLine extends View {
             float[] data = list.get(i);
             canvas.drawLine(data[0] , data[1] , data[2] , data[3] , paint);
         }
-
         PointF start = pointFS.peek();
         if (start == null) return;
 
@@ -150,6 +140,11 @@ public class DrawLine extends View {
         mPaint.setShader(mShader);
         canvas.drawPath(path , mPaint);
     }
+
+    private float startX, startY;
+
+    private float endX, endY;
+    ArrayList<float[]> list = new ArrayList<>();
 
     @Override
     public boolean onTouchEvent ( MotionEvent event ) {
@@ -211,6 +206,9 @@ public class DrawLine extends View {
         }
         pointFS.addLast(new PointF(x , y));
     }
+
+    private float curX;
+    private int curY;
 
     public boolean onTouchEvent2 ( MotionEvent event2 ) {
         Log.v("Drawline" , "GET In ontouch event2.");
@@ -282,14 +280,14 @@ public class DrawLine extends View {
         return path;
     }
 
+    ArrayList<MyImageView> setImageView = new ArrayList<>();
+
     public void setImageView ( ArrayList arrayList ) {
         this.setImageView = arrayList;
 
     }
 
-    public Paint getPaint () {
-        return paint;
-    }
+    ArrayList<Line> connective_line = new ArrayList<>();
 
     public ArrayList<Line> getconnective_line () {
         return connective_line;

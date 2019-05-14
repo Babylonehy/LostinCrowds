@@ -21,6 +21,14 @@
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
+    <com.example.lostincrowds.UI.Uncuttableline
+        android:id="@+id/uncuttableline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.example.lostincrowds.UI.DrawLine
         android:id="@+id/DrawLine"
         android:layout_width="wrap_content"
@@ -28,5 +36,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 </android.support.design.widget.CoordinatorLayout>
