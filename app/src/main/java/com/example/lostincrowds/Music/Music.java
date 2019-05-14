@@ -1,9 +1,6 @@
 package com.example.lostincrowds.Music;
 
-import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
-
-import com.example.lostincrowds.R;
 
 import java.io.IOException;
 

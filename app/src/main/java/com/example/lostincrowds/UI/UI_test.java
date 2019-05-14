@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
@@ -14,16 +13,15 @@ import com.example.lostincrowds.R;
 
 import java.util.ArrayList;
 
-import at.wirecube.additiveanimations.additive_animator.AdditiveAnimator;
-
 import static com.example.lostincrowds.Network.ConstantValue.HEIGHT;
 import static com.example.lostincrowds.Network.ConstantValue.WIDTH;
 
 public class UI_test extends AppCompatActivity {
-    Pencil pen = null;
     public ArrayList<float[]> listforposition = new ArrayList<>();
     public ArrayList<MyImageView> ListForImageView = new ArrayList<>();
+    Pencil pen = null;
     private DrawLine drawLine;
+
     @Override
     protected void onCreate ( Bundle savedInstanceState ) {
         super.onCreate(savedInstanceState);

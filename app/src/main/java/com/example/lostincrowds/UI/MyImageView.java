@@ -2,15 +2,12 @@ package com.example.lostincrowds.UI;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Canvas;
 import android.support.annotation.DrawableRes;
-import android.support.annotation.IdRes;
 import android.support.constraint.ConstraintLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.daimajia.numberprogressbar.NumberProgressBar;
 import com.example.lostincrowds.R;
 import com.github.florent37.viewanimator.ViewAnimator;
 import com.github.lzyzsd.circleprogress.DonutProgress;

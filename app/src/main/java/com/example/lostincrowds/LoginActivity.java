@@ -37,8 +37,6 @@ import org.json.JSONException;
 
 import java.io.IOException;
 
-import gr.net.maroulis.library.EasySplashScreen;
-
 
 public class LoginActivity extends AppCompatActivity {
     static Login user;
@@ -47,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
     Music music;
     Display display;
     SoundPool mSoundPool;
+
     @TargetApi(Build.VERSION_CODES.O)
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
