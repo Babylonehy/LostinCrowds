@@ -159,16 +159,20 @@ public class DrawLine extends View {
     public boolean onTouchEvent ( MotionEvent event ) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                pathFlag = false;
+
+                pathFlag=false;
                 for (int i = 0; i < setImageView.size(); i++) {
                     MyImageView myImageView = setImageView.get(i);
                     if (event.getX() > myImageView.getX() && event.getX() < (myImageView.getX() + 150)
                             && event.getY() > myImageView.getY() && myImageView.getY() < (myImageView.getY() + 150)) {
                         startX = myImageView.getXpos();
                         startY = myImageView.getYpos();
+
+
                     }
+
                 }
-                //PATH
+//                PATH
                 pathStartX = event.getX();
                 pathStartY = event.getY();
 
