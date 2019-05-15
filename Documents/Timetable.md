@@ -9,6 +9,6 @@ Timetable
 |Week09|1.Test for the application<br>2.Polish the document|
 |Week10|1.Emergency week in case for the previous tasks haven't finished on time.<br> 2.Prepare for the presentation.|
 |Week11|Submit the assignment.|
-
+[More detial](https://gitlab.cecs.anu.edu.au/u6716878/AssignApp2019s1/milestones)
 
 
