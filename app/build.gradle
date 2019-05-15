@@ -46,4 +46,5 @@ dependencies {
     implementation 'com.hanks:htextview-base:0.1.6'
     implementation "com.hanks:htextview-line:0.1.6"        // optional
     implementation 'com.github.Lauzy:PlayPauseView:1.0.7'
+    implementation 'me.wangyuwei:ParticleView:1.0.4'
 }

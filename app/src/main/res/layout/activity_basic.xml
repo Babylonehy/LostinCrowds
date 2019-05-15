@@ -6,13 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".BasicActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"/>
-
-    <include layout="@layout/content_basic" />
-
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
@@ -48,4 +41,8 @@
         app:layout_constraintVertical_bias="0.299"
         app:lineColor="#1367bc"
         app:lineWidth="4dp" />
+
+    <com.example.lostincrowds.UI.MyImageView
+        android:layout_width="312dp"
+        android:layout_height="93dp" />
 </android.support.design.widget.CoordinatorLayout>

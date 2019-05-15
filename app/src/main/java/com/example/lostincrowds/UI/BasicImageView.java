@@ -1,5 +1,4 @@
 package com.example.lostincrowds.UI;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -10,7 +9,10 @@ import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
-class BasicImageView extends android.support.v7.widget.AppCompatImageView {
+/**
+ * The type Basic image view.
+ */
+public class BasicImageView extends android.support.v7.widget.AppCompatImageView {
 
     LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT ,
             LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -18,6 +20,13 @@ class BasicImageView extends android.support.v7.widget.AppCompatImageView {
     private float xpos, ypos;
 
 
+    /**
+     * Instantiates a new Basic image view.
+     *
+     * @param context the context
+     * @param xpos    the xpos
+     * @param ypos    the ypos
+     */
     public BasicImageView ( Context context , float xpos , float ypos ) {
         super(context);
         setAdjustViewBounds(true);
@@ -35,6 +44,10 @@ class BasicImageView extends android.support.v7.widget.AppCompatImageView {
         super(context , attrs);
     }
 
+    /**
+     * @param back
+     * @param front
+     */
     public void setBasicImageView ( @DrawableRes int back , @DrawableRes int front ) {
         Resources r = getResources();
         Bitmap backImage = ((BitmapDrawable) r.getDrawable(
@@ -44,7 +57,6 @@ class BasicImageView extends android.support.v7.widget.AppCompatImageView {
         layers[0] = new BitmapDrawable(backImage);
         layers[1] = new BitmapDrawable(frontImage);
         LayerDrawable la = new LayerDrawable(layers);
-        // 其中第一个参数为层的索引号，后面的四个参数分别为left、top、right和bottom
         /*
          * @param l number of pixels to add to the left bound
          * @param t number of pixels to add to the top bound
@@ -56,28 +68,26 @@ class BasicImageView extends android.support.v7.widget.AppCompatImageView {
         setImageDrawable(la);
         setY(ypos);
         setX(xpos);
-//        updateImageView();
     }
 
+    public void updatefrontImageView ( @DrawableRes int front ) {
+        Resources r = getResources();
+        Bitmap backImage = ((BitmapDrawable) r.getDrawable(
+                front)).getBitmap();
+        layers[1] = new BitmapDrawable(backImage);
+        LayerDrawable la = new LayerDrawable(layers);
+        setImageDrawable(la);
+        invalidate();
+    }
 
-//    public void updateImageView(){
-//        while (true){
-//            new Thread(new Runnable() {
-//                @Override
-//                public void run () {
-//                    Bitmap update = ((BitmapDrawable) getResources().getDrawable(
-//                            R.drawable.eyesclose)).getBitmap();
-//                    layers[1]=new BitmapDrawable(update);
-//
-//                    try {
-//                        Thread.sleep(1000);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            });
-//        }
-//    }
-
+    public void updatebackImageView ( @DrawableRes int back ) {
+        Resources r = getResources();
+        Bitmap backImage = ((BitmapDrawable) r.getDrawable(
+                back)).getBitmap();
+        layers[0] = new BitmapDrawable(backImage);
+        LayerDrawable la = new LayerDrawable(layers);
+        setImageDrawable(la);
+        invalidate();
+    }
 
 }

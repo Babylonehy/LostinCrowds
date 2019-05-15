@@ -6,4 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".WelcomeActivity">
 
+    <me.wangyuwei.particleview.ParticleView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/ParticleView"
+        app:pv_background_color="#2E2E2E"
+        app:pv_host_text="Australian National University"
+        app:pv_host_text_size="24sp"
+        app:pv_particle_text="CECS"
+        app:pv_particle_text_size="14sp"
+        app:pv_text_color="#FFF"
+        app:pv_text_anim_time="3000"
+        app:pv_spread_anim_time="2000"
+        app:pv_host_text_anim_time="3000" />
 </android.support.constraint.ConstraintLayout>

@@ -58,7 +58,7 @@ public abstract class User {
         return message;
     }
 
-    public void run () throws JSONException, IOException {
+    public void run () throws IOException {
 
     }
 }

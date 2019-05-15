@@ -17,8 +17,17 @@ import java.util.ArrayList;
 import static com.example.lostincrowds.ConstantValue.HEIGHT;
 import static com.example.lostincrowds.ConstantValue.WIDTH;
 
+/**
+ * The type Ui test.
+ */
 public class UI_test extends AppCompatActivity {
+    /**
+     * The Unconnectivepair.
+     */
     public ArrayList<MyImageView> unconnectivepair = new ArrayList<>();
+    /**
+     * The List for image view.
+     */
     public ArrayList<MyImageView> ListForImageView = new ArrayList<>();
     private DrawLine drawLine;
     private Uncuttableline uncuttableline;
@@ -61,9 +70,10 @@ public class UI_test extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick ( View view ) {
-                testImageview.setPercentage(testImageview.getPercentage() - 1);
+                testImageview.setPercentage(30);
 //                Snackbar.make(view , "Replace with your own action" , Snackbar.LENGTH_LONG)
 //                        .setAction("Action" , null).show();
+                testImageview.getImage().updatebackImageView(R.drawable.peepsred);
             }
         });
         // example for Playbutton.

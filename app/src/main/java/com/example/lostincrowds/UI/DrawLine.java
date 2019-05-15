@@ -20,22 +20,53 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.Iterator;
 
+/**
+ * The type Draw line.
+ */
 public class DrawLine extends View {
 
     private float startX, startY;
     private float pathStartX, pathStartY, pathEndX, pathEndY;
     private float endX, endY;
+    /**
+     * The List.
+     */
     ArrayList<float[]> list = new ArrayList<>();
+    /**
+     * The Paint.
+     */
     Paint paint;
+    /**
+     * The Pathpaint.
+     */
     Paint Pathpaint = new Paint();
+
+    /**
+     * Instantiates a new Draw line.
+     *
+     * @param context the context
+     */
     public DrawLine ( Context context ) {
         this(context , null);
     }
 
+    /**
+     * Instantiates a new Draw line.
+     *
+     * @param context the context
+     * @param attrs   the attrs
+     */
     public DrawLine ( Context context , AttributeSet attrs ) {
         this(context , attrs , 0);
     }
 
+    /**
+     * Instantiates a new Draw line.
+     *
+     * @param context      the context
+     * @param attrs        the attrs
+     * @param defStyleAttr the def style attr
+     */
     public DrawLine ( Context context , AttributeSet attrs , int defStyleAttr ) {
         super(context , attrs , defStyleAttr);
     }
@@ -45,6 +76,7 @@ public class DrawLine extends View {
         super.onSizeChanged(w , h , oldw , oldh);
         init();
     }
+
     private int maxLen = 15;    //最大轨迹长度
     private float addWidth = 3f;    //刀光增量宽度
 
@@ -57,6 +89,9 @@ public class DrawLine extends View {
     private boolean isDiff = false;
     //刀光减少
     private ArrayList positionlist;
+    /**
+     * The Diff.
+     */
     Runnable diff = new Runnable() {
         @Override
         public void run () {
@@ -73,6 +108,9 @@ public class DrawLine extends View {
             }
         }
     };
+    /**
+     * The Clear p.
+     */
     Runnable clearP = new Runnable() {
         @Override
         public void run () {
@@ -120,12 +158,14 @@ public class DrawLine extends View {
         getGlobalVisibleRect(outRect);
         super.onLayout(changed , left , top , right , bottom);
     }
+
     @Override
     protected void onDetachedFromWindow () {
         removeCallbacks(diff);
         removeCallbacks(clearP);
         super.onDetachedFromWindow();
     }
+
     @Override
     protected void onDraw ( Canvas canvas ) {
         super.onDraw(canvas);
@@ -230,6 +270,12 @@ public class DrawLine extends View {
     private float curX;
     private int curY;
 
+    /**
+     * On touch event 2 boolean.
+     *
+     * @param event2 the event 2
+     * @return the boolean
+     */
     public boolean onTouchEvent2 ( MotionEvent event2 ) {
         Log.v("Drawline" , "GET In ontouch event2.");
         switch (event2.getAction()) {
@@ -300,15 +346,31 @@ public class DrawLine extends View {
         return path;
     }
 
+    /**
+     * The Set image view.
+     */
     ArrayList<MyImageView> setImageView = new ArrayList<>();
 
+    /**
+     * Sets image view.
+     *
+     * @param arrayList the array list
+     */
     public void setImageView ( ArrayList arrayList ) {
         this.setImageView = arrayList;
 
     }
 
+    /**
+     * The Connective line.
+     */
     ArrayList<Line> connective_line = new ArrayList<>();
 
+    /**
+     * Gets line.
+     *
+     * @return the line
+     */
     public ArrayList<Line> getconnective_line () {
         return connective_line;
     }
