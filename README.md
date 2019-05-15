@@ -1,5 +1,5 @@
 # Sociological Game - _Lost in Crowds_
-
+![](Assets/homepage.gif)
 ## Team structure and roles 
 + Xiang Li, u6716878 - 
 + XiaoRong Ma, u6641690 - 
