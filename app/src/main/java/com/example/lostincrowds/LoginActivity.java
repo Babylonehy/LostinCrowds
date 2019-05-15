@@ -2,7 +2,9 @@ package com.example.lostincrowds;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.media.AudioManager;
@@ -24,6 +26,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.lostincrowds.Music.Music;
 import com.example.lostincrowds.Network.Login;
+import com.example.lostincrowds.Network.RemeberUser;
 import com.example.lostincrowds.Network.Signin;
 import com.example.lostincrowds.Network.User;
 import com.example.lostincrowds.UI.AutoImageView;
@@ -44,12 +47,13 @@ public class LoginActivity extends AppCompatActivity {
     Music music;
     Display display;
     SoundPool mSoundPool;
-
+    SharedPreferences userInfo;
     @TargetApi(Build.VERSION_CODES.O)
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate ( Bundle savedInstanceState ) {
         super.onCreate(savedInstanceState);
+        userInfo = getSharedPreferences("userInfo" , Context.MODE_PRIVATE);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN , WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -139,6 +143,14 @@ public class LoginActivity extends AppCompatActivity {
             }
 
         });
+        view.setForgotListener(new LoginTemplateView.ForgotListener() {
+            @Override
+            public void forgot ( View v ) {
+                Intent intent = new Intent();
+                intent.setClass(LoginActivity.this , MainActivity.class);
+                startActivity(intent);
+            }
+        });
         setupWindowAnimations();
 
     }
@@ -194,11 +206,12 @@ public class LoginActivity extends AppCompatActivity {
 
     @SuppressLint("ResourceType")
     private void setting () {
-        view.setForgotButtonText("");
+        String UserName = userInfo.getString("account" , "UserName");
         view.setLoginBackgroundResource(R.drawable.bkg);
-        view.setLoginNameHint("UserName");
+        view.setLoginNameHint(UserName + "[Just Hint Last Login Username.]");
         view.setLoginNameBackground(R.color.btn_press_color);
         view.setLoginPasswordHint("Passwords");
+        view.setForgotButtonText("Skip Registration");
         view.setLoginPasswordBackground(R.color.btn_press_color);
         view.setLoginButtonText("Login");
         view.setLoginButtonTextColor(Color.DKGRAY);
@@ -208,8 +221,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void userlogin () throws Exception {
+
         user = new Login(view.getLoginName() , view.getLoginPassword());
         user.run();
+        RemeberUser(view.getLoginName() , view.getLoginPassword());
         Log.v("Login" , user.getSuccess());
 
     }
@@ -221,4 +236,11 @@ public class LoginActivity extends AppCompatActivity {
         mSoundPool = null;
     }
 
+    private void RemeberUser ( String username , String passwords ) {
+        SharedPreferences sharedPreferences = getSharedPreferences("userInfo" , Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("account" , username);
+        editor.putString("password" , passwords);
+        editor.commit();
+    }
 }

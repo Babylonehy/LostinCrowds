@@ -1,30 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayoutbutton"
+    android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <mehdi.sakout.fancybuttons.FancyButton
-        android:id="@+id/btn_play"
+    <com.freedom.lauzy.playpauseviewlib.PlayPauseView
+        android:id="@+id/play_pause_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingRight="20dp"
-        android:paddingBottom="10dp"
-        fancy:fb_borderColor="#FFFFFF"
-        fancy:fb_borderWidth="1dp"
-        fancy:fb_defaultColor="#7ab800"
-        fancy:fb_focusColor="#9bd823"
-        fancy:fb_fontIconResource="&#xf04b;"
-        fancy:fb_iconPosition="left"
-        fancy:fb_radius="30dp"
-        fancy:fb_text="PLAY"
-        fancy:fb_textColor="#FFFFFF"
-        fancy:layout_constraintBottom_toBottomOf="parent"
-        fancy:layout_constraintEnd_toEndOf="parent"
-        fancy:layout_constraintStart_toStartOf="parent"
-        fancy:layout_constraintTop_toTopOf="parent" />
+        app:anim_direction="positive"
+        app:anim_duration="300"
+        app:bg_color="#E0E0E0"
+        app:btn_color="#000000"
+        app:gap_width="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_conversion_wrapHeight="210"
+        tools:layout_conversion_wrapWidth="210" />
 </android.support.constraint.ConstraintLayout>
