@@ -9,6 +9,7 @@ import android.view.Window;
 import android.widget.LinearLayout;
 
 import com.example.lostincrowds.R;
+import com.freedom.lauzy.playpauseviewlib.PlayPauseView;
 
 import java.util.ArrayList;
 
@@ -62,6 +63,21 @@ public class UI_test extends AppCompatActivity {
 //                        .setAction("Action" , null).show();
             }
         });
+        // example for Playbutton.
+        PlayButton playButton = new PlayButton(this);
+        playButton.getPlayPauseView().setPlayPauseListener(new PlayPauseView.PlayPauseListener() {
+            @Override
+            public void play () {
+
+            }
+
+            @Override
+            public void pause () {
+
+            }
+        });
+        playButton.setPosition(400 , 400);
+        addContentView(playButton , params);
     }
 }
 
