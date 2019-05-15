@@ -1,6 +1,7 @@
 package com.example.lostincrowds.UI;
 
 import android.content.pm.ActivityInfo;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +23,8 @@ public class UI_test extends AppCompatActivity {
     private DrawLine drawLine;
     private Uncuttableline uncuttableline;
     private MyImageView testImageview;
+    private PlayPauseView playPauseView;
+    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate ( Bundle savedInstanceState ) {
@@ -65,18 +68,37 @@ public class UI_test extends AppCompatActivity {
         });
         // example for Playbutton.
         PlayButton playButton = new PlayButton(this);
-        playButton.getPlayPauseView().setPlayPauseListener(new PlayPauseView.PlayPauseListener() {
+//        playButton.getPlayPauseView().setPlayPauseListener(new PlayPauseView.PlayPauseListener() {
+//            @Override
+//            public void play () {
+//
+//            }
+//
+//            @Override
+//            public void pause () {
+//
+//            }
+//        });
+        playButton.setPosition(400 , 400);
+        final MediaPlayer mp =MediaPlayer.create(this, R.raw.bg_music);
+        mp.setLooping(true);
+        playPauseView=playButton.getPlayPauseView();
+                playPauseView.setPlayPauseListener(new PlayPauseView.PlayPauseListener() {
             @Override
-            public void play () {
+            public void play() {
+                mp.start();
 
             }
 
             @Override
-            public void pause () {
+            public void pause() {
+                // do something
+
+                mp.pause();
 
             }
         });
-        playButton.setPosition(400 , 400);
+
         addContentView(playButton , params);
     }
 }
