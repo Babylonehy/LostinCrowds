@@ -17,7 +17,11 @@ import java.util.Random;
 import static com.example.lostincrowds.ConstantValue.HEIGHT;
 import static com.example.lostincrowds.ConstantValue.WIDTH;
 
+/**
+ * The type My image view.
+ */
 public class MyImageView extends ConstraintLayout {
+
 
     private BasicImageView image;
     private DonutProgress donutProgress;
@@ -28,6 +32,17 @@ public class MyImageView extends ConstraintLayout {
     private String id;
     private float percentage;
 
+    /**
+     * Instantiates a new My image view.
+     *
+     * @param context    the context
+     * @param back       the back
+     * @param front      the front
+     * @param xpos       the xpos
+     * @param ypos       the ypos
+     * @param percentage the percentage
+     * @param id         the id
+     */
     @SuppressLint("ResourceType")
     public MyImageView ( Context context , @DrawableRes int back , @DrawableRes int front , float xpos , float ypos , float percentage , String id ) {
         super(context);
@@ -73,22 +88,48 @@ public class MyImageView extends ConstraintLayout {
                 .start();
     }
 
+    /**
+     * Sets text size.
+     *
+     * @param size the size
+     */
     public void setTextSize ( float size ) {
         donutProgress.setTextSize(size);
         invalidate();
     }
+
+    /**
+     * Gets xpos.
+     *
+     * @return the xpos
+     */
     public float getXpos () {
         return (float) (xpos + WIDTH / 2.0);
     }
 
+    /**
+     * Gets ypos.
+     *
+     * @return the ypos
+     */
     public float getYpos () {
         return (float) (ypos + HEIGHT / 2.0);
     }
 
+    /**
+     * Gets percentage.
+     *
+     * @return the percentage
+     */
     public float getPercentage () {
         return percentage;
     }
 
+    /**
+     * Sets percentage.
+     *
+     * @param percentage the percentage
+     */
     public void setPercentage ( float percentage ) {
         if (percentage >= 0 && percentage <= 100) {
             this.percentage = percentage;
@@ -97,8 +138,22 @@ public class MyImageView extends ConstraintLayout {
         }
     }
 
+    /**
+     * Gets view id.
+     *
+     * @return the view id
+     */
     public String getViewId () {
         return id;
+    }
+
+    /**
+     * Gets image.
+     *
+     * @return the image
+     */
+    public BasicImageView getImage () {
+        return image;
     }
 //        image=new BasicImageView(context,back,front);
 //        number_progress_bar=new NumberProgressBar(context);

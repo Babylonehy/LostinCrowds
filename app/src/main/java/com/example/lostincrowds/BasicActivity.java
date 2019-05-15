@@ -14,6 +14,9 @@ import android.view.WindowManager;
 
 import com.hanks.htextview.line.LineTextView;
 
+/**
+ * The type Basic activity.
+ */
 public class BasicActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.O)

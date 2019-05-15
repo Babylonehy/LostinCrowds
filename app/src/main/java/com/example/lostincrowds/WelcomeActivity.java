@@ -1,12 +1,12 @@
 package com.example.lostincrowds;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import gr.net.maroulis.library.EasySplashScreen;
+import me.wangyuwei.particleview.ParticleView;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -17,16 +17,27 @@ public class WelcomeActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_welcome);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN , WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        View easySplashScreenView = new EasySplashScreen(this)
-                .withFullScreen()
-                .withTargetActivity(LoginActivity.class)
-                .withSplashTimeOut(3000)
-                .withBackgroundResource(R.drawable.bkg2)
-                .withFooterText("@Copyright 2019")
-                .withBeforeLogoText("My cool company")
-                .withLogo(R.drawable.simle)
-                .withAfterLogoText("Some more details")
-                .create();
-        setContentView(easySplashScreenView);
+//        View easySplashScreenView = new EasySplashScreen(this)
+//                .withFullScreen()
+//                .withTargetActivity(LoginActivity.class)
+//                .withSplashTimeOut(3000)
+//                .withBackgroundResource(R.drawable.bkg2)
+//                .withFooterText("@Copyright 2019")
+//                .withBeforeLogoText("My cool company")
+//                .withLogo(R.drawable.simle)
+//                .withAfterLogoText("Some more details")
+//                .create();
+//        setContentView(easySplashScreenView);
+        ParticleView particleView = findViewById(R.id.ParticleView);
+        particleView.startAnim();
+        particleView.setOnParticleAnimListener(new ParticleView.ParticleAnimListener() {
+            @Override
+            public void onAnimationEnd () {
+                Intent intent = new Intent();
+                intent.setClass(WelcomeActivity.this , LoginActivity.class);
+                startActivity(intent);
+
+            }
+        });
     }
 }
