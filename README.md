@@ -3,6 +3,7 @@
 ![](https://img.shields.io/apm/l/vim-mode.svg)
 ![](https://img.shields.io/badge/Platform-Android-brightgreen.svg)
 ![](https://img.shields.io/badge/Version-0.0.1-orange.svg)
+![](https://img.shields.io/badge/Release-0-yellow.svg)
 
 ![](Assets/homepage.gif)
 ## Team structure and roles 
