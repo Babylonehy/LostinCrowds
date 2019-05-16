@@ -155,14 +155,5 @@ public class MyImageView extends ConstraintLayout {
     public BasicImageView getImage () {
         return image;
     }
-//        image=new BasicImageView(context,back,front);
-//        number_progress_bar=new NumberProgressBar(context);
-//        number_progress_bar.setProgress((int) percentage);
-//        number_progress_bar.setUnreachedBarColor(Color.BLACK);
-//        number_progress_bar.setReachedBarColor(Color.BLUE);
-//        number_progress_bar.setLayoutParams(params);
-//        number_progress_bar.setMax(100);
-//        image.getImageView().setX(0);
-//        image.getImageView().setY(5);
-//        image.getImageView().setLayoutParams(params);
+
 }

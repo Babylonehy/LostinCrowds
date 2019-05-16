@@ -29,6 +29,7 @@ import com.example.lostincrowds.Network.Login;
 import com.example.lostincrowds.Network.Signin;
 import com.example.lostincrowds.Network.User;
 import com.example.lostincrowds.UI.AutoImageView;
+import com.example.lostincrowds.UI.UI_test;
 import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 import com.youth.template.LoginTemplateView;
 
@@ -176,7 +177,7 @@ public class LoginActivity extends AppCompatActivity {
                             Intent intent = new Intent();
                             String level = Integer.toString(tempuser.getLevel());
                             //TODO Jump to the corresponding page (Simple switch case)
-                            intent.setClass(LoginActivity.this , MainActivity.class);
+                            intent.setClass(LoginActivity.this , UI_test.class);
                             String Message = "MessageFromLogin";
                             String LevelMessage = "LevelFromLogin";
                             intent.putExtra(Message , tempuser.getMessage());

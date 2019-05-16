@@ -6,7 +6,13 @@ import java.util.HashSet;
 import java.util.Set;
 import static org.junit.Assert.assertEquals;
 
+/**
+ * The type Crowds unit test.
+ */
 public class CrowdsUnitTest {
+    /**
+     * Test add person.
+     */
     @Test
     public void testAddPerson() {
         Crowds.addPerson("A");
@@ -21,6 +27,9 @@ public class CrowdsUnitTest {
         Crowds.allClear();
     }
 
+    /**
+     * Test delete person.
+     */
     @Test
     public void testDeletePerson() {
         Crowds.addPerson("A");
@@ -36,6 +45,9 @@ public class CrowdsUnitTest {
         Crowds.allClear();
     }
 
+    /**
+     * Test connect.
+     */
     @Test
     public void testConnect(){
         Crowds.addInfector("A");
@@ -51,7 +63,7 @@ public class CrowdsUnitTest {
         Set<String> set2 = new HashSet<>();
         set2.add("A");
 
-         float f = 100;
+        float f = 100;
 
         assertEquals(set1, Crowds.people.get("A").linkedPerson);
         assertEquals(set2, Crowds.people.get("C").linkedPerson);
@@ -59,6 +71,9 @@ public class CrowdsUnitTest {
         Crowds.allClear();
     }
 
+    /**
+     * Test simulation.
+     */
     @Test
     public void testSimulation(){
         Crowds.addInfector("A");
