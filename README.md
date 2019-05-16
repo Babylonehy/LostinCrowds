@@ -1,4 +1,8 @@
 # Sociological Game - _Lost in Crowds_
+![](https://img.shields.io/badge/ASS-COMP6442/2100-brightgreen.svg)
+![](https://img.shields.io/apm/l/vim-mode.svg)
+![](https://img.shields.io/badge/Platform-Android-brightgreen.svg)
+
 ![](Assets/homepage.gif)
 ## Team structure and roles 
 + Xiang Li, u6716878 - 
