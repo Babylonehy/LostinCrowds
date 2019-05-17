@@ -1,6 +1,7 @@
 package com.example.lostincrowds.UI;
 
 import android.content.pm.ActivityInfo;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -29,8 +30,9 @@ public class UI_test extends AppCompatActivity {
      */
     public ArrayList<MyImageView> ListForImageView = new ArrayList<>();
     private DrawLine drawLine;
-    private Uncuttableline uncuttableline;
+    private Stickline stickline;
     private MyImageView testImageview;
+    private PlayPauseView playPauseView;
 
     @Override
     protected void onCreate ( Bundle savedInstanceState ) {
@@ -57,8 +59,8 @@ public class UI_test extends AppCompatActivity {
 
         unconnectivepair.add(imageView3);
         unconnectivepair.add(imageView2);
-        uncuttableline = findViewById(R.id.uncuttableline);
-        uncuttableline.setUncuttable_pair(unconnectivepair);
+        stickline = findViewById(R.id.uncuttableline);
+        stickline.setUncuttable_pair(unconnectivepair);
         addContentView(imageView , params);
         addContentView(imageView2 , params);
         addContentView(imageView3 , params);
@@ -75,18 +77,27 @@ public class UI_test extends AppCompatActivity {
         });
         // example for Playbutton.
         PlayButton playButton = new PlayButton(this);
-        playButton.getPlayPauseView().setPlayPauseListener(new PlayPauseView.PlayPauseListener() {
+
+        playButton.setPosition(400 , 400);
+        final MediaPlayer mp = MediaPlayer.create(this , R.raw.bg_music);
+        mp.setLooping(true);
+        playPauseView = playButton.getPlayPauseView();
+        playPauseView.setPlayPauseListener(new PlayPauseView.PlayPauseListener() {
             @Override
             public void play () {
+                mp.start();
 
             }
 
             @Override
             public void pause () {
+                // do something
+
+                mp.pause();
 
             }
         });
-        playButton.setPosition(400 , 400);
+
         addContentView(playButton , params);
     }
 }

@@ -17,17 +17,6 @@ public class WelcomeActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_welcome);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN , WindowManager.LayoutParams.FLAG_FULLSCREEN);
-//        View easySplashScreenView = new EasySplashScreen(this)
-//                .withFullScreen()
-//                .withTargetActivity(LoginActivity.class)
-//                .withSplashTimeOut(3000)
-//                .withBackgroundResource(R.drawable.bkg2)
-//                .withFooterText("@Copyright 2019")
-//                .withBeforeLogoText("My cool company")
-//                .withLogo(R.drawable.simle)
-//                .withAfterLogoText("Some more details")
-//                .create();
-//        setContentView(easySplashScreenView);
         ParticleView particleView = findViewById(R.id.ParticleView);
         particleView.startAnim();
         particleView.setOnParticleAnimListener(new ParticleView.ParticleAnimListener() {
@@ -39,5 +28,6 @@ public class WelcomeActivity extends AppCompatActivity {
 
             }
         });
+        finish();
     }
 }

@@ -1,14 +1,16 @@
 /******************************************************************************
- * Copyright (c) 2019. Xiang Li From Australian National University CECS  All Rights Reserved. FileName: Sandbox.java
+ * Copyright (c) 2019. Xiang Li From Australian National University CECS  All Rights Reserved. FileName: Sandbox.java@author: jack@date: 18/05/19 1:59 AM@version: 1.0
  ******************************************************************************/
 
-package com.example.lostincrowds;
+package com.example.lostincrowds.Puzzle;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.example.lostincrowds.R;
 
 public class Sandbox extends AppCompatActivity {
 
@@ -32,7 +34,5 @@ public class Sandbox extends AppCompatActivity {
             }
         });
         webview.loadUrl("com/example/lostincrowds/UI/The Wisdom and_or Madness of Crowds.html");
-
-
     }
 }

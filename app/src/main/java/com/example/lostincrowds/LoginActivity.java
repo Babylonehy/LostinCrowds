@@ -7,14 +7,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.media.AudioManager;
-import android.media.SoundPool;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
+import android.preference.PreferenceManager;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.transition.Slide;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
@@ -23,13 +22,9 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.example.lostincrowds.Music.Music;
 import com.example.lostincrowds.Network.Login;
 import com.example.lostincrowds.Network.Signin;
 import com.example.lostincrowds.Network.User;
-import com.example.lostincrowds.UI.AutoImageView;
-import com.example.lostincrowds.UI.UI_test;
 import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 import com.youth.template.LoginTemplateView;
 
@@ -39,15 +34,17 @@ import org.json.JSONException;
 
 import java.io.IOException;
 
+import static com.example.lostincrowds.ConstantValue.Passwords;
+import static com.example.lostincrowds.ConstantValue.Username;
+
 
 public class LoginActivity extends AppCompatActivity {
     static Login user;
     static Signin new_user;
     LoginTemplateView view;
-    Music music;
     Display display;
-    SoundPool mSoundPool;
     SharedPreferences userInfo;
+    MediaPlayer mp;
     @TargetApi(Build.VERSION_CODES.O)
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -57,28 +54,14 @@ public class LoginActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN , WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         view = new LoginTemplateView(this);
-        AutoImageView imageView = new AutoImageView(this);
         setContentView(view);
         Log.v("Music" , "onCreate: streamID = ");
-        mSoundPool = new SoundPool(1 , AudioManager.STREAM_MUSIC , 0);
-        int streamID = mSoundPool.load(this , R.raw.party , 1);
-        Log.v("Music" , "onCreate: streamID = " + streamID + "" + mSoundPool);
-        mSoundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
-            @Override
-            public void onLoadComplete ( SoundPool soundPool , int sampleId , int status ) {
-                soundPool.play(sampleId , 50 , 50 , 1 , 0 , 1);
-            }
-        });
 
+
+        //add text
         display = getWindowManager().getDefaultDisplay();
-//        ImageView imageView=new ImageView(this);
-//        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-//        imageView.setAdjustViewBounds(true);
-//        addContentView(imageView, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT,  LinearLayout.LayoutParams.WRAP_CONTENT));
-        Glide.with(this).load(R.drawable.particlesresize).into(imageView);
-
-        //添加文本,this代表当前项目
         TextView textView1 = new TextView(this);
         textView1.setText("Lost In Crowds");
         Typeface typeface = getResources().getFont(R.font.patrickhandregular);
@@ -96,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
         view.addView(textView1);
 
         setting();
-        //设置点击事件
+        //setting onclick
         view.setLoginListener(new LoginTemplateView.LoginListener() {
             @Override
             public void login ( View v ) {
@@ -147,19 +130,57 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void forgot ( View v ) {
                 Intent intent = new Intent();
-                intent.setClass(LoginActivity.this , MainActivity.class);
+                intent.setClass(LoginActivity.this , TestActivity.class);
                 startActivity(intent);
             }
         });
-        setupWindowAnimations();
 
+        //music
+        mp = MediaPlayer.create(this , R.raw.bg_music);
+        mp.setLooping(true);
+        mp.start();
+        Once();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    private void setupWindowAnimations () {
-        Slide slide = new Slide();
-        slide.setDuration(2000);
-        getWindow().setExitTransition(slide);
+    private void Once () {
+        //  Declare a new thread to do a preference check
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run () {
+                //  Initialize SharedPreferences
+                SharedPreferences getPrefs = PreferenceManager
+                        .getDefaultSharedPreferences(getBaseContext());
+
+                //  Create a new boolean and preference and set it to true
+                boolean isFirstStart = getPrefs.getBoolean("firstStart" , true);
+
+                //  If the activity has never started before...
+                if (isFirstStart) {
+
+                    //  Launch app intro
+                    final Intent i = new Intent(LoginActivity.this , Introduction.class);
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run () {
+                            startActivity(i);
+                        }
+                    });
+
+                    //  Make a new preferences editor
+                    SharedPreferences.Editor e = getPrefs.edit();
+
+                    //  Edit preference to make it false because we don't want this to run again
+                    e.putBoolean("firstStart" , false);
+
+                    //  Apply changes
+                    e.apply();
+                }
+            }
+        });
+
+        // Start the thread
+        t.start();
     }
 
 
@@ -175,14 +196,17 @@ public class LoginActivity extends AppCompatActivity {
                         if (tempuser.getSuccess().equals(ConstantValue.successGet)) {
                             Log.v("Listener" , "getsuccess = 1");
                             Intent intent = new Intent();
+                            Username = view.getLoginName();
+                            Passwords = view.getLoginPassword();
                             String level = Integer.toString(tempuser.getLevel());
                             //TODO Jump to the corresponding page (Simple switch case)
-                            intent.setClass(LoginActivity.this , UI_test.class);
+                            intent.setClass(LoginActivity.this , Introduction.class);
                             String Message = "MessageFromLogin";
                             String LevelMessage = "LevelFromLogin";
                             intent.putExtra(Message , tempuser.getMessage());
                             intent.putExtra(LevelMessage , level);
                             startActivity(intent);
+                            mp.release();
                             LoginActivity.this.finish();
                         }
                         break;
@@ -208,7 +232,7 @@ public class LoginActivity extends AppCompatActivity {
     private void setting () {
         String UserName = userInfo.getString("account" , "UserName");
         view.setLoginBackgroundResource(R.drawable.bkg);
-        view.setLoginNameHint(UserName + "[Just Hint Last Login Username.]");
+        view.setLoginNameHint(UserName);
         view.setLoginNameBackground(R.color.btn_press_color);
         view.setLoginPasswordHint("Passwords");
         view.setForgotButtonText("Skip Registration");
@@ -227,13 +251,6 @@ public class LoginActivity extends AppCompatActivity {
         RemeberUser(view.getLoginName() , view.getLoginPassword());
         Log.v("Login" , user.getSuccess());
 
-    }
-
-    @Override
-    protected void onDestroy () {
-        super.onDestroy();
-        mSoundPool.release();
-        mSoundPool = null;
     }
 
     private void RemeberUser ( String username , String passwords ) {

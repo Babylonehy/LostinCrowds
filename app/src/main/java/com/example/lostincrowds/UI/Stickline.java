@@ -10,21 +10,21 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-public class Uncuttableline extends View {
+public class Stickline extends View {
 
     public ArrayList<Line> uncuttableLine = new ArrayList<>();
     private Paint paint;
     private ArrayList<MyImageView> uncuttable_pair = new ArrayList<>();
 
-    public Uncuttableline ( Context context ) {
+    public Stickline ( Context context ) {
         this(context , null);
     }
 
-    public Uncuttableline ( Context context , AttributeSet attrs ) {
+    public Stickline ( Context context , AttributeSet attrs ) {
         this(context , attrs , 0);
     }
 
-    public Uncuttableline ( Context context , AttributeSet attrs , int defStyleAttr ) {
+    public Stickline ( Context context , AttributeSet attrs , int defStyleAttr ) {
         super(context , attrs , defStyleAttr);
     }
 
