@@ -194,7 +194,7 @@ public class DrawLine extends View {
     }
 
     private boolean pathFlag = false;
-
+    private boolean cutFlag = false;
     @Override
     public boolean onTouchEvent ( MotionEvent event ) {
         switch (event.getAction()) {
@@ -207,6 +207,7 @@ public class DrawLine extends View {
                             && event.getY() > myImageView.getY() && myImageView.getY() < (myImageView.getY() + 150)) {
                         startX = myImageView.getXpos();
                         startY = myImageView.getYpos();
+                        cutFlag = true;
 
 
                     }
@@ -232,7 +233,10 @@ public class DrawLine extends View {
                 pathEndX = event.getX();
                 pathEndY = event.getY();
                 pathFlag = true;
-                onTouchEvent2(event);
+                if (cutFlag) {
+                    onTouchEvent2(event);
+
+                }
                 onMove(event.getX() , event.getY());
                 postInvalidate();
                 invalidate();
@@ -241,6 +245,7 @@ public class DrawLine extends View {
                 endX = event.getX();
                 endY = event.getY();
                 pathFlag = false;
+                cutFlag = false;
                 for (int i = 0; i < setImageView.size(); i++) {
                     MyImageView myImageView = setImageView.get(i);
                     if (event.getX() > myImageView.getX() && event.getX() < (myImageView.getX() + 150)
