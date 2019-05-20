@@ -77,11 +77,11 @@ public class DrawLine extends View {
         init();
     }
 
-    private int maxLen = 15;    //最大轨迹长度
-    private float addWidth = 3f;    //刀光增量宽度
+    private int maxLen = 15;
+    private float addWidth = 3f;
 
-    private Deque<PointF> pointFS = new ArrayDeque<>(maxLen);   //刀光上边框点集合
-    private Deque<PointF> pointFSClose = new ArrayDeque<>(maxLen);  //刀光下边框点集合
+    private Deque<PointF> pointFS = new ArrayDeque<>(maxLen);
+    private Deque<PointF> pointFSClose = new ArrayDeque<>(maxLen);
 
     private Paint mPaint;
     private Shader mShader;//刀光填充颜色
@@ -194,23 +194,33 @@ public class DrawLine extends View {
     }
 
     private boolean pathFlag = false;
-    private boolean cutFlag = false;
+    private boolean cutFlag = true;
     @Override
     public boolean onTouchEvent ( MotionEvent event ) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
 
                 pathFlag = false;
+                cutFlag=true;
                 for (int i = 0; i < setImageView.size(); i++) {
                     MyImageView myImageView = setImageView.get(i);
-                    if (event.getX() > myImageView.getX() && event.getX() < (myImageView.getX() + 150)
-                            && event.getY() > myImageView.getY() && myImageView.getY() < (myImageView.getY() + 150)) {
+                    float x=Math.abs(myImageView.getXpos()-event.getX());
+                    float y=Math.abs(myImageView.getYpos()-event.getY());
+                    if ((x*x+y*y)<10000){
+
                         startX = myImageView.getXpos();
                         startY = myImageView.getYpos();
-                        cutFlag = true;
-
-
+                        cutFlag = false;
+                        break;
                     }
+//                    if (event.getX() > myImageView.getX() && event.getX() < (myImageView.getX() + 150)
+//                            && event.getY() > myImageView.getY() && myImageView.getY() < (myImageView.getY() + 150)) {
+//                        startX = myImageView.getXpos();
+//                        startY = myImageView.getYpos();
+//                        cutFlag = false;
+//
+//
+//                    }
 
                 }
 //                PATH
@@ -228,8 +238,8 @@ public class DrawLine extends View {
 
                 break;
             case MotionEvent.ACTION_MOVE:
-                endX = event.getX();
-                endY = event.getY();
+//                endX = event.getX();
+//                endY = event.getY();
                 pathEndX = event.getX();
                 pathEndY = event.getY();
                 pathFlag = true;
@@ -245,19 +255,34 @@ public class DrawLine extends View {
                 endX = event.getX();
                 endY = event.getY();
                 pathFlag = false;
-                cutFlag = false;
+
+                float minx=10000;
+                float miny=10000;
                 for (int i = 0; i < setImageView.size(); i++) {
                     MyImageView myImageView = setImageView.get(i);
-                    if (event.getX() > myImageView.getX() && event.getX() < (myImageView.getX() + 150)
-                            && event.getY() > myImageView.getY() && myImageView.getY() < (myImageView.getY() + 150)) {
+                    float x=Math.abs(myImageView.getXpos()-event.getX());
+                    float y=Math.abs(myImageView.getYpos()-event.getY());
+                    if ((x*x+y*y)<10000){
                         endX = myImageView.getXpos();
                         endY = myImageView.getYpos();
                         float[] data2 = {startX , startY , endX , endY};
                         list.add(data2);
                         Line line = new Line(startX , startY , endX , endY , true);
                         connective_line.add(line);
+                        break;
                     }
+//                    if (event.getX() > myImageView.getX() && event.getX() < (myImageView.getX() + 150)
+//                            && event.getY() > myImageView.getY() && myImageView.getY() < (myImageView.getY() + 150)) {
+//                        endX = myImageView.getXpos();
+//                        endY = myImageView.getYpos();
+//                        float[] data2 = {startX , startY , endX , endY};
+//                        list.add(data2);
+//                        Line line = new Line(startX , startY , endX , endY , true);
+//                        connective_line.add(line);
+//                        break;
+//                    }
                 }
+                cutFlag = true;
 
 
                 break;
@@ -273,7 +298,7 @@ public class DrawLine extends View {
     }
 
     private float curX;
-    private int curY;
+    private float curY;
 
     /**
      * On touch event 2 boolean.
@@ -286,20 +311,40 @@ public class DrawLine extends View {
         switch (event2.getAction()) {
             case MotionEvent.ACTION_MOVE:
                 curX = event2.getX();
-                curY = (int) (event2.getY());
+                curY = (event2.getY());
                 for (int i = 0; i < list.size(); i++) {
                     float[] data = list.get(i);
-                    float a = ((data[1] - data[3]) / (data[0] - data[2]));
-                    float b = ((data[0] * data[3] - data[1] * data[2]) / (data[0] - data[2]));
-                    int now = (int) (curX * a + b);
-                    Log.v("Drawline" , curX + " " + curY + " " + now + " " + (Math.abs(now - curY) < 500 ? "T" : "f"));
-                    if (((curX > data[0] && curX < data[2]) || (curX < data[0] && curX > data[2])) && ((curY > data[1]
-                            && curY < data[3]) || (curY < data[1] && curY > data[3]))) {
-                        if (Math.abs(now - curY) < 200) {
+//                    boolean pdline = (int)(curX - data[0]) * (data[1] - data[3]) == (int)(data[0] - data[2])
+//                            * (curY - data[3]);
+                    boolean pdline=((curX >= data[0] && curX <= data[2]) || (curX <= data[0] && curX >= data[2])) && ((curY >= data[1]
+                            && curY <= data[3]) || (curY <= data[1] && curY >= data[3]));
+                    float a= (float) Math.sqrt((curX-data[0])*(curX-data[0])+(curY-data[1])*(curY-data[1]));
+                    float b= (float) Math.sqrt((curX-data[2])*(curX-data[2])+(curY-data[3])*(curY-data[3]));
+//                    float a = ((data[1] - data[3]) / (data[0] - data[2]));
+//                    float b = ((data[0] * data[3] - data[1] * data[2]) / (data[0] - data[2]));
+                    float now =  a+b;
+                    float or= (float) Math.sqrt((data[0]-data[2])*(data[0]-data[2])+(data[1]-data[3])*(data[1]-data[3]));
+                    if (((curX >= data[0]-10 && curX <= data[2]+10) || (curX <= data[0]+10 && curX >= data[2]-10)) && ((curY >= data[1]-10
+                            && curY <= data[3]+10) || (curY <= data[1]+10 && curY >= data[3]-10))) {
+
+                        if (Math.abs(now - or) < 200) {
                             list.remove(i);
+                            Log.v("list", list + "");
                             break;
                         }
                     }
+                    Log.v("Drawline", curX + " " + curY + " " + now + " " + a + " " + b + " " + or + "" +pdline+ (Math.abs(now - or) < 200 ? "T" : "f"));
+
+                    break;
+
+
+//                    if (((curX > data[0] && curX < data[2]) || (curX < data[0] && curX > data[2])) && ((curY > data[1]
+//                            && curY < data[3]) || (curY < data[1] && curY > data[3]))) {
+//                        if (Math.abs(now - curY) < 100) {
+//                            list.remove(i);
+//                            break;
+//                        }
+//                    }
 
                 }
                 break;
@@ -324,7 +369,7 @@ public class DrawLine extends View {
             if (iter.hasNext()) {
 
                 float v = width / 2;
-                float k = 0; //计算斜率，解决45°角为一条线的BUG
+                float k = 0;
                 if (pre != null) k = (next.y - pre.y) / (next.x - pre.x);
                 if (Math.abs(1 - k) < 0.9) {
                     path.lineTo(next.x , next.y - v);

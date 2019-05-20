@@ -56,7 +56,12 @@ public class UI_test extends AppCompatActivity {
 
         drawLine.setImageView(ListForImageView);
         MyImageView imageView3 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , 800 , 800 , 80 , "s2");
+        MyImageView imageView4 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , 800 , 100 , 80 , "s2");
+        MyImageView imageView5 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , 300 , 400 , 80 , "s2");
 
+        ListForImageView.add(imageView3);
+        ListForImageView.add(imageView4);
+        ListForImageView.add(imageView5);
         unconnectivepair.add(imageView3);
         unconnectivepair.add(imageView2);
         stickline = findViewById(R.id.uncuttableline);
@@ -64,6 +69,8 @@ public class UI_test extends AppCompatActivity {
         addContentView(imageView , params);
         addContentView(imageView2 , params);
         addContentView(imageView3 , params);
+        addContentView(imageView4,params);
+        addContentView(imageView5,params);
         testImageview = imageView3;
 
         fab.setOnClickListener(new View.OnClickListener() {

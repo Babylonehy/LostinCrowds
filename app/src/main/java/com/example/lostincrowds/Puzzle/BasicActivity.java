@@ -49,6 +49,15 @@ public class BasicActivity extends AppCompatActivity {
      */
     Button button;
     private PlayPauseView playPauseView;
+
+    public DrawLine getDrawLine() {
+        return drawLine;
+    }
+
+    public Stickline getStickline() {
+        return stickline;
+    }
+
     private DrawLine drawLine;
     private Stickline stickline;
 

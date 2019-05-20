@@ -29,20 +29,20 @@ public class Introduction extends AppIntro {
 
         // Add your slide fragments here.
         // AppIntro will automatically generate the dots indicator and buttons.
-        addSlide(firstFragment);
-        addSlide(secondFragment);
-        addSlide(thirdFragment);
-        addSlide(fourthFragment);
+//        addSlide(firstFragment);
+//        addSlide(secondFragment);
+//        addSlide(thirdFragment);
+//        addSlide(fourthFragment);
 
         // Instead of fragments, you can also use our default slide.
         // Just create a `SliderPage` and provide title, description, background and image.
         // AppIntro will do the rest.
         SliderPage sliderPage = new SliderPage();
-        sliderPage.setTitle(title);
-        sliderPage.setDescription(description);
-        sliderPage.setImageDrawable(image);
-        sliderPage.setBgColor(backgroundColor);
-        addSlide(AppIntroFragment.newInstance(sliderPage));
+//        sliderPage.setTitle(title);
+//        sliderPage.setDescription(description);
+//        sliderPage.setImageDrawable(image);
+//        sliderPage.setBgColor(backgroundColor);
+//        addSlide(AppIntroFragment.newInstance(sliderPage));
 
         // OPTIONAL METHODS
         // Override bar/separator color.
