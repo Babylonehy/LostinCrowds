@@ -2,4 +2,7 @@
     <string name="app_name">LostInCrowds</string>
     <string name="title_activity_basic">BasicActivity</string>
     <string name="title_activity_ui_test">UI_test</string>
+
+        <string name="sandbox">file:///android_asset/crowds/index.html</string>
+
 </resources>

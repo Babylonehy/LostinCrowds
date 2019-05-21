@@ -23,7 +23,8 @@
             android:exported="true" />
         <activity
             android:name=".Puzzle.Sandbox"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity
             android:name=".WelcomeActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">

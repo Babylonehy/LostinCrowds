@@ -4,8 +4,12 @@
 
 package com.example.lostincrowds.Puzzle;
 
+import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Window;
+import android.view.WindowManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -16,8 +20,19 @@ public class Sandbox extends AppCompatActivity {
 
     @Override
     protected void onCreate ( Bundle savedInstanceState ) {
+        init_windows();
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_sandbox);
+        load(this);
+    }
+    protected void init_windows () {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN , WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+    }
+
+    private void load(Context context){
         WebView webview = (WebView) findViewById(R.id.webView);
         WebSettings webSettings = webview.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -33,6 +48,7 @@ public class Sandbox extends AppCompatActivity {
                 return true;
             }
         });
-        webview.loadUrl("com/example/lostincrowds/UI/The Wisdom and_or Madness of Crowds.html");
+        webview.loadUrl(getString(R.string.sandbox));
     }
+
 }
