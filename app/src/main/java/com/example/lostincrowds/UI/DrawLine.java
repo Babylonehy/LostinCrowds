@@ -259,6 +259,7 @@ public class DrawLine extends View {
                         list.add(data2);
                         setConnectivepair();
                         break;
+
                     }
                 }
                 cutFlag = true;
@@ -384,9 +385,9 @@ public class DrawLine extends View {
         for (int i = 0; i <list.size() ; i++) {
             int counter=0;
             for (MyImageView my :setImageView){
-                if((Math.abs(my.getXpos()-startX)<1 &&Math.abs(my.getYpos()-startY)<1)||
-                        (Math.abs(my.getXpos()-endX)<1 &&Math.abs(my.getYpos()-endY)<1)) {
-                    connective_line[0]=my;
+                if((Math.abs(my.getXpos()-list.get(i)[0])<1 &&Math.abs(my.getYpos()-list.get(i)[1])<1)||
+                        (Math.abs(my.getXpos()-list.get(i)[2])<1 &&Math.abs(my.getYpos()-list.get(i)[3])<1)) {
+                    connective_line[counter]=my;
                     counter=counter+1;
                 }
             }
