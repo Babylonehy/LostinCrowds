@@ -8,14 +8,20 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.view.Display;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.example.lostincrowds.Crowds;
 import com.example.lostincrowds.R;
 import com.example.lostincrowds.UI.DrawLine;
 import com.example.lostincrowds.UI.MyImageView;
 import com.example.lostincrowds.UI.Stickline;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 
 import static com.example.lostincrowds.ConstantValue.HEIGHT;
 import static com.example.lostincrowds.ConstantValue.WIDTH;
@@ -32,7 +38,8 @@ public class Level3 extends BasicActivity {
     public ArrayList<MyImageView> ListForImageView = new ArrayList<>();
 
     public DrawLine drawLine;
-
+    private Button simulation;
+    private Boolean flag=true;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -171,9 +178,42 @@ public class Level3 extends BasicActivity {
         drawLine=findViewById(R.id.DrawLine);
         getDrawLine().setImageView(ListForImageView);
         getStickline().setUncuttable_pair(unconnectivepair);
+        initView();
+    }
+    private void initView(){
+        simulation=getButton();
+        simulation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HashMap<String,String> map=Crowds.simulation();
+                while (map!=null){
+                    Collection<String> list=map.values();
+                    for (MyImageView my: ListForImageView){
+                        for (String s:list){
+                            if (my.getViewId().equals(s)){
+                                my.getImage().updatebackImageView(R.drawable.peepsblue);
+                                my.getImage().updatefrontImageView(R.drawable.simle);
+                            }
+                        }
+                    }
+                    map=Crowds.simulation();
 
+
+                }
+
+
+            }
+        });
+
+        for (MyImageView my:ListForImageView){
+            if (my.getImage().getBack()==R.drawable.gray){
+                flag=false;
+            }
+        }
 
     }
+
+
 
 
 }

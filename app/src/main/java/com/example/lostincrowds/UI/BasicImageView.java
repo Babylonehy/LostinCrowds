@@ -19,6 +19,16 @@ public class BasicImageView extends android.support.v7.widget.AppCompatImageView
     Drawable[] layers = new Drawable[2];
     private float xpos, ypos;
 
+    public int getBack() {
+        return back;
+    }
+
+    public int getFront() {
+        return front;
+    }
+
+    private @DrawableRes int back;
+    private @DrawableRes int front;
 
     /**
      * Instantiates a new Basic image view.
@@ -68,6 +78,8 @@ public class BasicImageView extends android.support.v7.widget.AppCompatImageView
         setImageDrawable(la);
         setY(ypos);
         setX(xpos);
+        this.back=back;
+        this.front=front;
     }
 
     public void updatefrontImageView ( @DrawableRes int front ) {
@@ -77,6 +89,7 @@ public class BasicImageView extends android.support.v7.widget.AppCompatImageView
         layers[1] = new BitmapDrawable(backImage);
         LayerDrawable la = new LayerDrawable(layers);
         setImageDrawable(la);
+        this.front=front;
         invalidate();
     }
 
@@ -87,6 +100,7 @@ public class BasicImageView extends android.support.v7.widget.AppCompatImageView
         layers[0] = new BitmapDrawable(backImage);
         LayerDrawable la = new LayerDrawable(layers);
         setImageDrawable(la);
+        this.back=back;
         invalidate();
     }
 

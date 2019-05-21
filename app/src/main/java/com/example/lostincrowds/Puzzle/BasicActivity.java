@@ -44,6 +44,11 @@ public class BasicActivity extends AppCompatActivity {
      * The Line text view.
      */
     LineTextView lineTextView;
+
+    public Button getButton() {
+        return button;
+    }
+
     /**
      * The Button.
      */

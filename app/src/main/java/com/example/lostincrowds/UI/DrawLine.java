@@ -258,6 +258,8 @@ public class DrawLine extends View {
                         float[] data2 = {startX , startY , endX , endY};
                         list.add(data2);
                         setConnectivepair();
+                        String id1=connectivepair.get(connectivepair.size()-1)[0].getViewId();
+                        String id2=connectivepair.get(connectivepair.size()-1)[1].getViewId();
                         break;
 
                     }
