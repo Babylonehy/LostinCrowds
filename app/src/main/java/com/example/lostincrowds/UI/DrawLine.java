@@ -128,7 +128,7 @@ public class DrawLine extends View {
         paint = new Paint();
         paint.setColor(Color.parseColor("#00B7EE"));
         paint.setAntiAlias(true);
-        paint.setStrokeWidth(20);
+        paint.setStrokeWidth(10);
         setWillNotDraw(false);
         Pathpaint.setColor(Color.parseColor("#00B7EE"));
         Pathpaint.setAntiAlias(true);
