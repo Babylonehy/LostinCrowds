@@ -86,6 +86,20 @@ public class Crowds {
                 }
             }
         }
+
+        for(String key:people.keySet()){
+            if(!people.get(key).indicator){
+                int count=0;
+                for(String s:people.get(key).linkedPerson){
+                    if(infectedPeople.contains(s)){
+                        count++;
+                    }
+                }
+                if(count==0){
+                    people.get(key).status=0;
+                }
+            }
+        }
     }
 
     public static void allClear(){
@@ -101,6 +115,10 @@ public class Crowds {
            }
         }
         return count;
+    }
+
+    public static float getPercentage(String s){
+        return people.get(s).status;
     }
 
 

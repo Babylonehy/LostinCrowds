@@ -15,6 +15,8 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.example.lostincrowds.Crowds;
+
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
@@ -258,6 +260,13 @@ public class DrawLine extends View {
                         float[] data2 = {startX , startY , endX , endY};
                         list.add(data2);
                         setConnectivepair();
+
+                        String id1 = connectivepair.get(connectivepair.size()-1)[0].getViewId();
+                        String id2 = connectivepair.get(connectivepair.size()-1)[1].getViewId();
+                        Crowds.connect(id1,id2);
+                        setImageView.get(Integer.parseInt(id1)).setPercentage(Crowds.getPercentage(id1));
+                        setImageView.get(Integer.parseInt(id2)).setPercentage(Crowds.getPercentage(id2));
+
                         break;
 
                     }
@@ -300,8 +309,37 @@ public class DrawLine extends View {
                     float or= (float) Math.sqrt((data[0]-data[2])*(data[0]-data[2])+(data[1]-data[3])*(data[1]-data[3]));
                     if (((curX >= data[0]-10 && curX <= data[2]+10) || (curX <= data[0]+10 && curX >= data[2]-10)) && ((curY >= data[1]-10
                             && curY <= data[3]+10) || (curY <= data[1]+10 && curY >= data[3]-10))) {
-
+                        String id1="";
                         if (Math.abs(now - or) < 400) {
+                            int counter=0;
+                            Log.e("idcut","<400");
+                            for (MyImageView my :setImageView){
+                                if((Math.abs(my.getXpos()-list.get(i)[0])<1 &&Math.abs(my.getYpos()-list.get(i)[1])<1)||
+                                        (Math.abs(my.getXpos()-list.get(i)[2])<1 &&Math.abs(my.getYpos()-list.get(i)[3])<1)) {
+                                    id1=my.getViewId();
+                                    break;
+                                }
+                            }
+                            String id2="";
+                            for (MyImageView my :setImageView){
+                                if((Math.abs(my.getXpos()-list.get(i)[0])<1 &&Math.abs(my.getYpos()-list.get(i)[1])<1)||
+                                        (Math.abs(my.getXpos()-list.get(i)[2])<1 &&Math.abs(my.getYpos()-list.get(i)[3])<1)) {
+                                    Log.e("idcut","<400 and 2");
+                                    if (!my.getViewId().equals(id1)){
+                                        Log.e("idcut","<400 and 3");
+                                        id2=my.getViewId();
+                                        break;
+                                    }
+
+                                }
+
+                            }
+
+                            Crowds.cutoff(id1,id2);
+                            Log.e("id",id1+" "+id2+" ");
+
+                            setImageView.get(Integer.parseInt(id1)).setPercentage(Crowds.getPercentage(id1));
+                            setImageView.get(Integer.parseInt(id2)).setPercentage(Crowds.getPercentage(id2));
                             list.remove(i);
                             setConnectivepair();
                             Log.v("list", list + " "+connectivepair+" ");
