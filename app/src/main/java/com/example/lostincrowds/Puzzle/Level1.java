@@ -7,20 +7,31 @@ package com.example.lostincrowds.Puzzle;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.example.lostincrowds.Crowds;
 import com.example.lostincrowds.R;
+import com.example.lostincrowds.UI.DrawLine;
 import com.example.lostincrowds.UI.MyImageView;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 
 import static com.example.lostincrowds.ConstantValue.HEIGHT;
 import static com.example.lostincrowds.ConstantValue.WIDTH;
 
 public class Level1 extends BasicActivity {
     public ArrayList<MyImageView> ListForImageView = new ArrayList<>();
+    public DrawLine drawLine;
     private Crowds crowds;
+    private Button simulation;
+    private Boolean flag=true;
+
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate ( Bundle savedInstanceState ) {
@@ -29,9 +40,9 @@ public class Level1 extends BasicActivity {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(HEIGHT ,
                 WIDTH);
         display = getWindowManager().getDefaultDisplay();
-        MyImageView init1 = new MyImageView(this , R.drawable.peepsyellow , R.drawable.eyesopen , display.getWidth()/14*6 , display.getHeight()/16, 100 , "0");
-        MyImageView init2 = new MyImageView(this , R.drawable.peepsyellow , R.drawable.eyesopen, display.getWidth()/14*4, display.getHeight()/16*3 , 100 , "1");
-        MyImageView init3 = new MyImageView(this , R.drawable.peepsyellow , R.drawable.eyesopen, display.getWidth()/14*8  , display.getHeight()/16*3 , 100 , "2");
+        MyImageView init1 = new MyImageView(this , R.drawable.peepsyellow , R.drawable.eyesopen , display.getWidth()/14*6 , display.getHeight()/16, 0 , "0");
+        MyImageView init2 = new MyImageView(this , R.drawable.peepsyellow , R.drawable.eyesopen, display.getWidth()/14*4, display.getHeight()/16*3 , 0 , "1");
+        MyImageView init3 = new MyImageView(this , R.drawable.peepsyellow , R.drawable.eyesopen, display.getWidth()/14*8  , display.getHeight()/16*3 , 0 , "2");
         MyImageView init4 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/14*3 , display.getHeight()/16*6 , 0 , "3");
         MyImageView init5 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/14*9 , display.getHeight()/16*6 , 0 , "4");
         MyImageView init6 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/14*7/2 , display.getHeight()/16*9 , 0 , "5");
@@ -69,8 +80,44 @@ public class Level1 extends BasicActivity {
         ListForImageView.add(init8);
         ListForImageView.add(init9);
 
+        drawLine=findViewById(R.id.DrawLine);
         getDrawLine().setImageView(ListForImageView);
+        initView();
+    }
 
+    private void initView(){
+        simulation=getButton();
+        simulation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.v("buttonstart","in");
+                HashMap<String,String> map=crowds.simulation();
+                while (map.size()!=0){
+                    Log.v("buttonstart","whileloop"+map.size());
+                    Collection<String> list=map.values();
+                    for (MyImageView my: ListForImageView){
+                        for (String s:list){
+                            if (my.getViewId().equals(s)){
+                                my.getImage().updatebackImageView(R.drawable.peepsblue);
+                                my.getImage().updatefrontImageView(R.drawable.simle);
+                            }
+                        }
+                    }
+                    map=Crowds.simulation();
+
+
+                }
+
+
+            }
+        });
+
+        for (MyImageView my:ListForImageView){
+            if (my.getImage().getBack()==R.drawable.gray){
+                flag=false;
+                break;
+            }
+        }
 
     }
 }
