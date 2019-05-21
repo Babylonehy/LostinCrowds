@@ -29,7 +29,7 @@ _Lost in Crowds_ thanks to these open source/Creative Commons resources:
 
 
 **Font:** [Patrick Hand](https://fonts.google.com/specimen/Patrick+Hand) by Patrick Wagesreiter
-## originality statement
+## Originality statement
 We declare that the work we have submitted for  this assignment  it is entirely our own work, with the following documented exceptions:
 .
 
