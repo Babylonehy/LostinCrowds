@@ -29,3 +29,10 @@ _Lost in Crowds_ thanks to these open source/Creative Commons resources:
 
 
 **Font:** [Patrick Hand](https://fonts.google.com/specimen/Patrick+Hand) by Patrick Wagesreiter
+## Originality statement
+We declare that the work we have submitted for  this assignment  it is entirely our own work, with the following documented exceptions:
+.
+
+Signed: Xiang Li(u6716878), XiaoRong Ma(u6641690),Taichi Aso(u6577201)
+
+
