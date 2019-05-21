@@ -443,4 +443,11 @@ public class DrawLine extends View {
     public ArrayList<MyImageView[]> get_connectedImage(){
         return connectivepair;
     }
+
+    public void clear(){
+        for(float[] m:list){
+            list.remove(m);
+        }
+
+    }
 }

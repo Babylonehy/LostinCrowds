@@ -4,6 +4,8 @@
 
 package com.example.lostincrowds.Puzzle;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -40,8 +42,10 @@ public class Level3 extends BasicActivity {
 
     public DrawLine drawLine;
     private Button simulation;
+    private Button restart;
     private Boolean flag=true;
     private Crowds crowds;
+    private Context mcontext;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -50,6 +54,7 @@ public class Level3 extends BasicActivity {
         super.onCreate(savedInstanceState);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(HEIGHT ,
                 WIDTH);
+        mcontext=getApplicationContext();
         display = getWindowManager().getDefaultDisplay();
         MyImageView init1 = new MyImageView(this , R.drawable.peepsblue , R.drawable.simle , display.getWidth()/7*3 , 20 , 0 , "0");
         MyImageView init2 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7*2, display.getHeight()/7 , 0 , "1");
@@ -234,6 +239,7 @@ public class Level3 extends BasicActivity {
     }
     private void initView(){
         simulation=getButton();
+        restart=getButton2();
         simulation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -251,8 +257,6 @@ public class Level3 extends BasicActivity {
                         }
                     }
                     map=Crowds.simulation();
-
-
                 }
 
 
@@ -265,6 +269,21 @@ public class Level3 extends BasicActivity {
                 break;
             }
         }
+        restart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for (int i = 1; i <ListForImageView.size() ; i++) {
+                    ListForImageView.get(i).getImage().updatefrontImageView(R.drawable.eyesclose);
+                    ListForImageView.get(i).getImage().updatebackImageView(R.drawable.gray);
+                    ListForImageView.get(i).setPercentage(0);
+
+                }
+
+                Intent intent=new Intent(mcontext,Level3.class);
+
+                startActivity(intent);
+            }
+        });
 
     }
 
