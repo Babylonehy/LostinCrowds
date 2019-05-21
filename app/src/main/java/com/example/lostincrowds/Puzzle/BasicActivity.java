@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.lostincrowds.R;
 import com.example.lostincrowds.UI.DrawLine;
@@ -54,11 +55,21 @@ public class BasicActivity extends AppCompatActivity {
      */
     Button button;
 
+    public TextView getTextView() {
+        return textView;
+    }
+
+    public TextView getTextView2() {
+        return textView2;
+    }
+
+    TextView textView;
     public Button getButton2() {
         return button2;
     }
 
     Button button2;
+    TextView textView2;
     private PlayPauseView playPauseView;
 
     public DrawLine getDrawLine() {
@@ -98,6 +109,12 @@ public class BasicActivity extends AppCompatActivity {
     protected void init_button () {
         button2=findViewById(R.id.start2);
         button2.setId(View.NO_ID);
+        textView=findViewById(R.id.textView11);
+        textView.setId(View.NO_ID);
+        textView.bringToFront();
+        textView2=findViewById(R.id.textView22);
+        textView2.setId(View.NO_ID);
+        textView2.bringToFront();
         button = findViewById(R.id.start);
         button.setId(View.NO_ID);
         button.setOnClickListener(new View.OnClickListener() {

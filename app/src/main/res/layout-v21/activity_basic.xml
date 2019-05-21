@@ -44,6 +44,7 @@
         app:lineWidth="4dp" />
 
 
+
     <com.example.lostincrowds.UI.Stickline
         android:id="@+id/SticklineBasic"
         android:layout_width="wrap_content"
@@ -62,29 +63,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/linearLayout5"
+    <Button
+        android:id="@+id/start"
         android:layout_width="120dp"
         android:layout_height="50dp"
-        android:layout_gravity="center_horizontal">
-
-        <Button
-            android:id="@+id/start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button"
-            android:stateListAnimator="@null"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/fab"
-            app:layout_constraintHorizontal_bias="0.078"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            tools:text="@tools:sample/cities" />
-    </android.support.constraint.ConstraintLayout>
+        android:stateListAnimator="@null"
+        android:background="@drawable/button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/fab"
+        app:layout_constraintHorizontal_bias="0.366"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.991"
+        tools:text="@tools:sample/cities" />
 
     <Button
         android:id="@+id/start2"
+        android:stateListAnimator="@null"
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
@@ -93,7 +88,6 @@
         android:layout_marginEnd="228dp"
         android:layout_marginRight="228dp"
         android:background="@drawable/button"
-        android:stateListAnimator="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/start"
@@ -101,4 +95,28 @@
         app:layout_constraintVertical_bias="0.991"
         tools:text="Start simulation" />
 
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="74dp"
+        android:layout_height="29dp"
+        android:gravity="center"
+        android:text="Start"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/start2"
+        app:layout_constraintEnd_toEndOf="@+id/start2"
+        app:layout_constraintHorizontal_bias="0.456"
+        app:layout_constraintStart_toStartOf="@+id/start2"
+        app:layout_constraintTop_toTopOf="@+id/start2" />
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="74dp"
+        android:layout_height="29dp"
+        android:gravity="center"
+        android:text="Start"
+        android:textSize="6sp"
+        app:layout_constraintBottom_toBottomOf="@+id/start2"
+        app:layout_constraintEnd_toEndOf="@+id/start2"
+        app:layout_constraintHorizontal_bias="0.456"
+        app:layout_constraintStart_toStartOf="@+id/start2"
+        app:layout_constraintTop_toTopOf="@+id/start2" />
 </android.support.constraint.ConstraintLayout>

@@ -128,7 +128,7 @@ public class DrawLine extends View {
         paint = new Paint();
         paint.setColor(Color.parseColor("#00B7EE"));
         paint.setAntiAlias(true);
-        paint.setStrokeWidth(10);
+        paint.setStrokeWidth(6);
         setWillNotDraw(false);
         Pathpaint.setColor(Color.parseColor("#00B7EE"));
         Pathpaint.setAntiAlias(true);
@@ -181,7 +181,7 @@ public class DrawLine extends View {
         Path path = creatPath();
         //边框
         mPaint.setColor(Color.BLACK);
-        mPaint.setStrokeWidth(1);
+        mPaint.setStrokeWidth((float) 0.5);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setShader(null);
         canvas.drawPath(path , mPaint);
@@ -260,7 +260,6 @@ public class DrawLine extends View {
                         float[] data2 = {startX , startY , endX , endY};
                         list.add(data2);
                         setConnectivepair();
-
                         String id1 = connectivepair.get(connectivepair.size()-1)[0].getViewId();
                         String id2 = connectivepair.get(connectivepair.size()-1)[1].getViewId();
                         Crowds.connect(id1,id2);
