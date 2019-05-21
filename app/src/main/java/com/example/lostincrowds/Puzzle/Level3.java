@@ -40,6 +40,7 @@ public class Level3 extends BasicActivity {
     public DrawLine drawLine;
     private Button simulation;
     private Boolean flag=true;
+    private Crowds crowds;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -49,13 +50,18 @@ public class Level3 extends BasicActivity {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(HEIGHT ,
                 WIDTH);
         display = getWindowManager().getDefaultDisplay();
-        MyImageView init1 = new MyImageView(this , R.drawable.peepsblue , R.drawable.simle , display.getWidth()/7*3 , 20 , 100 , "1");
-        MyImageView init2 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7*2, display.getHeight()/7 , 0 , "2");
-        MyImageView init3 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7*4  , display.getHeight()/7 , 0 , "3");
-        MyImageView init4 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7*2+20 , display.getHeight()/7*2 , 0 , "4");
-        MyImageView init5 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7*4+20 , display.getHeight()/7*2 , 0 , "5");
-        MyImageView init6 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7*3+20 , display.getHeight()/7*3 , 0 , "6");
-
+        MyImageView init1 = new MyImageView(this , R.drawable.peepsblue , R.drawable.simle , display.getWidth()/7*3 , 20 , 0 , "0");
+        MyImageView init2 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7*2, display.getHeight()/7 , 0 , "1");
+        MyImageView init3 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7*4  , display.getHeight()/7 , 0 , "2");
+        MyImageView init4 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7*2+20 , display.getHeight()/7*2 , 0 , "3");
+        MyImageView init5 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7*4+20 , display.getHeight()/7*2 , 0 , "4");
+        MyImageView init6 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7*3+20 , display.getHeight()/7*3 , 0 , "5");
+        crowds.addInfector(init1.getViewId());
+        crowds.addPerson(init2.getViewId());
+        crowds.addPerson(init3.getViewId());
+        crowds.addPerson(init4.getViewId());
+        crowds.addPerson(init5.getViewId());
+        crowds.addPerson(init6.getViewId());
         addContentView(init1,params);
         addContentView(init2,params);
         addContentView(init3,params);
@@ -63,12 +69,18 @@ public class Level3 extends BasicActivity {
         addContentView(init5,params);
         addContentView(init6,params);
 
-        MyImageView init7 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7 , display.getHeight()/7*3 , 0 , "7");
-        MyImageView init8 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , 20 , display.getHeight()/7*4 , 0 , "8");
-        MyImageView init9 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7*2 , display.getHeight()/7*4 , 0 , "9");
-        MyImageView init10 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , 20+20 , display.getHeight()/7*5 , 0 , "10");
-        MyImageView init11 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7*2+20, display.getHeight()/7*5 , 0 , "11");
-        MyImageView init12 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7+20, display.getHeight()/7*6 , 0 , "12");
+        MyImageView init7 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7 , display.getHeight()/7*3 , 0 , "6");
+        MyImageView init8 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , 20 , display.getHeight()/7*4 , 0 , "7");
+        MyImageView init9 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7*2 , display.getHeight()/7*4 , 0 , "8");
+        MyImageView init10 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , 20+20 , display.getHeight()/7*5 , 0 , "9");
+        MyImageView init11 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7*2+20, display.getHeight()/7*5 , 0 , "10");
+        MyImageView init12 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7+20, display.getHeight()/7*6 , 0 , "11");
+        crowds.addPerson(init7.getViewId());
+        crowds.addPerson(init8.getViewId());
+        crowds.addPerson(init9.getViewId());
+        crowds.addPerson(init10.getViewId());
+        crowds.addPerson(init11.getViewId());
+        crowds.addPerson(init12.getViewId());
 
         MyImageView[] data={init7,init8};
         MyImageView[] data1={init7,init9};
@@ -110,12 +122,19 @@ public class Level3 extends BasicActivity {
         addContentView(init11,params);
         addContentView(init12,params);
 
-        MyImageView init13 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7*5 , display.getHeight()/7*3 , 0 , "13");
-        MyImageView init14 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7*4 , display.getHeight()/7*4 , 0 , "14");
-        MyImageView init15 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7*6 , display.getHeight()/7*4 , 0 , "15");
-        MyImageView init16 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7*4+20 , display.getHeight()/7*5 , 0 , "16");
-        MyImageView init17 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7*6+20 , display.getHeight()/7*5 , 0 , "17");
-        MyImageView init18 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7*5+20 , display.getHeight()/7*6 , 0 , "18");
+        MyImageView init13 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7*5 , display.getHeight()/7*3 , 0 , "12");
+        MyImageView init14 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7*4 , display.getHeight()/7*4 , 0 , "13");
+        MyImageView init15 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7*6 , display.getHeight()/7*4 , 0 , "14");
+        MyImageView init16 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7*4+20 , display.getHeight()/7*5 , 0 , "15");
+        MyImageView init17 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7*6+20 , display.getHeight()/7*5 , 0 , "16");
+        MyImageView init18 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7*5+20 , display.getHeight()/7*6 , 0 , "17");
+        crowds.addPerson(init13.getViewId());
+        crowds.addPerson(init14.getViewId());
+        crowds.addPerson(init15.getViewId());
+        crowds.addPerson(init16.getViewId());
+        crowds.addPerson(init17.getViewId());
+        crowds.addPerson(init18.getViewId());
+
 
         MyImageView[] data15={init13,init14};
         MyImageView[] data16={init13,init15};
@@ -186,7 +205,7 @@ public class Level3 extends BasicActivity {
             @Override
             public void onClick(View v) {
                 HashMap<String,String> map=Crowds.simulation();
-                while (map!=null){
+                while (map.values()!=null){
                     Collection<String> list=map.values();
                     for (MyImageView my: ListForImageView){
                         for (String s:list){
@@ -208,6 +227,7 @@ public class Level3 extends BasicActivity {
         for (MyImageView my:ListForImageView){
             if (my.getImage().getBack()==R.drawable.gray){
                 flag=false;
+                break;
             }
         }
 

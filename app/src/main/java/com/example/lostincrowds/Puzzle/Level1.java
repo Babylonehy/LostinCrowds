@@ -20,7 +20,7 @@ import static com.example.lostincrowds.ConstantValue.WIDTH;
 
 public class Level1 extends BasicActivity {
     public ArrayList<MyImageView> ListForImageView = new ArrayList<>();
-
+    private Crowds crowds;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate ( Bundle savedInstanceState ) {
@@ -39,15 +39,15 @@ public class Level1 extends BasicActivity {
         MyImageView init8 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/14*5 , display.getHeight()/16*11 , 0 , "7");
         MyImageView init9 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/14*7 , display.getHeight()/16*11 , 0 , "8");
 
-        Crowds.addInfector(init1.getViewId());
-        Crowds.addInfector(init2.getViewId());
-        Crowds.addInfector(init3.getViewId());
-        Crowds.addPerson(init4.getViewId());
-        Crowds.addPerson(init5.getViewId());
-        Crowds.addPerson(init6.getViewId());
-        Crowds.addPerson(init7.getViewId());
-        Crowds.addPerson(init8.getViewId());
-        Crowds.addPerson(init9.getViewId());
+        crowds.addInfector(init1.getViewId());
+        crowds.addInfector(init2.getViewId());
+        crowds.addInfector(init3.getViewId());
+        crowds.addPerson(init4.getViewId());
+        crowds.addPerson(init5.getViewId());
+        crowds.addPerson(init6.getViewId());
+        crowds.addPerson(init7.getViewId());
+        crowds.addPerson(init8.getViewId());
+        crowds.addPerson(init9.getViewId());
 
         addContentView(init1,params);
         addContentView(init2,params);
