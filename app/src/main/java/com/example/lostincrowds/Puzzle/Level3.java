@@ -6,6 +6,8 @@ package com.example.lostincrowds.Puzzle;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -56,6 +58,9 @@ public class Level3 extends BasicActivity {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(HEIGHT ,
                 WIDTH);
         mcontext=getApplicationContext();
+        Resources res = getResources();
+        Drawable drawable=res.getDrawable(R.drawable.bkg);
+        this.getWindow().setBackgroundDrawable(drawable);
         display = getWindowManager().getDefaultDisplay();
         MyImageView init1 = new MyImageView(this , R.drawable.peepsblue , R.drawable.simle , display.getWidth()/7*3 , 20 , 0 , "0");
         MyImageView init2 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth()/7*2, display.getHeight()/7 , 0 , "1");
@@ -241,6 +246,8 @@ public class Level3 extends BasicActivity {
     private void initView(){
         simulation=getButton();
         restart=getButton2();
+
+
         simulation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
