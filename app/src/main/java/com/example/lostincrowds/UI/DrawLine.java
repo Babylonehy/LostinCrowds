@@ -119,7 +119,6 @@ public class DrawLine extends View {
         }
     };
     private Rect outRect = new Rect();
-    //初始化
 
 
     private void init () {
@@ -211,21 +210,17 @@ public class DrawLine extends View {
                         startX = myImageView.getXpos();
                         startY = myImageView.getYpos();
                         cutFlag = false;
+                        pathFlag=true;
                         break;
                     }
-//                    if (event.getX() > myImageView.getX() && event.getX() < (myImageView.getX() + 150)
-//                            && event.getY() > myImageView.getY() && myImageView.getY() < (myImageView.getY() + 150)) {
-//                        startX = myImageView.getXpos();
-//                        startY = myImageView.getYpos();
-//                        cutFlag = false;
-//
-//
-//                    }
 
                 }
 //                PATH
-                pathStartX = event.getX();
-                pathStartY = event.getY();
+                if (pathFlag){
+                    pathStartX = event.getX();
+                    pathStartY = event.getY();
+                }
+
 
                 isDiff = true;
                 removeCallbacks(diff);
@@ -238,14 +233,12 @@ public class DrawLine extends View {
 
                 break;
             case MotionEvent.ACTION_MOVE:
-//                endX = event.getX();
-//                endY = event.getY();
+
                 pathEndX = event.getX();
                 pathEndY = event.getY();
-                pathFlag = true;
+
                 if (cutFlag) {
                     onTouchEvent2(event);
-
                 }
                 onMove(event.getX() , event.getY());
                 postInvalidate();
@@ -255,9 +248,6 @@ public class DrawLine extends View {
                 endX = event.getX();
                 endY = event.getY();
                 pathFlag = false;
-
-                float minx=10000;
-                float miny=10000;
                 for (int i = 0; i < setImageView.size(); i++) {
                     MyImageView myImageView = setImageView.get(i);
                     float x=Math.abs(myImageView.getXpos()-event.getX());
@@ -273,23 +263,11 @@ public class DrawLine extends View {
                                     (Math.abs(my.getXpos()-endX)<1 &&Math.abs(my.getYpos()-endY)<1)) {
                                 connective_line[0]=my;
                                 counter=counter+1;
-
                             }
                         }
                         connectivepair.add(connective_line);
-
                         break;
                     }
-//                    if (event.getX() > myImageView.getX() && event.getX() < (myImageView.getX() + 150)
-//                            && event.getY() > myImageView.getY() && myImageView.getY() < (myImageView.getY() + 150)) {
-//                        endX = myImageView.getXpos();
-//                        endY = myImageView.getYpos();
-//                        float[] data2 = {startX , startY , endX , endY};
-//                        list.add(data2);
-//                        Line line = new Line(startX , startY , endX , endY , true);
-//                        connective_line.add(line);
-//                        break;
-//                    }
                 }
                 cutFlag = true;
 
@@ -323,8 +301,6 @@ public class DrawLine extends View {
                 curY = (event2.getY());
                 for (int i = 0; i < list.size(); i++) {
                     float[] data = list.get(i);
-                    boolean pdline=((curX >= data[0] && curX <= data[2]) || (curX <= data[0] && curX >= data[2])) && ((curY >= data[1]
-                            && curY <= data[3]) || (curY <= data[1] && curY >= data[3]));
                     float a= (float) Math.sqrt((curX-data[0])*(curX-data[0])+(curY-data[1])*(curY-data[1]));
                     float b= (float) Math.sqrt((curX-data[2])*(curX-data[2])+(curY-data[3])*(curY-data[3]));
                     float now =  a+b;
@@ -334,31 +310,28 @@ public class DrawLine extends View {
 
                         if (Math.abs(now - or) < 200) {
                             list.remove(i);
-                            for (int j = 0; j <connectivepair.size() ; j++) {
-                                if (((Math.abs(connectivepair.get(j)[0].getXpos()-list.get(i)[0])<1&&
-                                        Math.abs(connectivepair.get(j)[0].getYpos()-list.get(i)[1])<1)||
-                                        (Math.abs(connectivepair.get(j)[0].getXpos()-list.get(i)[2])<1&&
-                                                Math.abs(connectivepair.get(j)[0].getYpos()-list.get(i)[3])<1))&&
-                                        ((Math.abs(connectivepair.get(j)[1].getXpos()-list.get(i)[0])<1&&
-                                                Math.abs(connectivepair.get(j)[1].getYpos()-list.get(i)[1])<1)||
-                                                (Math.abs(connectivepair.get(j)[1].getXpos()-list.get(i)[2])<1&&
-                                                        Math.abs(connectivepair.get(j)[1].getYpos()-list.get(i)[3])<1))){
-                                    connectivepair.remove(j);
-                                    break;
-
-                                }
-                            }
+//                            for (int j = 0; j <connectivepair.size() ; j++) {
+//                                if (((Math.abs(connectivepair.get(j)[0].getXpos()-list.get(i)[0])<1&&
+//                                        Math.abs(connectivepair.get(j)[0].getYpos()-list.get(i)[1])<1)||
+//                                        (Math.abs(connectivepair.get(j)[0].getXpos()-list.get(i)[2])<1&&
+//                                                Math.abs(connectivepair.get(j)[0].getYpos()-list.get(i)[3])<1))&&
+//                                        ((Math.abs(connectivepair.get(j)[1].getXpos()-list.get(i)[0])<1&&
+//                                                Math.abs(connectivepair.get(j)[1].getYpos()-list.get(i)[1])<1)||
+//                                                (Math.abs(connectivepair.get(j)[1].getXpos()-list.get(i)[2])<1&&
+//                                                        Math.abs(connectivepair.get(j)[1].getYpos()-list.get(i)[3])<1))){
+//                                    connectivepair.remove(j);
+//                                    break;
+//
+//                                }
+//                            }
                             Log.v("list", list + " "+connectivepair+" ");
                             break;
                         }
                     }
-                    Log.v("Drawline", list+" "+connectivepair+" " + (Math.abs(now - or) < 200 ? "T" : "f"));
-
+                    Log.v("Drawline", list+" "+ (Math.abs(now - or) < 200 ? "T" : "f"));
                     break;
-
                 }
                 break;
-
         }
         return true;
     }
