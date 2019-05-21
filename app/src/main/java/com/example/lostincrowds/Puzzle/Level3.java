@@ -7,6 +7,7 @@ package com.example.lostincrowds.Puzzle;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.widget.Button;
@@ -98,6 +99,23 @@ public class Level3 extends BasicActivity {
         MyImageView[] data13={init10,init12};
         MyImageView[] data14={init11,init12};
 
+        crowds.connect(init7.getViewId(),init8.getViewId());
+        crowds.connect(init7.getViewId(),init9.getViewId());
+        crowds.connect(init7.getViewId(),init10.getViewId());
+        crowds.connect(init7.getViewId(),init11.getViewId());
+        crowds.connect(init7.getViewId(),init12.getViewId());
+        crowds.connect(init8.getViewId(),init9.getViewId());
+        crowds.connect(init8.getViewId(),init10.getViewId());
+        crowds.connect(init8.getViewId(),init11.getViewId());
+        crowds.connect(init8.getViewId(),init12.getViewId());
+        crowds.connect(init9.getViewId(),init10.getViewId());
+        crowds.connect(init9.getViewId(),init11.getViewId());
+        crowds.connect(init9.getViewId(),init12.getViewId());
+        crowds.connect(init10.getViewId(),init11.getViewId());
+        crowds.connect(init10.getViewId(),init12.getViewId());
+        crowds.connect(init11.getViewId(),init12.getViewId());
+
+
         unconnectivepair.add(data);
         unconnectivepair.add(data1);
         unconnectivepair.add(data2);
@@ -135,7 +153,6 @@ public class Level3 extends BasicActivity {
         crowds.addPerson(init17.getViewId());
         crowds.addPerson(init18.getViewId());
 
-
         MyImageView[] data15={init13,init14};
         MyImageView[] data16={init13,init15};
         MyImageView[] data17={init13,init16};
@@ -151,6 +168,22 @@ public class Level3 extends BasicActivity {
         MyImageView[] data27={init16,init17};
         MyImageView[] data28={init16,init18};
         MyImageView[] data29={init17,init18};
+
+        crowds.connect(init13.getViewId(),init14.getViewId());
+        crowds.connect(init13.getViewId(),init15.getViewId());
+        crowds.connect(init13.getViewId(),init16.getViewId());
+        crowds.connect(init13.getViewId(),init17.getViewId());
+        crowds.connect(init13.getViewId(),init18.getViewId());
+        crowds.connect(init14.getViewId(),init15.getViewId());
+        crowds.connect(init14.getViewId(),init16.getViewId());
+        crowds.connect(init14.getViewId(),init17.getViewId());
+        crowds.connect(init14.getViewId(),init18.getViewId());
+        crowds.connect(init15.getViewId(),init16.getViewId());
+        crowds.connect(init15.getViewId(),init17.getViewId());
+        crowds.connect(init15.getViewId(),init18.getViewId());
+        crowds.connect(init16.getViewId(),init17.getViewId());
+        crowds.connect(init16.getViewId(),init18.getViewId());
+        crowds.connect(init17.getViewId(),init18.getViewId());
 
         unconnectivepair.add(data15);
         unconnectivepair.add(data16);
@@ -204,8 +237,10 @@ public class Level3 extends BasicActivity {
         simulation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HashMap<String,String> map=Crowds.simulation();
-                while (map.values()!=null){
+                Log.v("buttonstart","in");
+                HashMap<String,String> map=crowds.simulation();
+                while (map.size()!=0){
+                    Log.v("buttonstart","whileloop"+map.size());
                     Collection<String> list=map.values();
                     for (MyImageView my: ListForImageView){
                         for (String s:list){
