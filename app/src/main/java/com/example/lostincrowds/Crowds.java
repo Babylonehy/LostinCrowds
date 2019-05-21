@@ -34,7 +34,7 @@ public class Crowds {
     }
 
     public static void addInfector(String s){
-        Node node = new Node(true,100, new HashSet<String>());
+        Node node = new Node(true,0, new HashSet<String>());
         people.put(s, node);
     }
 
@@ -180,13 +180,14 @@ public class Crowds {
 
         crowds.addPerson("A");
         crowds.addPerson("B");
+        crowds.addPerson("C");
 
-        //crowds.connect("I1","A");
+
+        crowds.connect("I1","A");
         //crowds.connect("I2","A");
+        crowds.connect("B","A");
+        crowds.connect("A","C");
 
-        //crowds.connect("I1","I2");
-
-        //crowds.connect("B","A");
 
         //simulateAll();
 
@@ -203,6 +204,8 @@ public class Crowds {
         for (String key:crowds.people.keySet()){
             System.out.println(key+": "+crowds.people.get(key).indicator+", "+crowds.people.get(key).status+", "+crowds.people.get(key).linkedPerson);
         }
+        System.out.println("\n"+"simulate "+simulation()+"\n");
+
 
     }
 
