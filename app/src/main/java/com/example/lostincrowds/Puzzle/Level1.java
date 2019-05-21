@@ -13,11 +13,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.daimajia.easing.linear.Linear;
 import com.example.lostincrowds.Crowds;
 import com.example.lostincrowds.R;
 import com.example.lostincrowds.UI.DrawLine;
 import com.example.lostincrowds.UI.MyImageView;
+import com.hanks.htextview.line.LineTextView;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -99,29 +102,42 @@ public class Level1 extends BasicActivity {
                 Log.v("buttonstart","in");
                 HashMap<String,String> map=crowds.simulation();
                 while (map.size()!=0){
+                    flag=true;
                     Log.v("buttonstart","whileloop"+map.size());
                     Collection<String> list=map.values();
                     for (MyImageView my: ListForImageView){
                         for (String s:list){
                             if (my.getViewId().equals(s)){
-                                my.getImage().updatebackImageView(R.drawable.peepsblue);
+                                my.getImage().updatebackImageView(R.drawable.peepsyellow);
                                 my.getImage().updatefrontImageView(R.drawable.simle);
                             }
                         }
                     }
                     map=Crowds.simulation();
                 }
+                for (MyImageView my:ListForImageView){
+                    if (my.getImage().getBack()==R.drawable.gray){
+                        Log.v("Finished",flag.toString());
+                        flag=false;
+                        break;
+                    }
+                }
+
+                Log.v("Finished1",flag.toString());
+                if (flag){
+                    Log.v("Finished2",flag.toString());
+                    Toast.makeText(mcontext,"well done",Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Log.v("Finished2",flag.toString());
+                    Toast.makeText(mcontext,"Keep working!",Toast.LENGTH_LONG).show();
+                }
 
 
             }
         });
 
-        for (MyImageView my:ListForImageView){
-            if (my.getImage().getBack()==R.drawable.gray){
-                flag=false;
-                break;
-            }
-        }
+
         restart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
