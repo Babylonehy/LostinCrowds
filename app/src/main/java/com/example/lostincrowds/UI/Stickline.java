@@ -39,7 +39,7 @@ public class Stickline extends View {
         paint = new Paint();
         paint.setColor(Color.GRAY);
         paint.setAntiAlias(true);
-        paint.setStrokeWidth(20);
+        paint.setStrokeWidth(10);
 
     }
 
