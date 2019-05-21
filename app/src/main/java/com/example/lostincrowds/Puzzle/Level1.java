@@ -4,6 +4,8 @@
 
 package com.example.lostincrowds.Puzzle;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -29,7 +31,9 @@ public class Level1 extends BasicActivity {
     public DrawLine drawLine;
     private Crowds crowds;
     private Button simulation;
+    private Button restart;
     private Boolean flag=true;
+    private Context mcontext;
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -40,6 +44,7 @@ public class Level1 extends BasicActivity {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(HEIGHT ,
                 WIDTH);
         display = getWindowManager().getDefaultDisplay();
+        mcontext=getApplicationContext();
         MyImageView init1 = new MyImageView(this , R.drawable.peepsyellow , R.drawable.eyesopen , display.getWidth()/14*6 , display.getHeight()/16, 0 , "0");
         MyImageView init2 = new MyImageView(this , R.drawable.peepsyellow , R.drawable.eyesopen, display.getWidth()/14*4, display.getHeight()/16*3 , 0 , "1");
         MyImageView init3 = new MyImageView(this , R.drawable.peepsyellow , R.drawable.eyesopen, display.getWidth()/14*8  , display.getHeight()/16*3 , 0 , "2");
@@ -87,6 +92,7 @@ public class Level1 extends BasicActivity {
 
     private void initView(){
         simulation=getButton();
+        restart=getButton2();
         simulation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,8 +110,6 @@ public class Level1 extends BasicActivity {
                         }
                     }
                     map=Crowds.simulation();
-
-
                 }
 
 
@@ -118,6 +122,21 @@ public class Level1 extends BasicActivity {
                 break;
             }
         }
+        restart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for (int i = 1; i <ListForImageView.size() ; i++) {
+                    ListForImageView.get(i).getImage().updatefrontImageView(R.drawable.eyesclose);
+                    ListForImageView.get(i).getImage().updatebackImageView(R.drawable.gray);
+                    ListForImageView.get(i).setPercentage(0);
+
+                }
+
+                Intent intent=new Intent(mcontext,Level1.class);
+
+                startActivity(intent);
+            }
+        });
 
     }
 }
