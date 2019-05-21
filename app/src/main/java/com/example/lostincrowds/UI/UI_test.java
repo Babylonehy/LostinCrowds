@@ -65,7 +65,7 @@ public class UI_test extends AppCompatActivity {
         unconnectivepair.add(imageView3);
         unconnectivepair.add(imageView2);
         stickline = findViewById(R.id.uncuttableline);
-        stickline.setUncuttable_pair(unconnectivepair);
+        //stickline.setUncuttable_pair(unconnectivepair);
         addContentView(imageView , params);
         addContentView(imageView2 , params);
         addContentView(imageView3 , params);

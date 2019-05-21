@@ -267,8 +267,17 @@ public class DrawLine extends View {
                         endY = myImageView.getYpos();
                         float[] data2 = {startX , startY , endX , endY};
                         list.add(data2);
-                        Line line = new Line(startX , startY , endX , endY , true);
-                        connective_line.add(line);
+                        int counter=0;
+                        for (MyImageView my :setImageView){
+                            if((Math.abs(my.getXpos()-startX)<1 &&Math.abs(my.getYpos()-startY)<1)||
+                                    (Math.abs(my.getXpos()-endX)<1 &&Math.abs(my.getYpos()-endY)<1)) {
+                                connective_line[0]=my;
+                                counter=counter+1;
+
+                            }
+                        }
+                        connectivepair.add(connective_line);
+
                         break;
                     }
 //                    if (event.getX() > myImageView.getX() && event.getX() < (myImageView.getX() + 150)
@@ -314,14 +323,10 @@ public class DrawLine extends View {
                 curY = (event2.getY());
                 for (int i = 0; i < list.size(); i++) {
                     float[] data = list.get(i);
-//                    boolean pdline = (int)(curX - data[0]) * (data[1] - data[3]) == (int)(data[0] - data[2])
-//                            * (curY - data[3]);
                     boolean pdline=((curX >= data[0] && curX <= data[2]) || (curX <= data[0] && curX >= data[2])) && ((curY >= data[1]
                             && curY <= data[3]) || (curY <= data[1] && curY >= data[3]));
                     float a= (float) Math.sqrt((curX-data[0])*(curX-data[0])+(curY-data[1])*(curY-data[1]));
                     float b= (float) Math.sqrt((curX-data[2])*(curX-data[2])+(curY-data[3])*(curY-data[3]));
-//                    float a = ((data[1] - data[3]) / (data[0] - data[2]));
-//                    float b = ((data[0] * data[3] - data[1] * data[2]) / (data[0] - data[2]));
                     float now =  a+b;
                     float or= (float) Math.sqrt((data[0]-data[2])*(data[0]-data[2])+(data[1]-data[3])*(data[1]-data[3]));
                     if (((curX >= data[0]-10 && curX <= data[2]+10) || (curX <= data[0]+10 && curX >= data[2]-10)) && ((curY >= data[1]-10
@@ -329,22 +334,27 @@ public class DrawLine extends View {
 
                         if (Math.abs(now - or) < 200) {
                             list.remove(i);
-                            Log.v("list", list + "");
+                            for (int j = 0; j <connectivepair.size() ; j++) {
+                                if (((Math.abs(connectivepair.get(j)[0].getXpos()-list.get(i)[0])<1&&
+                                        Math.abs(connectivepair.get(j)[0].getYpos()-list.get(i)[1])<1)||
+                                        (Math.abs(connectivepair.get(j)[0].getXpos()-list.get(i)[2])<1&&
+                                                Math.abs(connectivepair.get(j)[0].getYpos()-list.get(i)[3])<1))&&
+                                        ((Math.abs(connectivepair.get(j)[1].getXpos()-list.get(i)[0])<1&&
+                                                Math.abs(connectivepair.get(j)[1].getYpos()-list.get(i)[1])<1)||
+                                                (Math.abs(connectivepair.get(j)[1].getXpos()-list.get(i)[2])<1&&
+                                                        Math.abs(connectivepair.get(j)[1].getYpos()-list.get(i)[3])<1))){
+                                    connectivepair.remove(j);
+                                    break;
+
+                                }
+                            }
+                            Log.v("list", list + " "+connectivepair+" ");
                             break;
                         }
                     }
-                    Log.v("Drawline", curX + " " + curY + " " + now + " " + a + " " + b + " " + or + "" +pdline+ (Math.abs(now - or) < 200 ? "T" : "f"));
+                    Log.v("Drawline", list+" "+connectivepair+" " + (Math.abs(now - or) < 200 ? "T" : "f"));
 
                     break;
-
-
-//                    if (((curX > data[0] && curX < data[2]) || (curX < data[0] && curX > data[2])) && ((curY > data[1]
-//                            && curY < data[3]) || (curY < data[1] && curY > data[3]))) {
-//                        if (Math.abs(now - curY) < 100) {
-//                            list.remove(i);
-//                            break;
-//                        }
-//                    }
 
                 }
                 break;
@@ -414,14 +424,18 @@ public class DrawLine extends View {
     /**
      * The Connective line.
      */
-    ArrayList<Line> connective_line = new ArrayList<>();
+    MyImageView[] connective_line=new MyImageView[2];
+    ArrayList<MyImageView[]> connectivepair=new ArrayList<>();
+
+
 
     /**
      * Gets line.
      *
      * @return the line
      */
-    public ArrayList<Line> getconnective_line () {
-        return connective_line;
+   
+    public ArrayList<MyImageView[]> get_connectedImage(){
+        return connectivepair;
     }
 }

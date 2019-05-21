@@ -14,7 +14,7 @@ public class Stickline extends View {
 
     public ArrayList<Line> uncuttableLine = new ArrayList<>();
     private Paint paint;
-    private ArrayList<MyImageView> uncuttable_pair = new ArrayList<>();
+    private ArrayList<MyImageView[]> uncuttable_pair = new ArrayList<>();
 
     public Stickline ( Context context ) {
         this(context , null);
@@ -43,7 +43,7 @@ public class Stickline extends View {
 
     }
 
-    public void setUncuttable_pair ( ArrayList<MyImageView> uncuttable_pair ) {
+    public void setUncuttable_pair ( ArrayList<MyImageView[]> uncuttable_pair ) {
         this.uncuttable_pair = uncuttable_pair;
     }
 
@@ -57,8 +57,8 @@ public class Stickline extends View {
                 break;
             } else {
                 Log.v("Uncut" , "In to Uncut3");
-                MyImageView myImageView = uncuttable_pair.get(i);
-                MyImageView myImageView1 = uncuttable_pair.get(i + 1);
+                MyImageView myImageView = uncuttable_pair.get(i)[0];
+                MyImageView myImageView1 = uncuttable_pair.get(i)[1];
                 Log.v("Uncut" , myImageView.getXpos() + " " + myImageView.getYpos() + " " +
                         myImageView1.getXpos() + " " + myImageView1.getYpos());
                 canvas.drawLine(myImageView.getXpos() , myImageView.getYpos() ,

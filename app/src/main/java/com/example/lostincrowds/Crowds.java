@@ -34,7 +34,7 @@ public class Crowds {
     }
 
     public static void addInfector(String s){
-        Node node = new Node(true,0, new HashSet<String>());
+        Node node = new Node(true,100, new HashSet<String>());
         people.put(s, node);
     }
 
