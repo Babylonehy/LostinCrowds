@@ -14,6 +14,7 @@ import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.lostincrowds.Crowds;
 import com.example.lostincrowds.R;
@@ -246,6 +247,7 @@ public class Level3 extends BasicActivity {
                 Log.v("buttonstart","in");
                 HashMap<String,String> map=crowds.simulation();
                 while (map.size()!=0){
+                    flag=true;
                     Log.v("buttonstart","whileloop"+map.size());
                     Collection<String> list=map.values();
                     for (MyImageView my: ListForImageView){
@@ -258,17 +260,29 @@ public class Level3 extends BasicActivity {
                     }
                     map=Crowds.simulation();
                 }
+                for (MyImageView my:ListForImageView){
+                    if (my.getImage().getBack()==R.drawable.gray){
+                        Log.v("Finished",flag.toString());
+                        flag=false;
+                        break;
+                    }
+                }
+
+                Log.v("Finished1",flag.toString());
+                if (flag){
+                    Log.v("Finished2",flag.toString());
+                    Toast.makeText(mcontext,"well done",Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Log.v("Finished2",flag.toString());
+                    Toast.makeText(mcontext,"Keep working!",Toast.LENGTH_LONG).show();
+                }
 
 
             }
         });
 
-        for (MyImageView my:ListForImageView){
-            if (my.getImage().getBack()==R.drawable.gray){
-                flag=false;
-                break;
-            }
-        }
+
         restart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
