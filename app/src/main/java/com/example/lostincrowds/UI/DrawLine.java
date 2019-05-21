@@ -257,15 +257,7 @@ public class DrawLine extends View {
                         endY = myImageView.getYpos();
                         float[] data2 = {startX , startY , endX , endY};
                         list.add(data2);
-                        int counter=0;
-                        for (MyImageView my :setImageView){
-                            if((Math.abs(my.getXpos()-startX)<1 &&Math.abs(my.getYpos()-startY)<1)||
-                                    (Math.abs(my.getXpos()-endX)<1 &&Math.abs(my.getYpos()-endY)<1)) {
-                                connective_line[0]=my;
-                                counter=counter+1;
-                            }
-                        }
-                        connectivepair.add(connective_line);
+                        setConnectivepair();
                         break;
                     }
                 }
@@ -308,22 +300,9 @@ public class DrawLine extends View {
                     if (((curX >= data[0]-10 && curX <= data[2]+10) || (curX <= data[0]+10 && curX >= data[2]-10)) && ((curY >= data[1]-10
                             && curY <= data[3]+10) || (curY <= data[1]+10 && curY >= data[3]-10))) {
 
-                        if (Math.abs(now - or) < 200) {
+                        if (Math.abs(now - or) < 400) {
                             list.remove(i);
-//                            for (int j = 0; j <connectivepair.size() ; j++) {
-//                                if (((Math.abs(connectivepair.get(j)[0].getXpos()-list.get(i)[0])<1&&
-//                                        Math.abs(connectivepair.get(j)[0].getYpos()-list.get(i)[1])<1)||
-//                                        (Math.abs(connectivepair.get(j)[0].getXpos()-list.get(i)[2])<1&&
-//                                                Math.abs(connectivepair.get(j)[0].getYpos()-list.get(i)[3])<1))&&
-//                                        ((Math.abs(connectivepair.get(j)[1].getXpos()-list.get(i)[0])<1&&
-//                                                Math.abs(connectivepair.get(j)[1].getYpos()-list.get(i)[1])<1)||
-//                                                (Math.abs(connectivepair.get(j)[1].getXpos()-list.get(i)[2])<1&&
-//                                                        Math.abs(connectivepair.get(j)[1].getYpos()-list.get(i)[3])<1))){
-//                                    connectivepair.remove(j);
-//                                    break;
-//
-//                                }
-//                            }
+                            setConnectivepair();
                             Log.v("list", list + " "+connectivepair+" ");
                             break;
                         }
@@ -400,7 +379,21 @@ public class DrawLine extends View {
     MyImageView[] connective_line=new MyImageView[2];
     ArrayList<MyImageView[]> connectivepair=new ArrayList<>();
 
+    public void setConnectivepair() {
 
+        for (int i = 0; i <list.size() ; i++) {
+            int counter=0;
+            for (MyImageView my :setImageView){
+                if((Math.abs(my.getXpos()-startX)<1 &&Math.abs(my.getYpos()-startY)<1)||
+                        (Math.abs(my.getXpos()-endX)<1 &&Math.abs(my.getYpos()-endY)<1)) {
+                    connective_line[0]=my;
+                    counter=counter+1;
+                }
+            }
+            connectivepair.add(connective_line);
+        }
+
+    }
 
     /**
      * Gets line.
