@@ -77,8 +77,6 @@ public class Board extends User{
                 e.printStackTrace();
             }
 
-            // Do something with the response
-            Log.v("Json" , success);
 
         }
 
@@ -90,6 +88,7 @@ public class Board extends User{
      * @return the boards
      */
     public HashMap<Integer, KvPair> getBoards () {
+        Log.v("Boards/board" , String.valueOf(boards.size()));
         return boards;
     }
 }

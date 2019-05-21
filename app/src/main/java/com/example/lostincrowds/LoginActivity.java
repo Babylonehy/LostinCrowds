@@ -68,8 +68,8 @@ public class LoginActivity extends AppCompatActivity {
         textView1.setTypeface(typeface);
         textView1.setTextColor(Color.DKGRAY);
         textView1.setTextSize(24);
-        textView1.setX((float) (display.getWidth() / 2.8));
-        textView1.setY((float) (display.getHeight() / 2.5));
+        textView1.setX((float) (display.getWidth() / 3.0));
+        textView1.setY((float) (display.getHeight() / 4.0));
 
         JumpingBeans jumpingBeans1 = JumpingBeans.with(textView1)
                 .makeTextJump(0 , textView1.getText().length())

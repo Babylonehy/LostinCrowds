@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -48,6 +49,13 @@ public class BoardItem extends ConstraintLayout {
      */
     public BoardItem ( Context context , AttributeSet attrs ) {
         super(context , attrs);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.board , this);
+        textView = findViewById(R.id.textViewboard);
+        numberProgressBar = findViewById(R.id.number_progress_bar_board);
+        textView.setId(View.NO_ID);
+        numberProgressBar.setId(View.NO_ID);
+        numberProgressBar.setMax(5);
     }
 
     /**
@@ -57,7 +65,9 @@ public class BoardItem extends ConstraintLayout {
      * @param level the level
      */
     public void update ( String name , Integer level ) {
+        Log.v("Items",name);
         setting(name , level);
+        invalidate();
     }
 
     private void setting ( String name , Integer level ) {
