@@ -151,9 +151,9 @@ public class Crowds {
                     node.indicator=true;
                     update();
                     set.add(s2);
-                    map.put(s1,s2);
+                    map.put(s2,s2);
                 }else if(set.contains(s2)){
-                    map.put(s1,s2);
+                    map.put(s2,s2);
                 }
             }
         }

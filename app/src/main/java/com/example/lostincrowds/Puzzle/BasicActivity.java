@@ -53,6 +53,12 @@ public class BasicActivity extends AppCompatActivity {
      * The Button.
      */
     Button button;
+
+    public Button getButton2() {
+        return button2;
+    }
+
+    Button button2;
     private PlayPauseView playPauseView;
 
     public DrawLine getDrawLine() {
@@ -90,9 +96,17 @@ public class BasicActivity extends AppCompatActivity {
     }
 
     protected void init_button () {
+        button2=findViewById(R.id.start2);
+        button2.setId(View.NO_ID);
         button = findViewById(R.id.start);
         button.setId(View.NO_ID);
         button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick ( View v ) {
+
+            }
+        });
+        button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick ( View v ) {
 
