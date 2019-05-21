@@ -71,5 +71,6 @@ public class Level1 extends BasicActivity {
 
         getDrawLine().setImageView(ListForImageView);
 
+
     }
 }
