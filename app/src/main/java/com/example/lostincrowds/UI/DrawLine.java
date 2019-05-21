@@ -15,6 +15,8 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.example.lostincrowds.Crowds;
+
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
@@ -119,7 +121,6 @@ public class DrawLine extends View {
         }
     };
     private Rect outRect = new Rect();
-    //初始化
 
 
     private void init () {
@@ -211,21 +212,17 @@ public class DrawLine extends View {
                         startX = myImageView.getXpos();
                         startY = myImageView.getYpos();
                         cutFlag = false;
+                        pathFlag=true;
                         break;
                     }
-//                    if (event.getX() > myImageView.getX() && event.getX() < (myImageView.getX() + 150)
-//                            && event.getY() > myImageView.getY() && myImageView.getY() < (myImageView.getY() + 150)) {
-//                        startX = myImageView.getXpos();
-//                        startY = myImageView.getYpos();
-//                        cutFlag = false;
-//
-//
-//                    }
 
                 }
 //                PATH
-                pathStartX = event.getX();
-                pathStartY = event.getY();
+                if (pathFlag){
+                    pathStartX = event.getX();
+                    pathStartY = event.getY();
+                }
+
 
                 isDiff = true;
                 removeCallbacks(diff);
@@ -238,14 +235,12 @@ public class DrawLine extends View {
 
                 break;
             case MotionEvent.ACTION_MOVE:
-//                endX = event.getX();
-//                endY = event.getY();
+
                 pathEndX = event.getX();
                 pathEndY = event.getY();
-                pathFlag = true;
+
                 if (cutFlag) {
                     onTouchEvent2(event);
-
                 }
                 onMove(event.getX() , event.getY());
                 postInvalidate();
@@ -255,9 +250,6 @@ public class DrawLine extends View {
                 endX = event.getX();
                 endY = event.getY();
                 pathFlag = false;
-
-                float minx=10000;
-                float miny=10000;
                 for (int i = 0; i < setImageView.size(); i++) {
                     MyImageView myImageView = setImageView.get(i);
                     float x=Math.abs(myImageView.getXpos()-event.getX());
@@ -267,29 +259,17 @@ public class DrawLine extends View {
                         endY = myImageView.getYpos();
                         float[] data2 = {startX , startY , endX , endY};
                         list.add(data2);
-                        int counter=0;
-                        for (MyImageView my :setImageView){
-                            if((Math.abs(my.getXpos()-startX)<1 &&Math.abs(my.getYpos()-startY)<1)||
-                                    (Math.abs(my.getXpos()-endX)<1 &&Math.abs(my.getYpos()-endY)<1)) {
-                                connective_line[0]=my;
-                                counter=counter+1;
+                        setConnectivepair();
 
-                            }
-                        }
-                        connectivepair.add(connective_line);
+                        String id1 = connectivepair.get(connectivepair.size()-1)[0].getViewId();
+                        String id2 = connectivepair.get(connectivepair.size()-1)[1].getViewId();
+                        Crowds.connect(id1,id2);
+                        setImageView.get(Integer.parseInt(id1)).setPercentage(Crowds.getPercentage(id1));
+                        setImageView.get(Integer.parseInt(id2)).setPercentage(Crowds.getPercentage(id2));
 
                         break;
+
                     }
-//                    if (event.getX() > myImageView.getX() && event.getX() < (myImageView.getX() + 150)
-//                            && event.getY() > myImageView.getY() && myImageView.getY() < (myImageView.getY() + 150)) {
-//                        endX = myImageView.getXpos();
-//                        endY = myImageView.getYpos();
-//                        float[] data2 = {startX , startY , endX , endY};
-//                        list.add(data2);
-//                        Line line = new Line(startX , startY , endX , endY , true);
-//                        connective_line.add(line);
-//                        break;
-//                    }
                 }
                 cutFlag = true;
 
@@ -323,42 +303,53 @@ public class DrawLine extends View {
                 curY = (event2.getY());
                 for (int i = 0; i < list.size(); i++) {
                     float[] data = list.get(i);
-                    boolean pdline=((curX >= data[0] && curX <= data[2]) || (curX <= data[0] && curX >= data[2])) && ((curY >= data[1]
-                            && curY <= data[3]) || (curY <= data[1] && curY >= data[3]));
                     float a= (float) Math.sqrt((curX-data[0])*(curX-data[0])+(curY-data[1])*(curY-data[1]));
                     float b= (float) Math.sqrt((curX-data[2])*(curX-data[2])+(curY-data[3])*(curY-data[3]));
                     float now =  a+b;
                     float or= (float) Math.sqrt((data[0]-data[2])*(data[0]-data[2])+(data[1]-data[3])*(data[1]-data[3]));
                     if (((curX >= data[0]-10 && curX <= data[2]+10) || (curX <= data[0]+10 && curX >= data[2]-10)) && ((curY >= data[1]-10
                             && curY <= data[3]+10) || (curY <= data[1]+10 && curY >= data[3]-10))) {
-
-                        if (Math.abs(now - or) < 200) {
-                            list.remove(i);
-                            for (int j = 0; j <connectivepair.size() ; j++) {
-                                if (((Math.abs(connectivepair.get(j)[0].getXpos()-list.get(i)[0])<1&&
-                                        Math.abs(connectivepair.get(j)[0].getYpos()-list.get(i)[1])<1)||
-                                        (Math.abs(connectivepair.get(j)[0].getXpos()-list.get(i)[2])<1&&
-                                                Math.abs(connectivepair.get(j)[0].getYpos()-list.get(i)[3])<1))&&
-                                        ((Math.abs(connectivepair.get(j)[1].getXpos()-list.get(i)[0])<1&&
-                                                Math.abs(connectivepair.get(j)[1].getYpos()-list.get(i)[1])<1)||
-                                                (Math.abs(connectivepair.get(j)[1].getXpos()-list.get(i)[2])<1&&
-                                                        Math.abs(connectivepair.get(j)[1].getYpos()-list.get(i)[3])<1))){
-                                    connectivepair.remove(j);
+                        String id1="";
+                        if (Math.abs(now - or) < 400) {
+                            int counter=0;
+                            Log.e("idcut","<400");
+                            for (MyImageView my :setImageView){
+                                if((Math.abs(my.getXpos()-list.get(i)[0])<1 &&Math.abs(my.getYpos()-list.get(i)[1])<1)||
+                                        (Math.abs(my.getXpos()-list.get(i)[2])<1 &&Math.abs(my.getYpos()-list.get(i)[3])<1)) {
+                                    id1=my.getViewId();
                                     break;
-
                                 }
                             }
+                            String id2="";
+                            for (MyImageView my :setImageView){
+                                if((Math.abs(my.getXpos()-list.get(i)[0])<1 &&Math.abs(my.getYpos()-list.get(i)[1])<1)||
+                                        (Math.abs(my.getXpos()-list.get(i)[2])<1 &&Math.abs(my.getYpos()-list.get(i)[3])<1)) {
+                                    Log.e("idcut","<400 and 2");
+                                    if (!my.getViewId().equals(id1)){
+                                        Log.e("idcut","<400 and 3");
+                                        id2=my.getViewId();
+                                        break;
+                                    }
+
+                                }
+
+                            }
+
+                            Crowds.cutoff(id1,id2);
+                            Log.e("id",id1+" "+id2+" ");
+
+                            setImageView.get(Integer.parseInt(id1)).setPercentage(Crowds.getPercentage(id1));
+                            setImageView.get(Integer.parseInt(id2)).setPercentage(Crowds.getPercentage(id2));
+                            list.remove(i);
+                            setConnectivepair();
                             Log.v("list", list + " "+connectivepair+" ");
                             break;
                         }
                     }
-                    Log.v("Drawline", list+" "+connectivepair+" " + (Math.abs(now - or) < 200 ? "T" : "f"));
-
+                    Log.v("Drawline", list+" "+ (Math.abs(now - or) < 200 ? "T" : "f"));
                     break;
-
                 }
                 break;
-
         }
         return true;
     }
@@ -427,7 +418,21 @@ public class DrawLine extends View {
     MyImageView[] connective_line=new MyImageView[2];
     ArrayList<MyImageView[]> connectivepair=new ArrayList<>();
 
+    public void setConnectivepair() {
 
+        for (int i = 0; i <list.size() ; i++) {
+            int counter=0;
+            for (MyImageView my :setImageView){
+                if((Math.abs(my.getXpos()-list.get(i)[0])<1 &&Math.abs(my.getYpos()-list.get(i)[1])<1)||
+                        (Math.abs(my.getXpos()-list.get(i)[2])<1 &&Math.abs(my.getYpos()-list.get(i)[3])<1)) {
+                    connective_line[counter]=my;
+                    counter=counter+1;
+                }
+            }
+            connectivepair.add(connective_line);
+        }
+
+    }
 
     /**
      * Gets line.

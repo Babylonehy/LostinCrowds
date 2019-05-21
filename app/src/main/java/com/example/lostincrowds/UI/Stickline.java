@@ -51,7 +51,7 @@ public class Stickline extends View {
     protected void onDraw ( Canvas canvas ) {
         super.onDraw(canvas);
         Log.v("Uncut" , "In to Uncut");
-        for (int i = 0; i < uncuttable_pair.size(); i = i + 2) {
+        for (int i = 0; i < uncuttable_pair.size(); i = i + 1) {
             if (uncuttableLine.equals(0)) {
                 Log.v("Uncut" , "In to Uncut2" + uncuttable_pair.size());
                 break;
