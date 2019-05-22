@@ -10,12 +10,14 @@ import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Display;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -281,5 +283,28 @@ public class LoginActivity extends AppCompatActivity {
         editor.putString("account" , username);
         editor.putString("password" , passwords);
         editor.commit();
+    }
+    private boolean mIsExit;
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (mIsExit) {
+                this.finish();
+
+            } else {
+                Toast.makeText(this, "Press again to exit", Toast.LENGTH_SHORT).show();
+                mIsExit = true;
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mIsExit = false;
+                    }
+                }, 2000);
+            }
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 }

@@ -80,10 +80,7 @@ public class MenuActivity extends AppCompatActivity {
 
     }
     private boolean mIsExit;
-    @Override
-    /**
-     * 双击返回键退出
-     */
+
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
         if (keyCode == KeyEvent.KEYCODE_BACK) {
@@ -91,7 +88,7 @@ public class MenuActivity extends AppCompatActivity {
                 this.finish();
 
             } else {
-                Toast.makeText(this, "Press again to exit", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Press again to sign in", Toast.LENGTH_SHORT).show();
                 mIsExit = true;
                 new Handler().postDelayed(new Runnable() {
                     @Override

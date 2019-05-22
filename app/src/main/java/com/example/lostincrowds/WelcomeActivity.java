@@ -27,6 +27,7 @@ public class WelcomeActivity extends AppCompatActivity {
             public void onAnimationEnd () {
                 Intent intent = new Intent();
                 intent.setClass(WelcomeActivity.this , LoginActivity.class);
+                finish();
                 startActivity(intent);
 
             }

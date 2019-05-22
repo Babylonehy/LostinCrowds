@@ -283,6 +283,8 @@ public class Level3 extends BasicActivity {
     private void initView() {
         simulation = getStart();
         restart = getReset();
+        restart.setX(simulation.getX()+10);
+        restart.setY(simulation.getY());
 
         simulation.getImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
