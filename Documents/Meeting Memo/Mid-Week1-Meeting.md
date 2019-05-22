@@ -1,5 +1,6 @@
 |Meeting Minute|Date|Loction|Attendances|Agenda|Conclusion|Action|Up coming issues|
 |--------------|----|-------|-----------|------|----------|------|----------------|
 |01|April 12, 2019, 3pm-5pm|Room 4.02, Chifley Library| Xiang Li<br>Xiaorong Ma <br>Taichi Aso|1.Know about the group members<br> 2.Set up the timetable|1.Agree on the timetable|1.One structure is greatly needed. <br>2.Need to divide the assignment into several parts.<br> 3.Need to keep contact with others.|Next meeting time: April 17, 2019|
-|02|||||||
+|02|May 7, 2019, 10am-11:30am|Chifley Library, Level 1| Xiang Li<br>Xiaorong Ma <br>Taichi Aso|1.Allocate the separated assignment <br> 2.Discuss about the data structure|All done|1.Work on UI, Network, and Logic|Next meeting time: May 15, 2019|
 |03|May 15, 2019, 4:30pm-6pm|Hancock Library, Level 3| Xiang Li<br>Xiaorong Ma <br>Taichi Aso|1.Discuss about the base logic / UI<br> 2.Allocate next tasks|1.Decided what to do next|1.Need to make playable puzzles(part 1-3). <br>2.Need to connect the logic functions to UI.|Next meeting time: May 22, 2019|
+|04|May 21, 2019, 6:00pm-1am|Kinloch Lodge| Xiang Li<br>Xiaorong Ma <br>Taichi Aso|1.Discuss about the the connection between logic and UI<br> 2.Complete Puzzle1 and 3<br> 3.make level/score board|1.All done|1.Need to make level 2 puzzle. <br>2.Need to complete wiki.||
