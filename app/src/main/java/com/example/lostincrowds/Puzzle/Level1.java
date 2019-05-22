@@ -11,17 +11,14 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.daimajia.easing.linear.Linear;
 import com.example.lostincrowds.Crowds;
 import com.example.lostincrowds.R;
 import com.example.lostincrowds.UI.DrawLine;
-import com.example.lostincrowds.UI.ImageButton;
+import com.example.lostincrowds.UI.MyImageButton;
 import com.example.lostincrowds.UI.MyImageView;
-import com.hanks.htextview.line.LineTextView;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -34,8 +31,8 @@ public class Level1 extends BasicActivity {
     public ArrayList<MyImageView> ListForImageView = new ArrayList<>();
     public DrawLine drawLine;
     private Crowds crowds;
-    private Button simulation;
-    private Button restart;
+    private MyImageButton simulation;
+    private MyImageButton restart;
     private Boolean flag=true;
     private Context mcontext;
 
@@ -97,7 +94,7 @@ public class Level1 extends BasicActivity {
     private void initView(){
         simulation=getButton();
         restart=getButton2();
-        simulation.setOnClickListener(new View.OnClickListener() {
+        simulation.getImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.v("buttonstart","in");
@@ -139,7 +136,7 @@ public class Level1 extends BasicActivity {
         });
 
 
-        restart.setOnClickListener(new View.OnClickListener() {
+        restart.getImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 for (int i = 1; i <ListForImageView.size() ; i++) {

@@ -16,11 +16,11 @@ import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.lostincrowds.R;
 import com.example.lostincrowds.UI.DrawLine;
+import com.example.lostincrowds.UI.MyImageButton;
 import com.example.lostincrowds.UI.PlayButton;
 import com.example.lostincrowds.UI.Stickline;
 import com.freedom.lauzy.playpauseviewlib.PlayPauseView;
@@ -46,14 +46,11 @@ public class BasicActivity extends AppCompatActivity {
      */
     LineTextView lineTextView;
 
-    public Button getButton() {
-        return button;
-    }
-
     /**
      * The Button.
      */
-    Button button;
+    MyImageButton button;
+    MyImageButton button2;
 
     public TextView getTextView() {
         return textView;
@@ -64,11 +61,14 @@ public class BasicActivity extends AppCompatActivity {
     }
 
     TextView textView;
-    public Button getButton2() {
-        return button2;
+
+    public MyImageButton getButton() {
+        return button;
     }
 
-    Button button2;
+    public MyImageButton getButton2() {
+        return button2;
+    }
     TextView textView2;
     private PlayPauseView playPauseView;
 
@@ -92,9 +92,9 @@ public class BasicActivity extends AppCompatActivity {
         setContentView(R.layout.activity_basic);
         init_music();
         init_line();
-        init_button();
         addContentView(playButton , PARAMS);
         fabsetting();
+        init_button();
 
     }
 
@@ -109,26 +109,10 @@ public class BasicActivity extends AppCompatActivity {
     protected void init_button () {
         button2=findViewById(R.id.start2);
         button2.setId(View.NO_ID);
-        textView=findViewById(R.id.textView11);
-        textView.setId(View.NO_ID);
-        textView.bringToFront();
-        textView2=findViewById(R.id.textView22);
-        textView2.setId(View.NO_ID);
-        textView2.bringToFront();
+        button2.setButtonName("Reset");
         button = findViewById(R.id.start);
         button.setId(View.NO_ID);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick ( View v ) {
-
-            }
-        });
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick ( View v ) {
-
-            }
-        });
+        button.setButtonName("Simulation");
     }
 
     protected void fabsetting () {

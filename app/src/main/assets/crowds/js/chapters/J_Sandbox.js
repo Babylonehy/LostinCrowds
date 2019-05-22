@@ -20,7 +20,7 @@ SLIDES.push(
 		// The Sandbox UI
 		{
 			type:"box",
-			x:200, y:-40,
+			x:200, y:-20,
 			sandbox:true
 		},
 
@@ -30,14 +30,6 @@ SLIDES.push(
 			x:325, y:450,
 			sim_ui:"red"
 		},
-
-		// // Words
-		// {
-		// 	type:"box",
-		// 	text:"sandbox_caption",
-		// 	x:660, y:500, w:300, h:40,
-		// 	align:"right"
-		// }
 
 
 	]
