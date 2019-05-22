@@ -49,6 +49,8 @@ public class Sandbox extends AppCompatActivity {
         myImageButton = findViewById(R.id.backtoMenu);
 
         myImageButton.setButtonName("Back to Main");
+        myImageButton.setX(20);
+        myImageButton.setY(20);
         myImageButton.getImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
