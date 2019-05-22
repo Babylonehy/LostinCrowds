@@ -233,6 +233,21 @@ public class Level2 extends BasicActivity {
         getDrawLine().setImageView(ListForImageView);
         getStickline().setUncuttable_pair(unconnectivepair);
         initView();
+        restart.getImageButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for (int i = 1; i < ListForImageView.size(); i++) {
+                    ListForImageView.get(i).getImage().updatefrontImageView(R.drawable.eyesclose);
+                    ListForImageView.get(i).getImage().updatebackImageView(R.drawable.gray);
+                    ListForImageView.get(i).setPercentage(0);
+
+                }
+
+                Intent intent = new Intent(mcontext, Level2.class);
+                finish();
+                startActivity(intent);
+            }
+        });
     }
 
     private void initView() {
@@ -280,21 +295,7 @@ public class Level2 extends BasicActivity {
         });
 
 
-        restart.getImageButton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                for (int i = 1; i < ListForImageView.size(); i++) {
-                    ListForImageView.get(i).getImage().updatefrontImageView(R.drawable.eyesclose);
-                    ListForImageView.get(i).getImage().updatebackImageView(R.drawable.gray);
-                    ListForImageView.get(i).setPercentage(0);
 
-                }
-
-                Intent intent = new Intent(mcontext, Level2.class);
-
-                startActivity(intent);
-            }
-        });
 
     }
 }

@@ -108,6 +108,23 @@ public class Level1 extends BasicActivity {
         drawLine = findViewById(R.id.DrawLine);
         getDrawLine().setImageView(ListForImageView);
         initView();
+
+        restart.getImageButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for (int i = 1; i < ListForImageView.size(); i++) {
+                    ListForImageView.get(i).getImage().updatefrontImageView(R.drawable.eyesclose);
+                    ListForImageView.get(i).getImage().updatebackImageView(R.drawable.gray);
+                    ListForImageView.get(i).setPercentage(0);
+
+                }
+
+                Intent intent = new Intent(mcontext, Level1.class);
+                finish();
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void initView() {
@@ -153,22 +170,6 @@ public class Level1 extends BasicActivity {
             }
         });
 
-
-        restart.getImageButton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                for (int i = 1; i < ListForImageView.size(); i++) {
-                    ListForImageView.get(i).getImage().updatefrontImageView(R.drawable.eyesclose);
-                    ListForImageView.get(i).getImage().updatebackImageView(R.drawable.gray);
-                    ListForImageView.get(i).setPercentage(0);
-
-                }
-
-                Intent intent = new Intent(mcontext, Level1.class);
-
-                startActivity(intent);
-            }
-        });
 
     }
 }
