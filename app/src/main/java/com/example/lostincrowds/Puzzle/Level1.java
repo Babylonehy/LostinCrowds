@@ -116,7 +116,7 @@ public class Level1 extends BasicActivity {
                         for (String s : list) {
                             if (my.getViewId().equals(s)) {
                                 my.getImage().updatebackImageView(R.drawable.peepsyellow);
-                                my.getImage().updatefrontImageView(R.drawable.simle);
+                                my.getImage().updatefrontImageView(R.drawable.eyessmile);
                             }
                         }
                     }
