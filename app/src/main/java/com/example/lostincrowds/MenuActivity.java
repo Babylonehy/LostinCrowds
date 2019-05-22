@@ -8,9 +8,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Display;
 import android.view.KeyEvent;
 import android.view.View;
@@ -19,8 +19,6 @@ import android.widget.Toast;
 import com.example.lostincrowds.Puzzle.Level1;
 import com.example.lostincrowds.Puzzle.Sandbox;
 import com.example.lostincrowds.UI.MyImageButton;
-
-import java.util.logging.Level;
 
 /**
  * The type Menu activity.
@@ -51,7 +49,7 @@ public class MenuActivity extends AppCompatActivity {
         levelboard.setPosition(display.getWidth()/3,display.getHeight()/8*5);
         mcontext = getApplicationContext();
 
-        newgame.setOnClickListener(new View.OnClickListener() {
+        newgame.getImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(mcontext, Level1.class);
@@ -60,7 +58,7 @@ public class MenuActivity extends AppCompatActivity {
 
             }
         });
-        sandbox.setOnClickListener(new View.OnClickListener() {
+        sandbox.getImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(mcontext, Sandbox.class);
@@ -69,7 +67,7 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        levelboard.setOnClickListener(new View.OnClickListener() {
+        levelboard.getImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(mcontext, LevelBoard.class);
