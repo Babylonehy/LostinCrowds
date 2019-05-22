@@ -228,8 +228,8 @@ public class LoginActivity extends AppCompatActivity {
                             String LevelMessage = "LevelFromLogin";
                             intent.putExtra(Message , tempuser.getMessage());
                             intent.putExtra(LevelMessage , level);
-                            startActivity(intent);
                             mp.release();
+                            startActivity(intent);
                             LoginActivity.this.finish();
                         }
                         break;
