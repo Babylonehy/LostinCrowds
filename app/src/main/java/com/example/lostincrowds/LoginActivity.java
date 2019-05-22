@@ -208,7 +208,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void Listener ( final User tempuser ) {
-
         new Thread(new Runnable() {
             @Override
             public void run () {
