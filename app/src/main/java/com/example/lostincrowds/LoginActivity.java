@@ -151,7 +151,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void forgot ( View v ) {
                 Intent intent = new Intent();
-                intent.setClass(LoginActivity.this , TestActivity.class);
+                intent.setClass(LoginActivity.this , MenuActivity.class);
                 startActivity(intent);
             }
         });
@@ -179,7 +179,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (isFirstStart) {
 
                     //  Launch app intro
-                    final Intent i = new Intent(LoginActivity.this , Introduction.class);
+                    final Intent i = new Intent(LoginActivity.this , MenuActivity.class);
 
                     runOnUiThread(new Runnable() {
                         @Override
@@ -221,7 +221,7 @@ public class LoginActivity extends AppCompatActivity {
                             Passwords = view.getLoginPassword();
                             String level = Integer.toString(tempuser.getLevel());
                             //TODO Jump to the corresponding page (Simple switch case)
-                            intent.setClass(LoginActivity.this , Introduction.class);
+                            intent.setClass(LoginActivity.this , MenuActivity.class);
                             String Message = "MessageFromLogin";
                             String LevelMessage = "LevelFromLogin";
                             intent.putExtra(Message , tempuser.getMessage());
@@ -258,6 +258,7 @@ public class LoginActivity extends AppCompatActivity {
         view.setLoginPasswordHint("Passwords");
         view.setForgotButtonText("Skip Registration");
         view.setLoginPasswordBackground(R.color.btn_press_color);
+        view.setRegisterButtonText("Regist");
         view.setLoginButtonText("Login");
         view.setLoginButtonTextColor(Color.DKGRAY);
         view.setLoginButtonBackground(R.drawable.button);

@@ -62,11 +62,19 @@ public class Level3 extends BasicActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.init_windows();
+//        super.init_windows();
         super.onCreate(savedInstanceState);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(HEIGHT,
                 WIDTH);
         mcontext = getApplicationContext();
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mcontext,Sandbox.class);
+                finish();
+                startActivity(intent);
+            }
+        });
         Resources res = getResources();
         Drawable drawable = res.getDrawable(R.drawable.bkg);
         this.getWindow().setBackgroundDrawable(drawable);

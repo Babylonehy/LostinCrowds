@@ -53,7 +53,17 @@ public class Level1 extends BasicActivity {
         super.onCreate(savedInstanceState);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(HEIGHT,
                 WIDTH);
+        mcontext = getApplicationContext();
+
         display = getWindowManager().getDefaultDisplay();
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mcontext,Level2.class);
+                finish();
+                startActivity(intent);
+            }
+        });
         mcontext = getApplicationContext();
         MyImageView init1 = new MyImageView(this, R.drawable.peepsyellow, R.drawable.eyesopen, display.getWidth() / 14 * 6, display.getHeight() / 16, 0, "0");
         MyImageView init2 = new MyImageView(this, R.drawable.peepsyellow, R.drawable.eyesopen, display.getWidth() / 14 * 4, display.getHeight() / 16 * 3, 0, "1");

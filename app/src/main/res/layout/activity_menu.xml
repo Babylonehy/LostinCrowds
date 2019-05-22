@@ -11,59 +11,39 @@
     android:layout_height="match_parent"
     tools:context=".MenuActivity">
 
-    <Button
+    <com.example.lostincrowds.UI.MyImageButton
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:text="New Game"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="772dp"
+        tools:layout_editor_absoluteY="400dp" />
 
-    <Button
+    <com.example.lostincrowds.UI.MyImageButton
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:text="continue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="772dp"
+        tools:layout_editor_absoluteY="464dp" />
 
-    <Button
+    <com.example.lostincrowds.UI.MyImageButton
         android:id="@+id/sandbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="772dp"
+        tools:layout_editor_absoluteY="528dp" />
 
-    <Button
+    <com.example.lostincrowds.UI.MyImageButton
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:text="exit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sandbox" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="772dp"
+        tools:layout_editor_absoluteY="592dp" />
 </android.support.constraint.ConstraintLayout>

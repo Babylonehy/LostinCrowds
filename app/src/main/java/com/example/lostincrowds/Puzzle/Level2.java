@@ -53,8 +53,16 @@ public class Level2 extends BasicActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate ( Bundle savedInstanceState ) {
-        super.init_windows();
+//        super.init_windows();
         super.onCreate(savedInstanceState);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mcontext,Level3.class);
+                finish();
+                startActivity(intent);
+            }
+        });
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(HEIGHT ,
                 WIDTH);
         mcontext=getApplicationContext();
@@ -99,11 +107,11 @@ public class Level2 extends BasicActivity {
 
 
 
-        MyImageView init6 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth() / 14 * 7 , display.getHeight() / 14 * 2 , 0 , "7");
-        MyImageView init7 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth() / 14 * 5 , display.getHeight() / 14 * 4 , 0 , "8");
-        MyImageView init8 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth() / 14 * 9 , display.getHeight() / 14 * 4 , 0 , "9");
-        MyImageView init9 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth() / 14 * 6 , display.getHeight() / 14 * 6 , 0 , "10");
-        MyImageView init10 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth() / 14 * 8 , display.getHeight() / 14 * 6 , 0 , "11");
+        MyImageView init6 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth() / 14 * 7 , display.getHeight() / 14 * 2 , 0 , "5");
+        MyImageView init7 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth() / 14 * 5 , display.getHeight() / 14 * 4 , 0 , "6");
+        MyImageView init8 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth() / 14 * 9 , display.getHeight() / 14 * 4 , 0 , "7");
+        MyImageView init9 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth() / 14 * 6 , display.getHeight() / 14 * 6 , 0 , "8");
+        MyImageView init10 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth() / 14 * 8 , display.getHeight() / 14 * 6 , 0 , "9");
         crowds.addPerson(init6.getViewId());
         crowds.addPerson(init7.getViewId());
         crowds.addPerson(init8.getViewId());
@@ -151,11 +159,11 @@ public class Level2 extends BasicActivity {
         crowds.connect(init9.getViewId(), init10.getViewId());
 
 
-        MyImageView init11 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth() / 14 * 10 , display.getHeight() / 7 * 3 , 0 , "12");
-        MyImageView init12 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth() / 14 * 8 , display.getHeight() / 7 * 4 , 0 , "13");
-        MyImageView init13 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth() / 14 * 12 , display.getHeight() / 7 * 4 , 0 , "14");
-        MyImageView init14 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth() / 14 * 9 , display.getHeight() / 7 * 5 , 0 , "15");
-        MyImageView init15 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth() / 14 * 11 , display.getHeight() / 7 * 5 , 0 , "16");
+        MyImageView init11 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth() / 14 * 10 , display.getHeight() / 7 * 3 , 0 , "10");
+        MyImageView init12 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth() / 14 * 8 , display.getHeight() / 7 * 4 , 0 , "11");
+        MyImageView init13 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth() / 14 * 12 , display.getHeight() / 7 * 4 , 0 , "12");
+        MyImageView init14 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth() / 14 * 9 , display.getHeight() / 7 * 5 , 0 , "13");
+        MyImageView init15 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , display.getWidth() / 14 * 11 , display.getHeight() / 7 * 5 , 0 , "14");
         crowds.addPerson(init11.getViewId());
         crowds.addPerson(init12.getViewId());
         crowds.addPerson(init13.getViewId());

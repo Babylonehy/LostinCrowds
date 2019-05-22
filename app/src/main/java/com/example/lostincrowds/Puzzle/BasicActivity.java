@@ -57,6 +57,10 @@ public class BasicActivity extends AppCompatActivity {
      * The Reset.
      */
     MyImageButton reset;
+
+
+
+    FloatingActionButton fab;
     public LineTextView getLineTextView(){
         return lineTextView;
     }
@@ -109,7 +113,7 @@ public class BasicActivity extends AppCompatActivity {
      * Fabsetting.
      */
     protected void fabsetting() {
-        FloatingActionButton fab = findViewById(R.id.fab);
+       fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -223,5 +227,8 @@ public class BasicActivity extends AppCompatActivity {
      */
     public MyImageButton getReset() {
         return reset;
+    }
+    public FloatingActionButton getFab() {
+        return fab;
     }
 }
