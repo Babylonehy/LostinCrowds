@@ -15,6 +15,8 @@ import com.example.lostincrowds.Network.KvPair;
 import java.util.ArrayList;
 
 /**
+ * The type My adapter.
+ *
  * @Description: $description$
  * @Param: $params$
  * @return: $returns$
@@ -23,17 +25,24 @@ import java.util.ArrayList;
  */
 public class MyAdapter extends ArrayAdapter<KvPair> {
 
-    public MyAdapter ( Context context , int layoutId , ArrayList<KvPair> list ) {
-        super(context , layoutId , list);
+    /**
+     * Instantiates a new My adapter.
+     *
+     * @param context  the context
+     * @param layoutId the layout id
+     * @param list     the list
+     */
+    public MyAdapter(Context context, int layoutId, ArrayList<KvPair> list) {
+        super(context, layoutId, list);
     }
 
 
     @NonNull
     @Override
-    public View getView ( int position , View convertView , ViewGroup parent ) {
+    public View getView(int position, View convertView, ViewGroup parent) {
         KvPair item = getItem(position);
         BoardItem boardItem = new BoardItem(getContext());
-        boardItem.update(item.getKey().toString() , Integer.valueOf(item.getValue().toString()));
+        boardItem.update(item.getKey().toString(), Integer.valueOf(item.getValue().toString()));
         return boardItem;
     }
 }

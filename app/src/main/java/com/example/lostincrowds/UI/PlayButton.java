@@ -23,10 +23,10 @@ public class PlayButton extends ConstraintLayout {
      *
      * @param context the context
      */
-    public PlayButton ( Context context ) {
+    public PlayButton(Context context) {
         super(context);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.playbutton , this);
+        inflater.inflate(R.layout.playbutton, this);
         playPauseView = findViewById(R.id.play_pause_view);
         playPauseView.setId(View.NO_ID);
 
@@ -38,8 +38,8 @@ public class PlayButton extends ConstraintLayout {
      * @param context the context
      * @param attrs   the attrs
      */
-    public PlayButton ( Context context , AttributeSet attrs ) {
-        super(context , attrs);
+    public PlayButton(Context context, AttributeSet attrs) {
+        super(context, attrs);
     }
 
     /**
@@ -47,21 +47,21 @@ public class PlayButton extends ConstraintLayout {
      *
      * @return the play pause view
      */
-    public PlayPauseView getPlayPauseView () {
+    public PlayPauseView getPlayPauseView() {
         return playPauseView;
     }
 
     /**
      * Pause.
      */
-    public void pause () {
+    public void pause() {
         playPauseView.pause();
     }
 
     /**
      * Play.
      */
-    public void play () {
+    public void play() {
         playPauseView.play();
     }
 
@@ -70,7 +70,7 @@ public class PlayButton extends ConstraintLayout {
      *
      * @return the boolean
      */
-    public boolean isPlaying () {
+    public boolean isPlaying() {
         return playPauseView.isPlaying();
     }
 
@@ -80,7 +80,7 @@ public class PlayButton extends ConstraintLayout {
      * @param xpos the xpos
      * @param ypos the ypos
      */
-    public void setPosition ( float xpos , float ypos ) {
+    public void setPosition(float xpos, float ypos) {
         this.xpos = xpos;
         this.ypos = ypos;
         setX(xpos);

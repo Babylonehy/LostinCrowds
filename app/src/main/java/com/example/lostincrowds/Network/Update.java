@@ -4,10 +4,23 @@ import com.loopj.android.http.RequestParams;
 
 import java.io.IOException;
 
+/**
+ * The type Update.
+ */
 public class Update extends User {
 
+    /**
+     * The Update.
+     */
     final public String UPDATE = "update.php?";
 
+    /**
+     * Instantiates a new Update.
+     *
+     * @param username  the username
+     * @param passwords the passwords
+     * @param level     the level
+     */
     public Update ( String username , String passwords , String level ) {
         this.paramMap.put("name" , username);
         this.paramMap.put("passwords" , passwords);

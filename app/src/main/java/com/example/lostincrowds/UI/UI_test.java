@@ -35,7 +35,7 @@ public class UI_test extends AppCompatActivity {
     private PlayPauseView playPauseView;
 
     @Override
-    protected void onCreate ( Bundle savedInstanceState ) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -45,19 +45,19 @@ public class UI_test extends AppCompatActivity {
 
 
         drawLine = findViewById(R.id.DrawLine);
-        MyImageView imageView = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , 50 , 50 , 100 , "s1");
+        MyImageView imageView = new MyImageView(this, R.drawable.gray, R.drawable.eyesclose, 50, 50, 100, "s1");
         ListForImageView.add(imageView);
 
-        MyImageView imageView2 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , 500 , 500 , 50 , "s2");
+        MyImageView imageView2 = new MyImageView(this, R.drawable.gray, R.drawable.eyesclose, 500, 500, 50, "s2");
         ListForImageView.add(imageView2);
 
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(HEIGHT ,
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(HEIGHT,
                 WIDTH);
 
         drawLine.setImageView(ListForImageView);
-        MyImageView imageView3 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , 800 , 800 , 80 , "s2");
-        MyImageView imageView4 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , 800 , 100 , 80 , "s2");
-        MyImageView imageView5 = new MyImageView(this , R.drawable.gray , R.drawable.eyesclose , 300 , 400 , 80 , "s2");
+        MyImageView imageView3 = new MyImageView(this, R.drawable.gray, R.drawable.eyesclose, 800, 800, 80, "s2");
+        MyImageView imageView4 = new MyImageView(this, R.drawable.gray, R.drawable.eyesclose, 800, 100, 80, "s2");
+        MyImageView imageView5 = new MyImageView(this, R.drawable.gray, R.drawable.eyesclose, 300, 400, 80, "s2");
 
         ListForImageView.add(imageView3);
         ListForImageView.add(imageView4);
@@ -66,16 +66,16 @@ public class UI_test extends AppCompatActivity {
         unconnectivepair.add(imageView2);
         stickline = findViewById(R.id.uncuttableline);
         //stickline.setUncuttable_pair(unconnectivepair);
-        addContentView(imageView , params);
-        addContentView(imageView2 , params);
-        addContentView(imageView3 , params);
-        addContentView(imageView4,params);
-        addContentView(imageView5,params);
+        addContentView(imageView, params);
+        addContentView(imageView2, params);
+        addContentView(imageView3, params);
+        addContentView(imageView4, params);
+        addContentView(imageView5, params);
         testImageview = imageView3;
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick ( View view ) {
+            public void onClick(View view) {
                 testImageview.setPercentage(30);
 //                Snackbar.make(view , "Replace with your own action" , Snackbar.LENGTH_LONG)
 //                        .setAction("Action" , null).show();
@@ -85,19 +85,19 @@ public class UI_test extends AppCompatActivity {
         // example for Playbutton.
         PlayButton playButton = new PlayButton(this);
 
-        playButton.setPosition(400 , 400);
-        final MediaPlayer mp = MediaPlayer.create(this , R.raw.bg_music);
+        playButton.setPosition(400, 400);
+        final MediaPlayer mp = MediaPlayer.create(this, R.raw.bg_music);
         mp.setLooping(true);
         playPauseView = playButton.getPlayPauseView();
         playPauseView.setPlayPauseListener(new PlayPauseView.PlayPauseListener() {
             @Override
-            public void play () {
+            public void play() {
                 mp.start();
 
             }
 
             @Override
-            public void pause () {
+            public void pause() {
                 // do something
 
                 mp.pause();
@@ -105,7 +105,7 @@ public class UI_test extends AppCompatActivity {
             }
         });
 
-        addContentView(playButton , params);
+        addContentView(playButton, params);
     }
 }
 

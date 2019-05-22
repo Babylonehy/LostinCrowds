@@ -34,8 +34,17 @@ import java.util.HashMap;
 import static android.net.wifi.SupplicantState.COMPLETED;
 import static com.example.lostincrowds.ConstantValue.PARAMS;
 
+/**
+ * The type Level board.
+ */
 public class LevelBoard extends AppCompatActivity {
+    /**
+     * The User.
+     */
     Board user;
+    /**
+     * The List.
+     */
     ArrayList<KvPair> list = new ArrayList<>();
     private RecyclerView recyclerView;
     private HashMap<Integer, KvPair> boards = new HashMap<>();
@@ -126,6 +135,10 @@ public class LevelBoard extends AppCompatActivity {
 
 
     }
+
+    /**
+     * Init windows.
+     */
     protected void init_windows () {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN , WindowManager.LayoutParams.FLAG_FULLSCREEN);

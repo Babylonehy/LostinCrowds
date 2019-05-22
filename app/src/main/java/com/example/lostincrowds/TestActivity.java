@@ -15,6 +15,9 @@ import android.widget.Toast;
 import com.example.lostincrowds.UI.AutoImageView;
 import com.example.lostincrowds.UI.MyImageButton;
 
+/**
+ * The type Test activity.
+ */
 public class TestActivity extends AppCompatActivity {
 
     @SuppressLint("ClickableViewAccessibility")

@@ -38,12 +38,33 @@ import static com.example.lostincrowds.ConstantValue.Passwords;
 import static com.example.lostincrowds.ConstantValue.Username;
 
 
+/**
+ * The type Login activity.
+ */
 public class LoginActivity extends AppCompatActivity {
+    /**
+     * The User.
+     */
     static Login user;
+    /**
+     * The New user.
+     */
     static Signin new_user;
+    /**
+     * The View.
+     */
     LoginTemplateView view;
+    /**
+     * The Display.
+     */
     Display display;
+    /**
+     * The User info.
+     */
     SharedPreferences userInfo;
+    /**
+     * The Mp.
+     */
     MediaPlayer mp;
     @TargetApi(Build.VERSION_CODES.O)
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)

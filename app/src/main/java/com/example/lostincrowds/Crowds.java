@@ -9,17 +9,45 @@ import java .util.Set;
 // The structure might have to be changed later on.
 // Considering the case there is only one infected person now.
 
+/**
+ * The type Crowds.
+ */
 public class Crowds {
 
+    /**
+     * The constant contagion.
+     */
     public static int contagion = 33;
 
+    /**
+     * The constant people.
+     */
     public static HashMap<String, Node> people = new HashMap<>();
 
+    /**
+     * The type Node.
+     */
     static class Node{
+        /**
+         * The Indicator.
+         */
         Boolean indicator;
+        /**
+         * The Status.
+         */
         float status;        // infected percentage the people has
+        /**
+         * The Linked person.
+         */
         Set<String> linkedPerson;  // the list the person is connected to
 
+        /**
+         * Instantiates a new Node.
+         *
+         * @param indicator    the indicator
+         * @param status       the status
+         * @param linkedPerson the linked person
+         */
         Node(Boolean indicator, float status, Set<String> linkedPerson){
             this.indicator=indicator;
             this.status=status;
@@ -28,17 +56,32 @@ public class Crowds {
 
     }
 
+    /**
+     * Add person.
+     *
+     * @param s the s
+     */
     public static void addPerson(String s){
         Node node = new Node(false,0, new HashSet<String>());
         people.put(s, node);
     }
 
+    /**
+     * Add infector.
+     *
+     * @param s the s
+     */
     public static void addInfector(String s){
         Node node = new Node(true,0, new HashSet<String>());
         people.put(s, node);
     }
 
 
+    /**
+     * Delete person.
+     *
+     * @param s the s
+     */
     public static void deletePerson(String s){
         if(people.containsKey(s)){
             Node node = people.get(s);
@@ -51,7 +94,13 @@ public class Crowds {
         }
     }
 
-    // links two people
+    /**
+     * Connect.
+     *
+     * @param s1 the s 1
+     * @param s2 the s 2
+     */
+// links two people
     public static void connect(String s1, String s2){
         Node n1 = people.get(s1);
         n1.linkedPerson.add(s2);
@@ -60,7 +109,13 @@ public class Crowds {
         update();
     }
 
-    // cut the link
+    /**
+     * Cutoff.
+     *
+     * @param s1 the s 1
+     * @param s2 the s 2
+     */
+// cut the link
     public static void cutoff(String s1, String s2){
         Node n1 = people.get(s1);
         n1.linkedPerson.remove(s2);
@@ -69,7 +124,10 @@ public class Crowds {
         update();
     }
 
-    // updates the status
+    /**
+     * Update.
+     */
+// updates the status
     public static void update(){
         Set<String> infectedPeople = getInfectedPeople();
         for(String key:infectedPeople){
@@ -102,11 +160,20 @@ public class Crowds {
         }
     }
 
+    /**
+     * All clear.
+     */
     public static void allClear(){
         people = new HashMap<>();
     }
 
-    // gets the number of infected people in a set
+    /**
+     * Get count int.
+     *
+     * @param set the set
+     * @return the int
+     */
+// gets the number of infected people in a set
     public static int getCount(Set<String> set){
         int count = 0;
         for(String key:set){
@@ -117,12 +184,23 @@ public class Crowds {
         return count;
     }
 
+    /**
+     * Get percentage float.
+     *
+     * @param s the s
+     * @return the float
+     */
     public static float getPercentage(String s){
         return people.get(s).status;
     }
 
 
-    // gets infected people as a set in a dictionary
+    /**
+     * Get infected people set.
+     *
+     * @return the set
+     */
+// gets infected people as a set in a dictionary
     public static Set<String> getInfectedPeople(){
         Set set = new HashSet<String>();
         for(String key:people.keySet()){
@@ -133,13 +211,23 @@ public class Crowds {
         return set;
     }
 
-    // checks its all infected or not
+    /**
+     * Is all infected boolean.
+     *
+     * @return the boolean
+     */
+// checks its all infected or not
     public static boolean isAllInfected(){
         return getInfectedPeople().size()==people.size();
     }
 
 
-    // simulates only one movement, and returns a map showing which infected person infects which person
+    /**
+     * Simulation hash map.
+     *
+     * @return the hash map
+     */
+// simulates only one movement, and returns a map showing which infected person infects which person
     public static HashMap<String,String> simulation(){
         Set<String> infectedPeople = getInfectedPeople();
         HashMap<String,String> map = new HashMap<>();
@@ -160,7 +248,12 @@ public class Crowds {
         return map;
     }
 
-    // simulates all node as long as its possible, and return True if all people were infected
+    /**
+     * Simulate all boolean.
+     *
+     * @return the boolean
+     */
+// simulates all node as long as its possible, and return True if all people were infected
     public static boolean simulateAll(){
         while(simulation().size()!=0){}
 
@@ -172,6 +265,11 @@ public class Crowds {
     }
 
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         com.example.lostincrowds.Crowds crowds = new Crowds();
 

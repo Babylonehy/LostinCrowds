@@ -44,11 +44,11 @@ public class MyImageView extends ConstraintLayout {
      * @param id         the id
      */
     @SuppressLint("ResourceType")
-    public MyImageView ( Context context , @DrawableRes int back , @DrawableRes int front , float xpos , float ypos , float percentage , String id ) {
+    public MyImageView(Context context, @DrawableRes int back, @DrawableRes int front, float xpos, float ypos, float percentage, String id) {
         super(context);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.myimageview , this);
-        Log.v("MyImageView" , "Constructe");
+        inflater.inflate(R.layout.myimageview, this);
+        Log.v("MyImageView", "Constructe");
 
         this.xpos = xpos;
         this.ypos = ypos;
@@ -59,7 +59,7 @@ public class MyImageView extends ConstraintLayout {
 
         image = findViewById(R.id.basicImageView);
         image.setId(View.NO_ID);
-        image.setBasicImageView(back , front);
+        image.setBasicImageView(back, front);
         image.setAdjustViewBounds(true);
 //        number_progress_bar = findViewById(R.id.number_progress_bar);
 //        number_progress_bar.setProgress((int) percentage);
@@ -73,13 +73,13 @@ public class MyImageView extends ConstraintLayout {
         donutProgress.setStartingDegree(-90);
         donutProgress.setProgress((int) percentage);
         donutProgress.setUnfinishedStrokeWidth(5);
-        Log.v("Myview" , id + ": " + getXpos() + " " + getYpos());
+        Log.v("Myview", id + ": " + getXpos() + " " + getYpos());
         setMyAnimation();
 
     }
 
 
-    private void setMyAnimation () {
+    private void setMyAnimation() {
 
         Random random = new Random();
         ViewAnimator
@@ -93,7 +93,7 @@ public class MyImageView extends ConstraintLayout {
      *
      * @param size the size
      */
-    public void setTextSize ( float size ) {
+    public void setTextSize(float size) {
         donutProgress.setTextSize(size);
         invalidate();
     }
@@ -103,7 +103,7 @@ public class MyImageView extends ConstraintLayout {
      *
      * @return the xpos
      */
-    public float getXpos () {
+    public float getXpos() {
         return (float) (xpos + WIDTH / 2.0);
     }
 
@@ -112,7 +112,7 @@ public class MyImageView extends ConstraintLayout {
      *
      * @return the ypos
      */
-    public float getYpos () {
+    public float getYpos() {
         return (float) (ypos + HEIGHT / 2.0);
     }
 
@@ -121,7 +121,7 @@ public class MyImageView extends ConstraintLayout {
      *
      * @return the percentage
      */
-    public float getPercentage () {
+    public float getPercentage() {
         return percentage;
     }
 
@@ -130,7 +130,7 @@ public class MyImageView extends ConstraintLayout {
      *
      * @param percentage the percentage
      */
-    public void setPercentage ( float percentage ) {
+    public void setPercentage(float percentage) {
         if (percentage >= 0 && percentage <= 100) {
             this.percentage = percentage;
             donutProgress.setProgress(percentage);
@@ -143,7 +143,7 @@ public class MyImageView extends ConstraintLayout {
      *
      * @return the view id
      */
-    public String getViewId () {
+    public String getViewId() {
         return id;
     }
 
@@ -152,10 +152,9 @@ public class MyImageView extends ConstraintLayout {
      *
      * @return the image
      */
-    public BasicImageView getImage () {
+    public BasicImageView getImage() {
         return image;
     }
-
 
 
 }

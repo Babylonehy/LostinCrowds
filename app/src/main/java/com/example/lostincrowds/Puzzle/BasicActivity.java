@@ -16,7 +16,6 @@ import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.TextView;
 
 import com.example.lostincrowds.R;
 import com.example.lostincrowds.UI.DrawLine;
@@ -32,9 +31,12 @@ import static com.example.lostincrowds.ConstantValue.PARAMS;
  * The type Basic activity.
  */
 public class BasicActivity extends AppCompatActivity {
+    /**
+     * The Mp.
+     */
     MediaPlayer mp;
     /**
-     * The Play button.
+     * The Play start.
      */
     PlayButton playButton;
     /**
@@ -49,104 +51,97 @@ public class BasicActivity extends AppCompatActivity {
     /**
      * The Button.
      */
-    MyImageButton button;
-    MyImageButton button2;
+    MyImageButton start;
+    /**
+     * The Reset.
+     */
+    MyImageButton reset;
 
-    public TextView getTextView() {
-        return textView;
-    }
-
-    public TextView getTextView2() {
-        return textView2;
-    }
-
-    TextView textView;
-
-    public MyImageButton getButton() {
-        return button;
-    }
-
-    public MyImageButton getButton2() {
-        return button2;
-    }
-    TextView textView2;
     private PlayPauseView playPauseView;
 
-    public DrawLine getDrawLine() {
-        return drawLine;
-    }
-
-    public Stickline getStickline() {
-        return stickline;
-    }
 
     private DrawLine drawLine;
     private Stickline stickline;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
-    protected void onCreate ( Bundle savedInstanceState ) {
+    protected void onCreate(Bundle savedInstanceState) {
         playButton = new PlayButton(this);
         super.onCreate(savedInstanceState);
         init_windows();
         setContentView(R.layout.activity_basic);
         init_music();
         init_line();
-        addContentView(playButton , PARAMS);
+        addContentView(playButton, PARAMS);
         fabsetting();
         init_button();
 
     }
 
 
-    protected void init_line () {
+    /**
+     * Init line.
+     */
+    protected void init_line() {
         drawLine = findViewById(R.id.DrawLineBasic);
         drawLine.setId(View.NO_ID);
         stickline = findViewById(R.id.SticklineBasic);
         stickline.setId(View.NO_ID);
     }
 
-    protected void init_button () {
-        button2=findViewById(R.id.start2);
-        button2.setId(View.NO_ID);
-        button2.setButtonName("Reset");
-        button = findViewById(R.id.start);
-        button.setId(View.NO_ID);
-        button.setButtonName("Simulation");
+    /**
+     * Init button.
+     */
+    protected void init_button() {
+        reset = findViewById(R.id.reset);
+        reset.setId(View.NO_ID);
+        reset.setButtonName("Reset");
+        start = findViewById(R.id.start);
+        start.setId(View.NO_ID);
+        start.setButtonName("Simulation");
     }
 
-    protected void fabsetting () {
+    /**
+     * Fabsetting.
+     */
+    protected void fabsetting() {
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick ( View view ) {
+            public void onClick(View view) {
 
             }
         });
     }
 
-    protected void init_windows () {
+    /**
+     * Init windows.
+     */
+    protected void init_windows() {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN , WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     }
 
-    protected void init_music () {
+    /**
+     * Init music.
+     */
+    protected void init_music() {
         display = getWindowManager().getDefaultDisplay();
-        playButton.setPosition(display.getWidth() - 200 , 100);
-        mp = MediaPlayer.create(this , R.raw.bg_music);
+        playButton.setPosition(display.getWidth() - 200, 100);
+        mp = MediaPlayer.create(this, R.raw.bg_music);
         mp.setLooping(true);
         mp.start();
         playPauseView = playButton.getPlayPauseView();
         playPauseView.setPlaying(true);
         playPauseView.setPlayPauseListener(new PlayPauseView.PlayPauseListener() {
             @Override
-            public void play () {
+            public void play() {
                 mp.start();
             }
 
             @Override
-            public void pause () {
+            public void pause() {
                 // do something
                 mp.pause();
             }
@@ -162,7 +157,7 @@ public class BasicActivity extends AppCompatActivity {
      * @param ypos the ypos
      */
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void init_textview ( String text , float xpos , float ypos ) {
+    public void init_textview(String text, float xpos, float ypos) {
         lineTextView.setVisibility(View.VISIBLE);
         init_textview();
         lineTextView.animateText(text);
@@ -170,8 +165,11 @@ public class BasicActivity extends AppCompatActivity {
         lineTextView.setY(ypos);
     }
 
+    /**
+     * Init textview.
+     */
     @RequiresApi(api = Build.VERSION_CODES.O)
-    protected void init_textview () {
+    protected void init_textview() {
         lineTextView.setVisibility(View.INVISIBLE);
         lineTextView = findViewById(R.id.lineTextView2);
         lineTextView.setAnimationDuration(Float.POSITIVE_INFINITY);
@@ -181,9 +179,46 @@ public class BasicActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy () {
+    protected void onDestroy() {
         super.onDestroy();
         mp.release();
     }
     //Todo ADD simulation or a new class for simulation
+
+
+    /**
+     * Gets draw line.
+     *
+     * @return the draw line
+     */
+    public DrawLine getDrawLine() {
+        return drawLine;
+    }
+
+    /**
+     * Gets stickline.
+     *
+     * @return the stickline
+     */
+    public Stickline getStickline() {
+        return stickline;
+    }
+
+    /**
+     * Gets start.
+     *
+     * @return the start
+     */
+    public MyImageButton getStart() {
+        return start;
+    }
+
+    /**
+     * Gets reset.
+     *
+     * @return the reset
+     */
+    public MyImageButton getReset() {
+        return reset;
+    }
 }

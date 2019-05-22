@@ -15,7 +15,7 @@ public class AutoImageView extends AppCompatImageView {
      *
      * @param context the context
      */
-    public AutoImageView ( Context context ) {
+    public AutoImageView(Context context) {
         super(context);
     }
 
@@ -25,12 +25,12 @@ public class AutoImageView extends AppCompatImageView {
      * @param context the context
      * @param attrs   the attrs
      */
-    public AutoImageView ( Context context , AttributeSet attrs ) {
-        super(context , attrs);
+    public AutoImageView(Context context, AttributeSet attrs) {
+        super(context, attrs);
     }
 
     @Override
-    protected void onMeasure ( int widthMeasureSpec , int heightMeasureSpec ) {
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         Drawable drawable = getDrawable();
         if (drawable != null) {
             int width = drawable.getMinimumWidth();
@@ -40,9 +40,9 @@ public class AutoImageView extends AppCompatImageView {
             int heightMeasure = MeasureSpec.getSize(heightMeasureSpec);
             int widthMeasure = (int) (heightMeasure * scale);
 
-            widthMeasureSpec = MeasureSpec.makeMeasureSpec(widthMeasure , MeasureSpec.EXACTLY);
+            widthMeasureSpec = MeasureSpec.makeMeasureSpec(widthMeasure, MeasureSpec.EXACTLY);
         }
-        super.onMeasure(widthMeasureSpec , heightMeasureSpec);
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
 }

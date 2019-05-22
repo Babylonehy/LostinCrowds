@@ -18,12 +18,33 @@ import static com.example.lostincrowds.ConstantValue.MessageInitial;
 import static com.example.lostincrowds.ConstantValue.levelInitial;
 import static com.example.lostincrowds.ConstantValue.successInitial;
 
+/**
+ * The type User.
+ */
 public abstract class User {
+    /**
+     * The Param map.
+     */
     HashMap<String, String> paramMap = new HashMap<String, String>();
+    /**
+     * The Params.
+     */
     RequestParams params = null;
+    /**
+     * The Level.
+     */
     int level = levelInitial;
+    /**
+     * The Success.
+     */
     String success = successInitial;
+    /**
+     * The Message.
+     */
     String message = MessageInitial;
+    /**
+     * The Jonhttpresponsehandler.
+     */
     JsonHttpResponseHandler jonhttpresponsehandler = new JsonHttpResponseHandler() {
         @Override
         public void onSuccess ( int statusCode , Header[] headers , JSONObject responses ) {
@@ -46,18 +67,38 @@ public abstract class User {
 
     };
 
+    /**
+     * Gets level.
+     *
+     * @return the level
+     */
     public int getLevel () {
         return level;
     }
 
+    /**
+     * Gets success.
+     *
+     * @return the success
+     */
     public String getSuccess () {
         return success;
     }
 
+    /**
+     * Gets message.
+     *
+     * @return the message
+     */
     public String getMessage () {
         return message;
     }
 
+    /**
+     * Run.
+     *
+     * @throws IOException the io exception
+     */
     public void run () throws IOException {
 
     }

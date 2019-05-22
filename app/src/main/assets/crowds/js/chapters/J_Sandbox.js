@@ -20,14 +20,14 @@ SLIDES.push(
 		// The Sandbox UI
 		{
 			type:"box",
-			x:200, y:-20,
+			x:200, y:10,
 			sandbox:true
 		},
 
 		// Simulation UI
 		{
 			type:"box",
-			x:325, y:450,
+			x:400, y:420,
 			sim_ui:"red"
 		},
 

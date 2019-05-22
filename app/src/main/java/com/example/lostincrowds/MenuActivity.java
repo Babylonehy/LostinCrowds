@@ -7,6 +7,9 @@ package com.example.lostincrowds;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+/**
+ * The type Menu activity.
+ */
 public class MenuActivity extends AppCompatActivity {
 
     @Override

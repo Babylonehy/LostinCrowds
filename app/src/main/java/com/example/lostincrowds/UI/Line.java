@@ -34,7 +34,7 @@ public class Line {
      * @param endY   the end y
      * @param cut    the cut
      */
-    public Line ( double startX , double startY , double endX , double endY , boolean cut ) {
+    public Line(double startX, double startY, double endX, double endY, boolean cut) {
         this.startX = startX;
         this.startY = startY;
 
@@ -48,7 +48,7 @@ public class Line {
      *
      * @return the boolean
      */
-    public boolean isCut () {
+    public boolean isCut() {
         return cut;
     }
 
@@ -57,7 +57,7 @@ public class Line {
      *
      * @param cut the cut
      */
-    public void setCut ( boolean cut ) {
+    public void setCut(boolean cut) {
         this.cut = cut;
     }
 
@@ -66,7 +66,7 @@ public class Line {
      *
      * @return the end x
      */
-    public double getEndX () {
+    public double getEndX() {
         return endX;
     }
 
@@ -75,7 +75,7 @@ public class Line {
      *
      * @param endX the end x
      */
-    public void setEndX ( double endX ) {
+    public void setEndX(double endX) {
         this.endX = endX;
     }
 
@@ -84,7 +84,7 @@ public class Line {
      *
      * @return the end y
      */
-    public double getEndY () {
+    public double getEndY() {
         return endY;
     }
 
@@ -93,7 +93,7 @@ public class Line {
      *
      * @param endY the end y
      */
-    public void setEndY ( double endY ) {
+    public void setEndY(double endY) {
         this.endY = endY;
     }
 
@@ -102,7 +102,7 @@ public class Line {
      *
      * @return the start x
      */
-    public double getStartX () {
+    public double getStartX() {
         return startX;
     }
 
@@ -111,7 +111,7 @@ public class Line {
      *
      * @param startX the start x
      */
-    public void setStartX ( double startX ) {
+    public void setStartX(double startX) {
         this.startX = startX;
     }
 
@@ -120,7 +120,7 @@ public class Line {
      *
      * @return the start y
      */
-    public double getStartY () {
+    public double getStartY() {
         return startY;
     }
 
@@ -129,7 +129,7 @@ public class Line {
      *
      * @param startY the start y
      */
-    public void setStartY ( double startY ) {
+    public void setStartY(double startY) {
         this.startY = startY;
     }
 }

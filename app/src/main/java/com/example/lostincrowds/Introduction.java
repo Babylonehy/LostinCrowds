@@ -14,6 +14,8 @@ import com.github.paolorotolo.appintro.AppIntroFragment;
 import com.github.paolorotolo.appintro.model.SliderPage;
 
 /**
+ * The type Introduction.
+ *
  * @Description: $description$
  * @Param: $params$
  * @return: $returns$

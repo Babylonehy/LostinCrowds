@@ -10,31 +10,55 @@ import android.view.View;
 
 import java.util.ArrayList;
 
+/**
+ * The type Stickline.
+ */
 public class Stickline extends View {
 
+    /**
+     * The Uncuttable line.
+     */
     public ArrayList<Line> uncuttableLine = new ArrayList<>();
     private Paint paint;
     private ArrayList<MyImageView[]> uncuttable_pair = new ArrayList<>();
 
-    public Stickline ( Context context ) {
-        this(context , null);
+    /**
+     * Instantiates a new Stickline.
+     *
+     * @param context the context
+     */
+    public Stickline(Context context) {
+        this(context, null);
     }
 
-    public Stickline ( Context context , AttributeSet attrs ) {
-        this(context , attrs , 0);
+    /**
+     * Instantiates a new Stickline.
+     *
+     * @param context the context
+     * @param attrs   the attrs
+     */
+    public Stickline(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
     }
 
-    public Stickline ( Context context , AttributeSet attrs , int defStyleAttr ) {
-        super(context , attrs , defStyleAttr);
+    /**
+     * Instantiates a new Stickline.
+     *
+     * @param context      the context
+     * @param attrs        the attrs
+     * @param defStyleAttr the def style attr
+     */
+    public Stickline(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
     }
 
     @Override
-    protected void onSizeChanged ( int w , int h , int oldw , int oldh ) {
-        super.onSizeChanged(w , h , oldw , oldh);
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
         init();
     }
 
-    private void init () {
+    private void init() {
         //初始画笔
         paint = new Paint();
         paint.setColor(Color.GRAY);
@@ -43,37 +67,52 @@ public class Stickline extends View {
 
     }
 
-    public void setUncuttable_pair ( ArrayList<MyImageView[]> uncuttable_pair ) {
+    /**
+     * Sets uncuttable pair.
+     *
+     * @param uncuttable_pair the uncuttable pair
+     */
+    public void setUncuttable_pair(ArrayList<MyImageView[]> uncuttable_pair) {
         this.uncuttable_pair = uncuttable_pair;
     }
 
     @Override
-    protected void onDraw ( Canvas canvas ) {
+    protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        Log.v("Uncut" , "In to Uncut");
+        Log.v("Uncut", "In to Uncut");
         for (int i = 0; i < uncuttable_pair.size(); i = i + 1) {
             if (uncuttableLine.equals(0)) {
-                Log.v("Uncut" , "In to Uncut2" + uncuttable_pair.size());
+                Log.v("Uncut", "In to Uncut2" + uncuttable_pair.size());
                 break;
             } else {
-                Log.v("Uncut" , "In to Uncut3");
+                Log.v("Uncut", "In to Uncut3");
                 MyImageView myImageView = uncuttable_pair.get(i)[0];
                 MyImageView myImageView1 = uncuttable_pair.get(i)[1];
-                Log.v("Uncut" , myImageView.getXpos() + " " + myImageView.getYpos() + " " +
+                Log.v("Uncut", myImageView.getXpos() + " " + myImageView.getYpos() + " " +
                         myImageView1.getXpos() + " " + myImageView1.getYpos());
-                canvas.drawLine(myImageView.getXpos() , myImageView.getYpos() ,
-                        myImageView1.getXpos() , myImageView1.getYpos() , paint);
+                canvas.drawLine(myImageView.getXpos(), myImageView.getYpos(),
+                        myImageView1.getXpos(), myImageView1.getYpos(), paint);
 
             }
 
         }
     }
 
-    public ArrayList<Line> getUncuttableLine () {
+    /**
+     * Gets uncuttable line.
+     *
+     * @return the uncuttable line
+     */
+    public ArrayList<Line> getUncuttableLine() {
         return uncuttableLine;
     }
 
-    public Paint getPaint () {
+    /**
+     * Gets paint.
+     *
+     * @return the paint
+     */
+    public Paint getPaint() {
         return paint;
     }
 

@@ -11,8 +11,8 @@
 
     <WebView
         android:id="@+id/webView"
-        android:layout_width="657dp"
-        android:layout_height="416dp"
+        android:layout_width="705dp"
+        android:layout_height="404dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -21,5 +21,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.example.lostincrowds.UI.MyImageButton
+        android:id="@+id/backtoMenu"
+        android:layout_width="734dp"
+        android:layout_height="80dp"
+
+        android:background="@drawable/bkg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

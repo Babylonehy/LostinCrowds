@@ -30,10 +30,10 @@ public class BoardItem extends ConstraintLayout {
      * @param context the context
      */
     @SuppressLint("ResourceType")
-    public BoardItem ( Context context ) {
+    public BoardItem(Context context) {
         super(context);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.board , this);
+        inflater.inflate(R.layout.board, this);
         textView = findViewById(R.id.textViewboard);
         numberProgressBar = findViewById(R.id.number_progress_bar_board);
         textView.setId(View.NO_ID);
@@ -47,10 +47,10 @@ public class BoardItem extends ConstraintLayout {
      * @param context the context
      * @param attrs   the attrs
      */
-    public BoardItem ( Context context , AttributeSet attrs ) {
-        super(context , attrs);
+    public BoardItem(Context context, AttributeSet attrs) {
+        super(context, attrs);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.board , this);
+        inflater.inflate(R.layout.board, this);
         textView = findViewById(R.id.textViewboard);
         numberProgressBar = findViewById(R.id.number_progress_bar_board);
         textView.setId(View.NO_ID);
@@ -64,13 +64,13 @@ public class BoardItem extends ConstraintLayout {
      * @param name  the name
      * @param level the level
      */
-    public void update ( String name , Integer level ) {
-        Log.v("Items",name);
-        setting(name , level);
+    public void update(String name, Integer level) {
+        Log.v("Items", name);
+        setting(name, level);
         invalidate();
     }
 
-    private void setting ( String name , Integer level ) {
+    private void setting(String name, Integer level) {
         textView.setText(name);
         numberProgressBar.setProgress(level);
     }

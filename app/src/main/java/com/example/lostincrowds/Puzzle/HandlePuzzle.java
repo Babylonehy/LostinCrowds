@@ -7,26 +7,48 @@ package com.example.lostincrowds.Puzzle;
 import com.example.lostincrowds.Crowds;
 import com.example.lostincrowds.UI.MyImageView;
 
-import org.w3c.dom.Node;
-
 import java.util.ArrayList;
 
+/**
+ * The type Handle puzzle.
+ */
 public class HandlePuzzle {
-    ArrayList<MyImageView> myImageViews=new ArrayList<>();
-    Crowds crowds=new Crowds();
-    public HandlePuzzle(ArrayList<MyImageView> puzzle){
-        this.myImageViews=puzzle;
+    /**
+     * The My image views.
+     */
+    ArrayList<MyImageView> myImageViews = new ArrayList<>();
+    /**
+     * The Crowds.
+     */
+    Crowds crowds = new Crowds();
+
+    /**
+     * Instantiates a new Handle puzzle.
+     *
+     * @param puzzle the puzzle
+     */
+    public HandlePuzzle(ArrayList<MyImageView> puzzle) {
+        this.myImageViews = puzzle;
     }
 
+    /**
+     * Sets my image views.
+     *
+     * @param myImageViews the my image views
+     */
     public void setMyImageViews(ArrayList<MyImageView> myImageViews) {
         this.myImageViews = myImageViews;
     }
-    public void sethandle(){
-        for (int i = 0; i <myImageViews.size() ; i++) {
-            MyImageView myImageView=myImageViews.get(i);
-            if (myImageView.getPercentage()==100){
+
+    /**
+     * Sets .
+     */
+    public void sethandle() {
+        for (int i = 0; i < myImageViews.size(); i++) {
+            MyImageView myImageView = myImageViews.get(i);
+            if (myImageView.getPercentage() == 100) {
                 crowds.addInfector(myImageView.getViewId());
-            }else{
+            } else {
                 crowds.addPerson(myImageView.getViewId());
             }
 

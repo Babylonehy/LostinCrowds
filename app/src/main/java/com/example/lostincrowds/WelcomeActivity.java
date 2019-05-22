@@ -8,6 +8,9 @@ import android.view.WindowManager;
 
 import me.wangyuwei.particleview.ParticleView;
 
+/**
+ * The type Welcome activity.
+ */
 public class WelcomeActivity extends AppCompatActivity {
 
     @Override

@@ -1,4 +1,5 @@
 package com.example.lostincrowds.UI;
+
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -14,21 +15,20 @@ import android.widget.LinearLayout;
  */
 public class BasicImageView extends android.support.v7.widget.AppCompatImageView {
 
-    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT ,
+    /**
+     * The Params.
+     */
+    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
             LinearLayout.LayoutParams.WRAP_CONTENT);
+    /**
+     * The Layers.
+     */
     Drawable[] layers = new Drawable[2];
     private float xpos, ypos;
-
-    public int getBack() {
-        return back;
-    }
-
-    public int getFront() {
-        return front;
-    }
-
-    private @DrawableRes int back;
-    private @DrawableRes int front;
+    private @DrawableRes
+    int back;
+    private @DrawableRes
+    int front;
 
     /**
      * Instantiates a new Basic image view.
@@ -37,7 +37,7 @@ public class BasicImageView extends android.support.v7.widget.AppCompatImageView
      * @param xpos    the xpos
      * @param ypos    the ypos
      */
-    public BasicImageView ( Context context , float xpos , float ypos ) {
+    public BasicImageView(Context context, float xpos, float ypos) {
         super(context);
         setAdjustViewBounds(true);
         setLayoutParams(params);
@@ -49,16 +49,41 @@ public class BasicImageView extends android.support.v7.widget.AppCompatImageView
         setX(xpos);
     }
 
-
-    public BasicImageView ( Context context , AttributeSet attrs ) {
-        super(context , attrs);
+    /**
+     * Instantiates a new Basic image view.
+     *
+     * @param context the context
+     * @param attrs   the attrs
+     */
+    public BasicImageView(Context context, AttributeSet attrs) {
+        super(context, attrs);
     }
 
     /**
-     * @param back
-     * @param front
+     * Gets back.
+     *
+     * @return the back
      */
-    public void setBasicImageView ( @DrawableRes int back , @DrawableRes int front ) {
+    public int getBack() {
+        return back;
+    }
+
+    /**
+     * Gets front.
+     *
+     * @return the front
+     */
+    public int getFront() {
+        return front;
+    }
+
+    /**
+     * Sets basic image view.
+     *
+     * @param back  the back
+     * @param front the front
+     */
+    public void setBasicImageView(@DrawableRes int back, @DrawableRes int front) {
         Resources r = getResources();
         Bitmap backImage = ((BitmapDrawable) r.getDrawable(
                 back)).getBitmap();
@@ -73,34 +98,44 @@ public class BasicImageView extends android.support.v7.widget.AppCompatImageView
          * @param r number of pixels to subtract from the right bound
          * @param b number of pixels to subtract from the bottom bound
          */
-        la.setLayerInset(0 , 0 , 0 , 0 , 0);
-        la.setLayerInset(1 , 20 , 20 , 20 , 20);
+        la.setLayerInset(0, 0, 0, 0, 0);
+        la.setLayerInset(1, 20, 20, 20, 20);
         setImageDrawable(la);
         setY(ypos);
         setX(xpos);
-        this.back=back;
-        this.front=front;
+        this.back = back;
+        this.front = front;
     }
 
-    public void updatefrontImageView ( @DrawableRes int front ) {
+    /**
+     * Updatefront image view.
+     *
+     * @param front the front
+     */
+    public void updatefrontImageView(@DrawableRes int front) {
         Resources r = getResources();
         Bitmap backImage = ((BitmapDrawable) r.getDrawable(
                 front)).getBitmap();
         layers[1] = new BitmapDrawable(backImage);
         LayerDrawable la = new LayerDrawable(layers);
         setImageDrawable(la);
-        this.front=front;
+        this.front = front;
         invalidate();
     }
 
-    public void updatebackImageView ( @DrawableRes int back ) {
+    /**
+     * Updateback image view.
+     *
+     * @param back the back
+     */
+    public void updatebackImageView(@DrawableRes int back) {
         Resources r = getResources();
         Bitmap backImage = ((BitmapDrawable) r.getDrawable(
                 back)).getBitmap();
         layers[0] = new BitmapDrawable(backImage);
         LayerDrawable la = new LayerDrawable(layers);
         setImageDrawable(la);
-        this.back=back;
+        this.back = back;
         invalidate();
     }
 
