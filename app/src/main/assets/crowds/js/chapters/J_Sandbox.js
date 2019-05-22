@@ -20,7 +20,7 @@ SLIDES.push(
 		// The Sandbox UI
 		{
 			type:"box",
-			x:200, y:10,
+			x:200, y:30,
 			sandbox:true
 		},
 

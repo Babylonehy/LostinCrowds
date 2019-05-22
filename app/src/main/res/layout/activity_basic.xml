@@ -64,7 +64,7 @@
 
     <com.example.lostincrowds.UI.MyImageButton
         android:id="@+id/reset"
-        android:layout_width="120dp"
+        android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -81,7 +81,7 @@
 
     <com.example.lostincrowds.UI.MyImageButton
         android:id="@+id/start"
-        android:layout_width="120dp"
+        android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginStart="184dp"
         android:layout_marginLeft="184dp"

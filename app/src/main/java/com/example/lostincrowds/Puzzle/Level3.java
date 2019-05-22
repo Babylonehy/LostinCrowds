@@ -21,6 +21,7 @@ import com.example.lostincrowds.R;
 import com.example.lostincrowds.UI.DrawLine;
 import com.example.lostincrowds.UI.MyImageButton;
 import com.example.lostincrowds.UI.MyImageView;
+import com.hanks.htextview.line.LineTextView;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -69,6 +70,10 @@ public class Level3 extends BasicActivity {
         Resources res = getResources();
         Drawable drawable = res.getDrawable(R.drawable.bkg);
         this.getWindow().setBackgroundDrawable(drawable);
+        LineTextView lineTextView=getLineTextView();
+        lineTextView.animateText("Draw connections within and between groups to spread wisdom to the whole world.");
+        lineTextView.setX(10);
+        lineTextView.setY(10);
         display = getWindowManager().getDefaultDisplay();
         MyImageView init1 = new MyImageView(this, R.drawable.peepsblue, R.drawable.simle, display.getWidth() / 7 * 3, 20, 0, "0");
         MyImageView init2 = new MyImageView(this, R.drawable.gray, R.drawable.eyesclose, display.getWidth() / 7 * 2, display.getHeight() / 7, 0, "1");
@@ -250,6 +255,21 @@ public class Level3 extends BasicActivity {
         getDrawLine().setImageView(ListForImageView);
         getStickline().setUncuttable_pair(unconnectivepair);
         initView();
+        restart.getImageButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for (int i = 1; i < ListForImageView.size(); i++) {
+                    ListForImageView.get(i).getImage().updatefrontImageView(R.drawable.eyesclose);
+                    ListForImageView.get(i).getImage().updatebackImageView(R.drawable.gray);
+                    ListForImageView.get(i).setPercentage(0);
+
+                }
+
+                Intent intent = new Intent(mcontext, Level3.class);
+                finish();
+                startActivity(intent);
+            }
+        });
     }
 
     private void initView() {
@@ -297,21 +317,7 @@ public class Level3 extends BasicActivity {
         });
 
 
-        restart.getImageButton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                for (int i = 1; i < ListForImageView.size(); i++) {
-                    ListForImageView.get(i).getImage().updatefrontImageView(R.drawable.eyesclose);
-                    ListForImageView.get(i).getImage().updatebackImageView(R.drawable.gray);
-                    ListForImageView.get(i).setPercentage(0);
 
-                }
-
-                Intent intent = new Intent(mcontext, Level3.class);
-
-                startActivity(intent);
-            }
-        });
 
     }
 

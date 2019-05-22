@@ -5,6 +5,7 @@
 package com.example.lostincrowds.Puzzle;
 
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Build;
@@ -56,7 +57,9 @@ public class BasicActivity extends AppCompatActivity {
      * The Reset.
      */
     MyImageButton reset;
-
+    public LineTextView getLineTextView(){
+        return lineTextView;
+    }
     private PlayPauseView playPauseView;
 
 
@@ -75,6 +78,7 @@ public class BasicActivity extends AppCompatActivity {
         addContentView(playButton, PARAMS);
         fabsetting();
         init_button();
+        init_textview();
 
     }
 
@@ -170,12 +174,11 @@ public class BasicActivity extends AppCompatActivity {
      */
     @RequiresApi(api = Build.VERSION_CODES.O)
     protected void init_textview() {
-        lineTextView.setVisibility(View.INVISIBLE);
         lineTextView = findViewById(R.id.lineTextView2);
         lineTextView.setAnimationDuration(Float.POSITIVE_INFINITY);
         Typeface typeface = getResources().getFont(R.font.patrickhandregular);
         lineTextView.setTypeface(typeface);
-        lineTextView.setProgress(-1);
+        lineTextView.setProgress(3);
     }
 
     @Override

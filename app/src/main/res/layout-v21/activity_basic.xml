@@ -16,7 +16,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginBottom="17dp"
         android:scaleType="centerCrop"
         android:scaleX="0.5"
@@ -32,14 +31,14 @@
         android:layout_height="wrap_content"
         android:gravity="right"
         android:paddingRight="10dp"
-        android:textSize="16dp"
+        android:textColor="#03A9F4"
+        android:textSize="20dp"
         app:animationDuration="3000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.97"
         app:lineColor="#1367bc"
         app:lineWidth="4dp" />
 
@@ -65,29 +64,21 @@
 
     <com.example.lostincrowds.UI.MyImageButton
         android:id="@+id/reset"
-        android:layout_width="120dp"
+        android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="228dp"
-        android:layout_marginRight="228dp"
-
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/start"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.902" />
+        app:layout_constraintStart_toEndOf="@+id/lineTextView2" />
 
     <com.example.lostincrowds.UI.MyImageButton
         android:id="@+id/start"
-        android:layout_width="120dp"
+        android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_marginStart="184dp"
-        android:layout_marginLeft="184dp"
-        android:layout_marginBottom="32dp"
-
+        android:layout_marginStart="220dp"
+        android:layout_marginLeft="220dp"
+        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

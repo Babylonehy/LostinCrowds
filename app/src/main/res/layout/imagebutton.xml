@@ -12,7 +12,7 @@
 
     <ImageButton
         android:id="@+id/imageButton2"
-        android:layout_width="120dp"
+        android:layout_width="100dp"
         android:layout_height="50dp"
         android:background="@android:color/transparent"
         android:scaleType="fitEnd"
@@ -26,7 +26,7 @@
         android:id="@+id/textViewbutton"
         android:layout_width="120dp"
         android:layout_height="48dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="TextView"
         android:textColor="#2196F3"
