@@ -68,6 +68,7 @@ public class LoginActivity extends AppCompatActivity {
      * The Mp.
      */
     MediaPlayer mp;
+    private  int level;
     @TargetApi(Build.VERSION_CODES.O)
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -154,7 +155,10 @@ public class LoginActivity extends AppCompatActivity {
             public void forgot ( View v ) {
                 Intent intent = new Intent();
                 intent.setClass(LoginActivity.this , MenuActivity.class);
+                mp.release();
+                intent.putExtra("Level",level);
                 startActivity(intent);
+
             }
         });
 
@@ -221,7 +225,7 @@ public class LoginActivity extends AppCompatActivity {
                             Intent intent = new Intent();
                             Username = view.getLoginName();
                             Passwords = view.getLoginPassword();
-                            String level = Integer.toString(tempuser.getLevel());
+                            int level = (int) (tempuser.getLevel());
                             //TODO Jump to the corresponding page (Simple switch case)
                             intent.setClass(LoginActivity.this , MenuActivity.class);
                             String Message = "MessageFromLogin";
@@ -229,6 +233,7 @@ public class LoginActivity extends AppCompatActivity {
                             intent.putExtra(Message , tempuser.getMessage());
                             intent.putExtra(LevelMessage , level);
                             mp.release();
+
                             startActivity(intent);
                             LoginActivity.this.finish();
                         }
