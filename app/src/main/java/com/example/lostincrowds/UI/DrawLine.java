@@ -69,7 +69,7 @@ public class DrawLine extends View {
     };
     private Deque<PointF> pointFSClose = new ArrayDeque<>(maxLen);
 
-    private Paint mPaint;
+    private Paint myPaint;
     private Shader mShader;//刀光填充颜色
 
     private boolean isDiff = false;
@@ -135,9 +135,12 @@ public class DrawLine extends View {
         super.onSizeChanged(w, h, oldw, oldh);
         init();
     }
+    /**
+     * init
+     */
 
     private void init() {
-        //初始画笔
+
         paint = new Paint();
         paint.setColor(Color.parseColor("#00B7EE"));
         paint.setAntiAlias(true);
@@ -147,10 +150,10 @@ public class DrawLine extends View {
         Pathpaint.setAntiAlias(true);
         Pathpaint.setStrokeWidth(10);
 
-        mPaint = new Paint();
+        myPaint = new Paint();
 
-        mPaint.setAntiAlias(true);
-        mPaint.setPathEffect(new CornerPathEffect(5));
+        myPaint.setAntiAlias(true);
+        myPaint.setPathEffect(new CornerPathEffect(5));
 
         mShader = new LinearGradient(0, 0, 40, 60,
                 new int[]{
@@ -192,20 +195,24 @@ public class DrawLine extends View {
         if (start == null) return;
 
         Path path = creatPath();
-        //边框
-        mPaint.setColor(Color.BLACK);
-        mPaint.setStrokeWidth((float) 0.5);
-        mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setShader(null);
-        canvas.drawPath(path, mPaint);
 
-        //填充
-        mPaint.setStyle(Paint.Style.FILL);
-        mPaint.setShader(mShader);
-        canvas.drawPath(path, mPaint);
+        myPaint.setColor(Color.BLACK);
+        myPaint.setStrokeWidth((float) 0.5);
+        myPaint.setStyle(Paint.Style.STROKE);
+        myPaint.setShader(null);
+        canvas.drawPath(path, myPaint);
+
+
+        myPaint.setStyle(Paint.Style.FILL);
+        myPaint.setShader(mShader);
+        canvas.drawPath(path, myPaint);
         if (pathFlag)
             canvas.drawLine(pathStartX, pathStartY, pathEndX, pathEndY, Pathpaint);
     }
+
+    /**
+     * do sth when touch the screen
+     */
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -297,7 +304,7 @@ public class DrawLine extends View {
     }
 
     /**
-     * On touch event 2 boolean.
+     * On touch event 2 boolean cut off the line.
      *
      * @param event2 the event 2
      * @return the boolean
@@ -360,7 +367,9 @@ public class DrawLine extends View {
         }
         return true;
     }
-
+    /**
+     * creat path
+     */
     private Path creatPath() {
         PointF start = pointFS.peek();
 
