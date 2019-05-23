@@ -14,8 +14,11 @@
         android:id="@+id/textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginEnd="183dp"
         android:layout_marginRight="183dp"
+        android:scrollbars="vertical"
         android:text="You can draw the connection between two faces. Each line represents a friendship between two faces. Also, you could slide to cutoff the friendship between two faces. Cautions, if the line is in gray color, it means that this friendship is uncuttable. Faces look at their social connections to understand their world. In the given puzzle, we assume that over 33%
 of the friendships, it will speard. So you need to draw line to achieve the whole world to be speard. You can use the simulation button to simulate speard world from the existent lines you draw.Once you finish to speard the world, you could see a text well done. If you don't want to do this level, you could just click the arrow to go to the next puzzle. Also, if you want to redrew everything, just press the reset button. After you finish all the puzzles,you will go to the sandbox. The sandbox will allow you define your own world. Now Let's start the game, press the button to begin, wish you good luck! "
         android:textSize="16dp"

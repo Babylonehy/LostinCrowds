@@ -166,7 +166,7 @@ public class LoginActivity extends AppCompatActivity {
         mp = MediaPlayer.create(this , R.raw.bg_music);
         mp.setLooping(true);
         mp.start();
-        Once();
+
     }
 
     private void Once () {

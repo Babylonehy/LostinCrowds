@@ -35,6 +35,7 @@
         <activity
             android:name=".Puzzle.Sandbox"
             android:exported="true"
+            android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".WelcomeActivity"
