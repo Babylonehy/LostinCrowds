@@ -76,9 +76,8 @@ public class Level3 extends BasicActivity {
                 startActivity(intent);
             }
         });
-        myImageButton=findViewById(R.id.reset);
-        myImageButton.setPosition(10,10);
-        
+
+
         Resources res = getResources();
         Drawable drawable = res.getDrawable(R.drawable.bkg);
         this.getWindow().setBackgroundDrawable(drawable);
@@ -287,9 +286,10 @@ public class Level3 extends BasicActivity {
     private void initView() {
         simulation = getStart();
         restart = getReset();
-        restart.setX(simulation.getX()+10);
-        restart.setY(simulation.getY());
-
+        //TODO look 
+        simulation.setPosition(200, 200);
+        restart.setX(simulation.getX());
+        restart.setY(simulation.getY() + 50);
         simulation.getImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
