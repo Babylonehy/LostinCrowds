@@ -107,21 +107,25 @@ public class MenuActivity extends AppCompatActivity {
                     case 1:
                         intent=new Intent(mcontext, Level1.class);
                         startActivity(intent);
+                        mp.release();
                         finish();
                         break;
                     case 2:
                         intent=new Intent(mcontext, Level2.class);
                         startActivity(intent);
+                        mp.release();
                         finish();
                         break;
                     case 3:
                         intent=new Intent(mcontext, Level3.class);
                         startActivity(intent);
+                        mp.release();
                         finish();
                         break;
                      default:
                          intent=new Intent(mcontext, Level1.class);
                          startActivity(intent);
+                         mp.release();
                          finish();
                          break;
                 }
