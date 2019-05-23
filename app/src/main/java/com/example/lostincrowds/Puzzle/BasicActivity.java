@@ -5,7 +5,6 @@
 package com.example.lostincrowds.Puzzle;
 
 import android.content.pm.ActivityInfo;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Build;
@@ -59,8 +58,16 @@ public class BasicActivity extends AppCompatActivity {
     MyImageButton reset;
 
 
-
+    /**
+     * The Fab.
+     */
     FloatingActionButton fab;
+
+    /**
+     * Get line text view line text view.
+     *
+     * @return the line text view
+     */
     public LineTextView getLineTextView(){
         return lineTextView;
     }
@@ -228,6 +235,12 @@ public class BasicActivity extends AppCompatActivity {
     public MyImageButton getReset() {
         return reset;
     }
+
+    /**
+     * Gets fab.
+     *
+     * @return the fab
+     */
     public FloatingActionButton getFab() {
         return fab;
     }

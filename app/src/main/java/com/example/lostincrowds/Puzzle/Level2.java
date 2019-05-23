@@ -28,6 +28,7 @@ import java.util.HashMap;
 
 import static com.example.lostincrowds.ConstantValue.HEIGHT;
 import static com.example.lostincrowds.ConstantValue.WIDTH;
+
 /**
  * The type Level 2.
  */
