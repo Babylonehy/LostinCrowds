@@ -76,9 +76,8 @@ public class Level3 extends BasicActivity {
                 startActivity(intent);
             }
         });
-        myImageButton=findViewById(R.id.reset);
-        myImageButton.setPosition(10,10);
-        
+
+
         Resources res = getResources();
         Drawable drawable = res.getDrawable(R.drawable.bkg);
         this.getWindow().setBackgroundDrawable(drawable);
