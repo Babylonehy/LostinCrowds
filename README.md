@@ -2,8 +2,8 @@
 ![](https://img.shields.io/badge/ASS-COMP6442/2100-brightgreen.svg)
 ![](https://img.shields.io/apm/l/vim-mode.svg)
 ![](https://img.shields.io/badge/Platform-Android-brightgreen.svg)
-![](https://img.shields.io/badge/Version-0.0.1-orange.svg)
-![](https://img.shields.io/badge/Release-0-yellow.svg)
+![](https://img.shields.io/badge/Version-1.0.0-orange.svg)
+![](https://img.shields.io/badge/Release-1-yellow.svg)
 * To learn more about this project, read the [wiki](https://gitlab.cecs.anu.edu.au/u6716878/AssignApp2019s1/wikis/home)  
 
 
