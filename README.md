@@ -9,9 +9,9 @@ To learn more about this project, read the [wiki](https://gitlab.cecs.anu.edu.au
  
 
 ## Team structure and roles 
-+ Xiang Li, u6716878 - 
-+ XiaoRong Ma, u6641690 - 
-+ Taichi Aso, u6577201 - 
++ Xiang Li u6716878 - team leader, networker, morale builder
++ Taichi Aso u6577201 u7654321 - note taker, documentation checker, logic_designer
++ Xiaorong Ma u6641690 - tricky android code, app state, graphics rendering
 
 ## Game Overview 
 ![](Assets/thumb.png)
