@@ -21,7 +21,9 @@ import com.example.lostincrowds.R;
 import com.example.lostincrowds.UI.DrawLine;
 import com.example.lostincrowds.UI.MyImageButton;
 import com.example.lostincrowds.UI.MyImageView;
+import com.hanks.htextview.line.LineTextView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -50,22 +52,33 @@ public class Level2 extends BasicActivity {
     private Boolean flag = true;
     private Crowds crowds;
     private Context mcontext;
-
+    private String id = "2";
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate ( Bundle savedInstanceState ) {
 //        super.init_windows();
         super.onCreate(savedInstanceState);
+        try {
+            Level2.super.update(id);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(mcontext,Level3.class);
+
                 finish();
                 startActivity(intent);
             }
         });
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(HEIGHT ,
                 WIDTH);
+
+        LineTextView lineTextView = getLineTextView();
+        lineTextView.animateText("Draw connections within and between groups to spread wisdom to the whole world.");
+        lineTextView.setX(10);
+        lineTextView.setY(10);
         mcontext=getApplicationContext();
         Resources res = getResources();
         Drawable drawable = res.getDrawable(R.drawable.bkg);

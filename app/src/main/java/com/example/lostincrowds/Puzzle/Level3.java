@@ -23,6 +23,7 @@ import com.example.lostincrowds.UI.MyImageButton;
 import com.example.lostincrowds.UI.MyImageView;
 import com.hanks.htextview.line.LineTextView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -59,7 +60,7 @@ public class Level3 extends BasicActivity {
     private Crowds crowds;
     private Context mcontext;
     private MyImageButton myImageButton;
-
+    private String id = "3";
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,10 +69,16 @@ public class Level3 extends BasicActivity {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(HEIGHT,
                 WIDTH);
         mcontext = getApplicationContext();
+        try {
+            Level3.super.update(id);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(mcontext,Sandbox.class);
+
                 finish();
                 startActivity(intent);
             }
@@ -286,7 +293,7 @@ public class Level3 extends BasicActivity {
     private void initView() {
         simulation = getStart();
         restart = getReset();
-        //TODO look 
+        //TODO look
         simulation.setPosition(200, 200);
         restart.setX(simulation.getX());
         restart.setY(simulation.getY() + 50);
@@ -329,10 +336,6 @@ public class Level3 extends BasicActivity {
 
             }
         });
-
-
-
-
     }
 
 

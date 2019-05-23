@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.lostincrowds.Network.Update;
 import com.example.lostincrowds.R;
 import com.example.lostincrowds.UI.DrawLine;
 import com.example.lostincrowds.UI.MyImageButton;
@@ -25,7 +26,11 @@ import com.example.lostincrowds.UI.Stickline;
 import com.freedom.lauzy.playpauseviewlib.PlayPauseView;
 import com.hanks.htextview.line.LineTextView;
 
+import java.io.IOException;
+
 import static com.example.lostincrowds.ConstantValue.PARAMS;
+import static com.example.lostincrowds.ConstantValue.Passwords;
+import static com.example.lostincrowds.ConstantValue.Username;
 
 /**
  * The type Basic activity.
@@ -243,5 +248,10 @@ public class BasicActivity extends AppCompatActivity {
      */
     public FloatingActionButton getFab() {
         return fab;
+    }
+
+    public void update(String level) throws IOException {
+        Update user = new Update(Username, Passwords, level);
+        user.run();
     }
 }

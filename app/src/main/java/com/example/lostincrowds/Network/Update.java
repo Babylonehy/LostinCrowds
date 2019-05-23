@@ -1,5 +1,7 @@
 package com.example.lostincrowds.Network;
 
+import android.util.Log;
+
 import com.loopj.android.http.RequestParams;
 
 import java.io.IOException;
@@ -31,6 +33,7 @@ public class Update extends User {
     public void run () throws IOException {
 
         HttpClinet.get(UPDATE , params , jonhttpresponsehandler);
+        Log.v("UpdateLEVEL", "1");
 
 
     }

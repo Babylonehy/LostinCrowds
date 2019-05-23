@@ -21,7 +21,6 @@ import com.example.lostincrowds.Puzzle.Level1;
 import com.example.lostincrowds.Puzzle.Level2;
 import com.example.lostincrowds.Puzzle.Level3;
 import com.example.lostincrowds.Puzzle.Sandbox;
-import com.example.lostincrowds.UI.Introduce;
 import com.example.lostincrowds.UI.MyImageButton;
 
 /**

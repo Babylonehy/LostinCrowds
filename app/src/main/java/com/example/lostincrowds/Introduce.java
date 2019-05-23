@@ -1,13 +1,11 @@
 /******************************************************************************
- * Copyright (c) 2019. Xiang Li From Australian National University CECS  All Rights Reserved. FileName: Introduce.java@author: jack@date: 5/23/19 12:49 AM@version: 1.0
+ * Copyright (c) 2019. Xiang Li From Australian National University CECS  All Rights Reserved. FileName: Introduce.java@author: jack@date: 23/05/19 11:57 PM@version: 1.0
  ******************************************************************************/
 
-package com.example.lostincrowds.UI;
+package com.example.lostincrowds;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
-import com.example.lostincrowds.R;
+import android.support.v7.app.AppCompatActivity;
 
 public class Introduce extends AppCompatActivity {
 
