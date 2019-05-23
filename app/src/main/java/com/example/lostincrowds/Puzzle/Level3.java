@@ -78,7 +78,6 @@ public class Level3 extends BasicActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(mcontext,Sandbox.class);
-
                 finish();
                 startActivity(intent);
             }
@@ -293,10 +292,10 @@ public class Level3 extends BasicActivity {
     private void initView() {
         simulation = getStart();
         restart = getReset();
-        //TODO look
-        simulation.setPosition(200, 200);
+
+        simulation.setPosition(50, 50);
         restart.setX(simulation.getX());
-        restart.setY(simulation.getY() + 50);
+        restart.setY(simulation.getY() + 100);
         simulation.getImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -336,6 +335,8 @@ public class Level3 extends BasicActivity {
 
             }
         });
+
+
     }
 
 

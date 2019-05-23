@@ -56,11 +56,11 @@ public class BasicActivity extends AppCompatActivity {
     /**
      * The Button.
      */
-    MyImageButton start;
+    private MyImageButton start;
     /**
      * The Reset.
      */
-    MyImageButton reset;
+    private MyImageButton reset;
 
 
     /**
