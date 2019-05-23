@@ -4,7 +4,7 @@
 ![](https://img.shields.io/badge/Platform-Android-brightgreen.svg)
 ![](https://img.shields.io/badge/Version-0.0.1-orange.svg)
 ![](https://img.shields.io/badge/Release-0-yellow.svg)
-To learn more about this project, read the [wiki](https://gitlab.cecs.anu.edu.au/u6716878/AssignApp2019s1/wikis/home/home)  
+* To learn more about this project, read the [wiki](https://gitlab.cecs.anu.edu.au/u6716878/AssignApp2019s1/wikis/home/home)  
 
 
 ## Team structure and roles 
