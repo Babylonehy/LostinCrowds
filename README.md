@@ -19,13 +19,19 @@ A journey to explore people’s influence on society. During the journey, we wil
 _The game is inspired by a Website called "[The Wisdom and/or Madness of Crowds](https://ncase.me/crowds/)"_  
 - - -     
 ### Aseets
-_Lost in Crowds_ thanks to Creative Commons resources:
+_Lost in Crowds_ thanks to Creative Commons resources/Open sources libs:
 
 **Music:** ["Friends 2018" and "Friends 2068"](http://freemusicarchive.org/music/Komiku/Tale_on_the_Late/) by Komiku (CC Zero)
 
 **Picture:** [Crowds](https://ncase.me/crowds/)  
 
 **Font:** [Patrick Hand](https://fonts.google.com/specimen/Patrick+Hand) by Patrick Wagesreiter
+**Lib:**  
+*  [NiftyDialogEffects](https://github.com/sd6352051/NiftyDialogEffects) by Litao
+*  [EasySplashScreen](https://github.com/pantrif/EasySplashScreen) by Leonidas Maroulis  
+*  [JumpingBeans](https://github.com/frakbot/JumpingBeans)  by Sebastiano Poggi 
+*  [NumberProgressBar](https://github.com/daimajia/NumberProgressBar) by daimajia
+*  [Android additive animations](https://github.com/wirecube/android_additive_animations) by David Ganster
 ## Originality statement
 We declare that the work we have submitted for  this assignment  it is entirely our own work, with the following documented exceptions:
 .
