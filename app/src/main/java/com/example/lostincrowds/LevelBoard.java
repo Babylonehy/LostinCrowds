@@ -7,32 +7,26 @@ package com.example.lostincrowds;
 import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ListView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.lostincrowds.Network.Board;
 import com.example.lostincrowds.Network.KvPair;
 import com.example.lostincrowds.UI.BoardItem;
-import com.example.lostincrowds.UI.MyAdapter;
-import com.lhh.ptrrv.library.PullToRefreshRecyclerView;
 
 import net.frakbot.jumpingbeans.JumpingBeans;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import static android.net.wifi.SupplicantState.COMPLETED;
-import static com.example.lostincrowds.ConstantValue.PARAMS;
 
 /**
  * The type Level board.
@@ -82,6 +76,7 @@ public class LevelBoard extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Glide.with(this).load(R.drawable.levelboard).into((ImageView) findViewById(R.id.bkggif));
 
     }
 
