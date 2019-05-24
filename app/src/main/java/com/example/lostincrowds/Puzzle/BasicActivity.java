@@ -250,6 +250,12 @@ public class BasicActivity extends AppCompatActivity {
         return fab;
     }
 
+    /**
+     * Update.
+     *
+     * @param level the level
+     * @throws IOException the io exception
+     */
     public void update(String level) throws IOException {
         Update user = new Update(Username, Passwords, level);
         user.run();

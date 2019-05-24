@@ -13,6 +13,9 @@ import com.bumptech.glide.Glide;
 
 import me.grantland.widget.AutofitTextView;
 
+/**
+ * The type Introduce.
+ */
 public class Introduce extends AppCompatActivity {
 
     @Override

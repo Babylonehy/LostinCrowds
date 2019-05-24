@@ -5,10 +5,9 @@
 
 package com.example.lostincrowds;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java .util.Set;
+import java.util.Set;
 
 // This is just a draft of the inside logic.
 // The structure might have to be changed later on.

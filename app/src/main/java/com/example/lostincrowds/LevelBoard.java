@@ -54,22 +54,8 @@ public class LevelBoard extends AppCompatActivity {
         init_windows();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board);
-        boardItem1=findViewById(R.id.boardItem1);
-        boardItem2=findViewById(R.id.boardItem2);
-        boardItem3=findViewById(R.id.boardItem3);
-        boardItem4=findViewById(R.id.boardItem4);
-        boardItem5=findViewById(R.id.boardItem5);
-        boardItem1.update("",0);
-        boardItem2.update("",0);
-        boardItem3.update("",0);
-        boardItem4.update("",0);
-        boardItem5.update("",0);
-        textView=findViewById(R.id.textView2);
-        JumpingBeans jumpingBeans1 = JumpingBeans.with(textView)
-                .makeTextJump(0 , textView.getText().length())
-                .setIsWave(true)
-                .setLoopDuration(5000)
-                .build();
+        init();
+
         try {
             getBoard();
             Listener(user);
@@ -80,18 +66,6 @@ public class LevelBoard extends AppCompatActivity {
 
     }
 
-    private void  updateBoard(ArrayList<KvPair> list){
-        Log.v("UpdateBoard",list.toString());
-        if (list.size()==5){
-            boardItem1.update(list.get(0).getKey().toString(),Integer.valueOf(list.get(0).getValue().toString()));
-            boardItem2.update(list.get(1).getKey().toString(),Integer.valueOf(list.get(1).getValue().toString()));
-            boardItem3.update(list.get(2).getKey().toString(),Integer.valueOf(list.get(2).getValue().toString()));
-            boardItem4.update(list.get(3).getKey().toString(),Integer.valueOf(list.get(3).getValue().toString()));
-            boardItem5.update(list.get(4).getKey().toString(),Integer.valueOf(list.get(4).getValue().toString()));
-
-        }
-
-    }
     private void getBoard () throws IOException {
         user = new Board();
         user.run();
@@ -149,5 +123,37 @@ public class LevelBoard extends AppCompatActivity {
             }
         }
     };
+
+    private void init() {
+        boardItem1 = findViewById(R.id.boardItem1);
+        boardItem2 = findViewById(R.id.boardItem2);
+        boardItem3 = findViewById(R.id.boardItem3);
+        boardItem4 = findViewById(R.id.boardItem4);
+        boardItem5 = findViewById(R.id.boardItem5);
+        boardItem1.update("", 0);
+        boardItem2.update("", 0);
+        boardItem3.update("", 0);
+        boardItem4.update("", 0);
+        boardItem5.update("", 0);
+        textView = findViewById(R.id.textView2);
+        JumpingBeans jumpingBeans1 = JumpingBeans.with(textView)
+                .makeTextJump(0, textView.getText().length())
+                .setIsWave(true)
+                .setLoopDuration(5000)
+                .build();
+    }
+
+    private void updateBoard(ArrayList<KvPair> list) {
+        Log.v("UpdateBoard", list.toString());
+        if (list.size() == 5) {
+            boardItem1.update(list.get(0).getKey().toString(), Integer.valueOf(list.get(0).getValue().toString()));
+            boardItem2.update(list.get(1).getKey().toString(), Integer.valueOf(list.get(1).getValue().toString()));
+            boardItem3.update(list.get(2).getKey().toString(), Integer.valueOf(list.get(2).getValue().toString()));
+            boardItem4.update(list.get(3).getKey().toString(), Integer.valueOf(list.get(3).getValue().toString()));
+            boardItem5.update(list.get(4).getKey().toString(), Integer.valueOf(list.get(4).getValue().toString()));
+
+        }
+
+    }
 
 }
