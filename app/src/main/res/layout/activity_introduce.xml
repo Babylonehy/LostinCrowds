@@ -5,9 +5,11 @@
 
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:autofit="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bkg"
     tools:context=".Introduce">
 
     <TextView
@@ -16,65 +18,107 @@
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginEnd="183dp"
-        android:layout_marginRight="183dp"
         android:scrollbars="vertical"
         android:text="You can draw the connection between two faces. Each line represents a friendship between two faces. Also, you could slide to cutoff the friendship between two faces. Cautions, if the line is in gray color, it means that this friendship is uncuttable. Faces look at their social connections to understand their world. In the given puzzle, we assume that over 33%
 of the friendships, it will speard. So you need to draw line to achieve the whole world to be speard. You can use the simulation button to simulate speard world from the existent lines you draw.Once you finish to speard the world, you could see a text well done. If you don't want to do this level, you could just click the arrow to go to the next puzzle. Also, if you want to redrew everything, just press the reset button. After you finish all the puzzles,you will go to the sandbox. The sandbox will allow you define your own world. Now Let's start the game, press the button to begin, wish you good luck! "
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.55" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/drawlinegif"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView"
+        android:layout_height="118dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/drawline" />
+
+    <me.grantland.widget.AutofitTextView
+        android:id="@+id/autofitTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fadeScrollbars="false"
+        android:scrollbars="vertical"
+        android:singleLine="false"
+        android:text="      You can draw the connection between two faces. Each line represents a friendship between two faces. \n      Also, you could slide to cutoff the friendship between two faces. Cautions, if the line is in gray color, it means that this friendship is uncuttable. "
+        android:textSize="12sp"
+        android:typeface="monospace"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/drawlinegif"
+        autofit:minTextSize="16sp" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/drawlinegif"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/uncuttable" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/autofitTextView"
         app:srcCompat="@drawable/simulation" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
         app:srcCompat="@drawable/reset" />
 
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="@+id/imageView4"
         app:srcCompat="@drawable/fab" />
+
+    <me.grantland.widget.AutofitTextView
+        android:id="@+id/autofitTextView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:fadeScrollbars="false"
+        android:maxLines="15"
+        android:scrollbars="vertical"
+        android:singleLine="false"
+        android:text="      In the given puzzle, we assume that over 33% of the friendships, it will speard. So you need to draw line to achieve the whole world to be speard. \n       You can use the simulation button to simulate speard world from the existent lines you draw.Once you finish to speard the world, you could see a text well done. \n      If you don't want to do this level, you could just click the arrow to go to the next puzzle. Also, if you want to redrew everything, just press the reset button. \n       After you finish all the puzzles,you will go to the sandbox. The sandbox will allow you define your own world. \n       Now Let's start the game, press the button to begin, wish you good luck! "
+        android:textSize="12sp"
+        android:typeface="monospace"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintVertical_bias="0.0"
+        autofit:minTextSize="16sp" />
 </android.support.constraint.ConstraintLayout>
