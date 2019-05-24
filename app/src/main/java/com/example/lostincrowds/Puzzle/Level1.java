@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2019. Xiang Li From Australian National University CECS  All Rights Reserved. FileName: Level1.java@author: jack@date: 18/05/19 1:45 AM@version: 1.0
+ * Copyright (c) 2019. Taichi Aso From Australian National University CECS  All Rights Reserved. FileName: Level1.java@author: jack@date: 18/05/19 1:45 AM@version: 1.0
  ******************************************************************************/
 
 package com.example.lostincrowds.Puzzle;
