@@ -1,3 +1,7 @@
+/******************************************************************************
+ * Copyright (c) 2019. Xiang Li From Australian National University CECS  All Rights Reserved. FileName: HandlePuzzle.java@author: jack@date: 5/21/19 2:10 PM@version: 1.0
+ ******************************************************************************/
+
 package com.example.lostincrowds;
 
 import android.content.Intent;

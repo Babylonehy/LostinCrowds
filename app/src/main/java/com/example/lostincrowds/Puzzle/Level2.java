@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2019. Xiang Li From Australian National University CECS  All Rights Reserved. FileName: Level2.java@author: jack@date: 22/05/19 3:59 PM@version: 1.0
+ * Copyright (c) 2019. Taichi Aso From Australian National University CECS  All Rights Reserved. FileName: Level2.java@author: jack@date: 22/05/19 3:59 PM@version: 1.0
  ******************************************************************************/
 
 package com.example.lostincrowds.Puzzle;
@@ -266,6 +266,9 @@ public class Level2 extends BasicActivity {
     private void initView() {
         simulation = getStart();
         restart = getReset();
+        simulation.setPosition(50, 50);
+        restart.setX(simulation.getX());
+        restart.setY(simulation.getY() + 100);
 
         simulation.getImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
