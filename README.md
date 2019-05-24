@@ -23,9 +23,9 @@ _Lost in Crowds_ thanks to Creative Commons resources/Open sources libs:
 
 **Music:** ["Friends 2018" and "Friends 2068"](http://freemusicarchive.org/music/Komiku/Tale_on_the_Late/) by Komiku (CC Zero)
 
-**Picture:** [Crowds](https://ncase.me/crowds/)  
+**Picture:** [Crowds](https://ncase.me/crowds/)    by Nicky Case
 
-**Font:** [Patrick Hand](https://fonts.google.com/specimen/Patrick+Hand) by Patrick Wagesreiter
+**Font:** [Patrick Hand](https://fonts.google.com/specimen/Patrick+Hand) by Patrick Wagesreiter  
 **Lib:**  
 *  [NiftyDialogEffects](https://github.com/sd6352051/NiftyDialogEffects) by Litao
 *  [EasySplashScreen](https://github.com/pantrif/EasySplashScreen) by Leonidas Maroulis  
