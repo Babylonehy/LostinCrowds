@@ -25,7 +25,10 @@ _Lost in Crowds_ thanks to Creative Commons resources/Open sources libs:
 
 **Picture:** [Crowds](https://ncase.me/crowds/)    by Nicky Case
 
-**Font:** [Patrick Hand](https://fonts.google.com/specimen/Patrick+Hand) by Patrick Wagesreiter  
+**Font:** [Patrick Hand](https://fonts.google.com/specimen/Patrick+Hand) by Patrick Wagesreiter    
+
+**Effect:** [Slice](https://github.com/dengciping0716/FruitSliceView) by dengciping0716  
+
 **Lib:**  
 *  [NiftyDialogEffects](https://github.com/sd6352051/NiftyDialogEffects) by Litao
 *  [EasySplashScreen](https://github.com/pantrif/EasySplashScreen) by Leonidas Maroulis  
