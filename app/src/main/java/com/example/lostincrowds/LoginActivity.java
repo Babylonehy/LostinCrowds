@@ -295,6 +295,7 @@ public class LoginActivity extends AppCompatActivity {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if (mIsExit) {
                 this.finish();
+                mp.release();
 
             } else {
                 Toast.makeText(this, "Press again to exit", Toast.LENGTH_SHORT).show();

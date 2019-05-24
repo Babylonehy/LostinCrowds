@@ -141,6 +141,9 @@ public class Level1 extends BasicActivity {
     private void initView() {
         simulation = getStart();
         restart = getReset();
+        simulation.setPosition(50, 50);
+        restart.setX(simulation.getX());
+        restart.setY(simulation.getY() + 100);
         simulation.getImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
